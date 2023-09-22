@@ -1,0 +1,81 @@
+def Setup():
+  s10 = gaussian(-0.735617, 0.618844)
+  m10 = gaussian(-0.4507, 0.999141, (n_features, n_features))
+  m20 = gaussian(0.849325, 0.398979, (n_features, n_features))
+  v13[0.413491] = -0.539331
+  s25 = uniform(0.438012, 0.598045)
+  s9 = uniform(0.78897, -0.628937)
+  m13[0.533887, 0.381172] = 0.486778
+  v15 = gaussian(0.921285, 0.228293, n_features)
+  s4 = -0.810467
+  m20[0.407963, 0.820108] = -0.142632
+  v10[0.93121] = -0.281359
+  v17[0.883199] = -0.199943
+  m16 = gaussian(-0.207687, 0.598946, (n_features, n_features))
+  v28 = gaussian(0.971299, 0.281926, n_features)
+  s26 = gaussian(0.842108, 0.719606)
+  m22 = gaussian(-0.80071, 0.254096, (n_features, n_features))
+  v19 = gaussian(0.245887, 0.225819, n_features)
+  v2 = uniform(-0.862133, 0.292953, n_features)
+def Predict():
+  s26 = s3 + s28
+  s14 = arctan(s23)
+  m17 = heaviside(m1, 1.0)
+  v19 = norm(m0, axis=1)
+  s20 = relation_demean(s22)
+  s6 = s17 - s19
+  m4 = m5 / m24
+  s1 = tan(s6)
+  m22 = 1 / m22
+  s18 = TS_rank(s12)
+  v21 = v11 / v25
+  m2 = maximum(m23, m12)
+  s16 = norm(v16)
+  m6 = transpose(m0)
+  v7 = TS_row_rank(s7)
+  v18 = heaviside(v24, 1.0)
+  s28 = s9 * s25
+  v18 = abs(v23)
+  s15 = abs(s23)
+  m15 = m18 - m0
+  v8 = mean(m23, axis=1)
+  s24 = relation_rank(s2)
+  m10 = 1 / m0
+  v18 = v1 * v1
+  v3 = v29 + v2
+  s7 = relation_rank(s19)
+  m22 = matmul(m6, m14)
+  s16 = relation_demean(s11)
+  s12 = dot(v4, v2)
+  m1 = m12 * m10
+  v14 = mean(m5, axis=1)
+  s23 = s8 - s21
+  s20 = mean(v21)
+  m5 = abs(m6)
+  s14 = arctan(s6)
+  s19 = s0 - s5
+  s7 = TS_rank(s26)
+  s10 = arcsin(s6)
+  s19 = get_scalar(0.401968, 0.594249)
+def Learn():
+  s26 = tan(s21)
+  m18 = m23 / m13
+  s19 = exp(s26)
+  s21 = heaviside(s17, 1.0)
+  m4 = m22 + m12
+  s18 = sin(s12)
+  s8 = s10 * s26
+  s20 = tan(s0)
+  v23 = v6 * v24
+  m13 = m7 - m10
+  s11 = std(v25)
+  v8 = get_column(0.383582)
+  v9 = uniform(-0.179316, 0.379009, n_features)
+  v21 = get_column(0.807558)
+  v5 = s19 * v23
+  s3 = std(m6)
+  s17 = mean(v19)
+  m14 = m2 - m20
+  m19 = heaviside(m8, 1.0)
+  v6 = uniform(-1.09984, -0.358133, n_features)
+ 

@@ -1,0 +1,91 @@
+def Setup():
+  v20[0.755987] = 0.283887
+  s7 = -0.188376
+  m6[0.9109, 0.603795] = -0.379918
+  s3 = uniform(0.48765, -0.509298)
+def Predict():
+  v18 = TS_row_rank(s13)
+  s26 = arcsin(s22)
+  v23 = uniform(0.189581, 0.759455, n_features)
+  s29 = correlation(v17, v21, 0.448486)
+  v14 = get_row(0.115352)
+  v28 = v11 / v20
+  m20 = bcast(v6, axis=1)
+  v20 = abs(v1)
+  s1 = 1 / s25
+  m23 = uniform(-0.449158, 0.53417, (n_features, n_features))
+  s3 = exp(s27)
+  v23 = get_column(0.621609)
+  m13 = m9 / m21
+  v9 = uniform(-0.406137, 0.826061, n_features)
+  s18 = correlation(v9, v4, 0.136608)
+  v23 = v19 + v15
+  v18 = 1 / v15
+  s6 = s14 * s24
+  s22 = norm(v3)
+  m18 = s27 * m8
+  s19 = arcsin(s12)
+  s23 = cos(s6)
+  v10 = heaviside(v20, 1.0)
+  v11 = dot(m7, v15)
+  v7 = norm(m13, axis=1)
+  NoOp()
+  s13 = exp(s28)
+  m11 = bcast(v11, axis=0)
+  s19 = covariance(v4, v25, 0.614435)
+  v28 = s26 * v1
+  s26 = arcsin(s28)
+  v19 = bcast(s2)
+  v18 = v4 / v17
+  s25 = cos(s4)
+  s15 = TS_rank(s13)
+  s11 = get_scalar(0.698792, 0.365938)
+  s19 = abs(s8)
+  s19 = TS_rank(s23)
+  v24 = v26 - v9
+  m20 = m20 - m9
+  s6 = 1 / s18
+  v27 = abs(v17)
+  s8 = mean(m15)
+  s20 = minimum(s20, s11)
+  s17 = TS_rank(s21)
+  m19 = uniform(0.886099, 0.252967, (n_features, n_features))
+  s7 = std(v10)
+  v6 = TS_row_rank(s28)
+  s22 = arcsin(s20)
+  m5 = heaviside(m0, 1.0)
+  v23 = get_column(0.186202)
+  v12 = std(m1, axis=1)
+def Learn():
+  v2 = get_column(0.47505)
+  m3 = m7 + m3
+  s14 = abs(s2)
+  s5 = get_scalar(0.290071, 0.846698)
+  s20 = log(s21)
+  s10 = exp(s28)
+  v3 = v22 + v20
+  v22 = get_row(0.242621)
+  s15 = get_scalar(0.17891, 0.374918)
+  s14 = dot(v16, v9)
+  m1 = uniform(-0.143217, -0.46086, (n_features, n_features))
+  v20 = maximum(v11, v5)
+  s25 = maximum(s13, s23)
+  m10 = matmul(m12, m22)
+  v14 = get_row(0.460105)
+  s8 = heaviside(s15, 1.0)
+  s11 = cos(s3)
+  s26 = exp(s14)
+  m2 = maximum(m5, m20)
+  v14 = 1 / v14
+  m18 = matmul(m19, m14)
+  m12 = s16 * m23
+  v23 = get_column(0.23915)
+  s9 = covariance(v16, v19, 0.450451)
+  v2 = bcast(s9)
+  s28 = s15 - s28
+  s9 = minimum(s28, s10)
+  s27 = s20 * s17
+  m2 = 1 / m0
+  s17 = exp(s18)
+  s21 = arcsin(s3)
+ 

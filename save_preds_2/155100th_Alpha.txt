@@ -1,0 +1,97 @@
+def Setup():
+  s20 = uniform(-0.822884, 0.400616)
+  m14 = uniform(0.799363, -0.4692, (n_features, n_features))
+  s3 = uniform(0.999723, -0.556653)
+  s18 = -0.233139
+  s6 = uniform(-0.990414, -0.162256)
+  s4 = uniform(-0.615444, 0.520919)
+  s24 = -0.725404
+  v19 = gaussian(0.843909, 0.584754, n_features)
+  s23 = -0.375497
+  v28 = gaussian(0.870224, 0.721749, n_features)
+  s3 = gaussian(-0.155157, 0.603545)
+  m11[0.0917661, 0.538695] = 0.428156
+  v13[0.901652] = -0.787707
+  m16[0.439367, 0.492709] = -0.793605
+  m3 = gaussian(-0.163403, 0.249736, (n_features, n_features))
+  v3 = gaussian(0.915227, 0.713881, n_features)
+def Predict():
+  s1 = TS_rank(s7)
+  s23 = previous_rank(s24)
+  v26 = uniform(-0.650009, 0.724668, n_features)
+  m24 = maximum(m1, m19)
+  v5 = std(m13, axis=1)
+  m15 = minimum(m9, m16)
+  s21 = relation_rank(s0)
+  s9 = 1 / s16
+  v1 = norm(m10, axis=1)
+  m15 = m13 + m17
+  s25 = std(m4)
+  v14 = v8 / v12
+  m11 = transpose(m3)
+  v9 = TS_row_rank(s28)
+  s29 = s6 / s13
+  s10 = arcsin(s8)
+  v14 = v29 + v11
+  s23 = sin(s23)
+  s25 = previous_rank(s18)
+  s26 = arccos(s9)
+  s14 = maximum(s24, s19)
+  v14 = mean(m18, axis=1)
+  s15 = cos(s3)
+  v23 = v14 / v13
+  s27 = cos(s6)
+  s7 = arcsin(s6)
+  m10 = 1 / m23
+  m8 = m12 + m16
+  m11 = matmul(m10, m23)
+  v4 = v28 / v7
+  s6 = get_scalar(0.729037, 0.988153)
+  s15 = TS_rank(s9)
+  v20 = norm(m15, axis=1)
+  s29 = covariance(v11, v0, 0.862626)
+  s7 = sin(s27)
+  s19 = arctan(s10)
+  v8 = minimum(v18, v9)
+  m21 = abs(m7)
+  s26 = TS_rank(s5)
+  m15 = maximum(m23, m10)
+  v5 = 1 / v13
+  m24 = bcast(v24, axis=1)
+  v5 = v4 * v6
+  m17 = uniform(-0.306359, 0.710492, (n_features, n_features))
+  m15 = s9 * m6
+def Learn():
+  s4 = s26 * s5
+  v12 = norm(m23, axis=1)
+  s24 = s11 + s6
+  s17 = cos(s22)
+  m12 = minimum(m8, m23)
+  m12 = heaviside(m10, 1.0)
+  s9 = get_scalar(0.649194, 0.0370491)
+  v14 = mean(m11, axis=1)
+  s9 = norm(m0)
+  v15 = 1 / v14
+  s6 = dot(v28, v3)
+  s13 = get_scalar(0.567288, 0.16203)
+  m19 = m8 + m10
+  s22 = 1 / s14
+  s3 = norm(m3)
+  s4 = norm(m11)
+  NoOp()
+  m23 = m10 + m10
+  NoOp()
+  s6 = 1 / s9
+  v26 = minimum(v26, v8)
+  m10 = maximum(m24, m17)
+  s23 = arctan(s5)
+  v5 = minimum(v14, v0)
+  m13 = bcast(v12, axis=1)
+  m16 = m11 + m20
+  v28 = v22 + v29
+  v6 = bcast(s23)
+  s14 = 1 / s13
+  s23 = arctan(s27)
+  s9 = minimum(s27, s13)
+  m14 = m10 / m7
+ 

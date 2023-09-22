@@ -1,0 +1,127 @@
+def Setup():
+  s14 = gaussian(-0.115733, 0.0406563)
+  m20[0.334391, 0.945937] = -0.0164092
+  m18 = uniform(-0.514934, 0.215648, (n_features, n_features))
+  s14 = gaussian(-0.0701575, 0.866253)
+  v4[0.223729] = 0.829071
+  m4[0.687093, 0.564616] = -0.418405
+  s5 = gaussian(-0.597607, 0.845964)
+  m21 = gaussian(-0.875134, 0.440347, (n_features, n_features))
+  v15 = uniform(-0.369066, -0.925133, n_features)
+  s7 = 0.188865
+  s15 = -0.199331
+def Predict():
+  NoOp()
+  v20 = mean(m17, axis=1)
+  s21 = minimum(s7, s0)
+  s10 = exp(s2)
+  m3 = abs(m1)
+  v23 = mean(m14, axis=1)
+  s27 = previous_rank(s26)
+  m20 = abs(m16)
+  m3 = m14 + m9
+  s17 = s5 / s22
+  s6 = exp(s15)
+  s7 = log(s24)
+  v21 = minimum(v1, v12)
+  s1 = sin(s14)
+  m8 = bcast(v28, axis=0)
+  v7 = uniform(0.303697, 0.587577, n_features)
+  s16 = log(s9)
+  s19 = norm(v0)
+  s15 = relation_rank(s23)
+  s8 = mean(m23)
+  s1 = TS_rank(s16)
+  v9 = maximum(v3, v10)
+  v21 = v24 - v21
+  m19 = maximum(m15, m18)
+  s18 = maximum(s28, s12)
+  v17 = get_column(0.386694)
+  s20 = previous_rank(s6)
+  s5 = mean(m21)
+  s15 = get_scalar(0.0718991, 0.663264)
+  s27 = tan(s18)
+  s25 = s27 - s5
+  s13 = arctan(s20)
+  v8 = v11 * v10
+  s19 = tan(s6)
+  s21 = mean(m18)
+  s13 = arccos(s17)
+  v20 = maximum(v27, v16)
+  s14 = 1 / s0
+  s6 = exp(s15)
+  s26 = minimum(s22, s2)
+  s3 = 1 / s21
+  v1 = v4 / v11
+  s28 = s23 + s4
+  v26 = get_row(0.346113)
+  s7 = correlation(v11, v15, 0.97302)
+  s22 = maximum(s4, s7)
+  s16 = correlation(v24, v8, 0.53914)
+  s22 = s1 - s7
+  m8 = matmul(m9, m24)
+  m2 = m14 * m1
+  m7 = bcast(v6, axis=0)
+  v1 = v15 - v21
+  s27 = maximum(s19, s17)
+  v7 = TS_row_rank(s16)
+  m19 = heaviside(m5, 1.0)
+  v19 = std(m16, axis=1)
+  v4 = heaviside(v22, 1.0)
+  m6 = m5 - m1
+  m19 = m6 * m15
+  s25 = mean(m9)
+  m15 = m15 - m19
+  m9 = maximum(m15, m8)
+  s19 = maximum(s15, s9)
+  s21 = covariance(v8, v23, 0.185993)
+  s23 = arctan(s20)
+  v1 = v15 * v27
+  v20 = norm(m4, axis=1)
+  v13 = heaviside(v11, 1.0)
+def Learn():
+  v20 = std(m8, axis=1)
+  m17 = outer(v15, v3)
+  v16 = maximum(v19, v12)
+  v27 = norm(m3, axis=0)
+  v1 = abs(v13)
+  v4 = v10 - v20
+  v18 = bcast(s14)
+  m11 = matmul(m9, m13)
+  s18 = s27 - s18
+  v27 = mean(m0, axis=1)
+  m11 = m0 / m21
+  m6 = matmul(m6, m22)
+  v3 = get_row(0.232948)
+  s24 = covariance(v2, v24, 0.507673)
+  s18 = norm(m5)
+  v13 = get_row(0.263277)
+  s23 = abs(s15)
+  m10 = m5 * m21
+  s4 = get_scalar(0.625264, 0.44349)
+  s13 = s9 * s22
+  v1 = v1 - v17
+  v11 = norm(m14, axis=1)
+  m12 = bcast(v21, axis=0)
+  m15 = uniform(-1.34601, -0.471287, (n_features, n_features))
+  v14 = get_row(0.314734)
+  s14 = norm(v7)
+  s4 = dot(v18, v5)
+  s26 = heaviside(s1, 1.0)
+  s21 = arccos(s5)
+  v17 = minimum(v4, v7)
+  s13 = sin(s25)
+  s21 = abs(s13)
+  m13 = minimum(m1, m11)
+  s29 = std(m4)
+  m2 = m9 / m6
+  m23 = bcast(v9, axis=1)
+  m5 = abs(m24)
+  s5 = s4 / s8
+  m19 = m6 + m24
+  m14 = bcast(v7, axis=0)
+  m5 = 1 / m9
+  m22 = m14 + m0
+  s14 = exp(s28)
+  s9 = minimum(s27, s19)
+ 

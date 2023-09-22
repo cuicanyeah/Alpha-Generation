@@ -1,0 +1,87 @@
+def Setup():
+  s20 = -0.845378
+  v2 = uniform(-0.295706, -0.636157, n_features)
+  m22 = gaussian(0.45823, 0.00282951, (n_features, n_features))
+  s26 = 0.097118
+  s20 = 0.524174
+  v1[0.361081] = 0.630202
+  s18 = uniform(0.534046, 0.749899)
+  m6[0.300956, 0.266789] = 0.892727
+  v14[0.355823] = 0.0417424
+def Predict():
+  s1 = TS_rank(s7)
+  m9 = s17 * m9
+  v19 = norm(m10, axis=1)
+  m10 = outer(v21, v0)
+  v4 = bcast(s10)
+  m15 = m13 + m17
+  s25 = std(m0)
+  v14 = v8 / v17
+  v13 = v16 * v23
+  s5 = tan(s21)
+  m11 = transpose(m3)
+  v9 = TS_row_rank(s28)
+  v23 = v29 + v25
+  s26 = maximum(s6, s9)
+  s25 = previous_rank(s18)
+  s20 = abs(s0)
+  s24 = arccos(s9)
+  m13 = transpose(m12)
+  m4 = matmul(m5, m2)
+  m6 = bcast(v26, axis=1)
+  s3 = maximum(s24, s19)
+  m10 = outer(v2, v15)
+  v20 = TS_row_rank(s27)
+  v14 = v14 / v13
+  s27 = cos(s6)
+  v23 = norm(m4, axis=0)
+  m10 = 1 / m13
+  m11 = matmul(m10, m23)
+  s6 = get_scalar(0.729037, 0.765051)
+  s15 = TS_rank(s9)
+  m9 = bcast(v24, axis=1)
+  s29 = covariance(v11, v0, 0.862626)
+  s7 = sin(s27)
+  v14 = minimum(v18, v9)
+  v5 = 1 / v13
+  v5 = v4 * v6
+  m17 = uniform(-0.306359, 0.710492, (n_features, n_features))
+  m15 = s9 * m6
+  v4 = dot(m14, v3)
+def Learn():
+  s9 = dot(v21, v2)
+  m14 = maximum(m22, m1)
+  m2 = outer(v7, v21)
+  s22 = correlation(v22, v26, 0.0361311)
+  v15 = maximum(v25, v8)
+  s28 = covariance(v25, v6, 0.793346)
+  s10 = s16 - s24
+  v6 = v17 - v6
+  s10 = norm(v5)
+  s25 = covariance(v22, v17, 0.920994)
+  s7 = maximum(s22, s23)
+  v15 = uniform(-0.833568, 0.711771, n_features)
+  s7 = norm(v8)
+  s11 = s24 / s8
+  s17 = 1 / s4
+  m12 = abs(m13)
+  v13 = get_column(0.20564)
+  m3 = heaviside(m16, 1.0)
+  s3 = mean(m15)
+  m8 = minimum(m9, m23)
+  s22 = heaviside(s22, 1.0)
+  v8 = get_column(0.0334096)
+  s14 = tan(s15)
+  v28 = v16 / v9
+  m20 = abs(m13)
+  s22 = tan(s19)
+  s23 = sin(s21)
+  m16 = m18 / m20
+  s2 = dot(v26, v17)
+  s8 = s0 + s23
+  v9 = v12 / v14
+  v18 = abs(v12)
+  m6 = abs(m12)
+  s14 = dot(v0, v14)
+  s9 = get_scalar(0.168151, 0.104044)
+ 

@@ -1,0 +1,107 @@
+def Setup():
+  m15 = gaussian(-0.963199, 0.0409123, (n_features, n_features))
+  m10 = uniform(0.221644, 0.528394, (n_features, n_features))
+  m23 = gaussian(0.336305, 0.328292, (n_features, n_features))
+  s16 = -0.468293
+  m14 = gaussian(1.99424, 0.183137, (n_features, n_features))
+  v24 = gaussian(-0.567132, 0.814631, n_features)
+  m12[0.619091, 0.988126] = -0.378564
+def Predict():
+  m3 = m7 + m15
+  s11 = relation_demean(s9)
+  m14 = 1 / m23
+  v23 = minimum(v26, v9)
+  s1 = s22 + s19
+  s18 = arcsin(s8)
+  s28 = relation_rank(s11)
+  v24 = mean(m9, axis=1)
+  s19 = s1 / s7
+  s11 = relation_rank(s4)
+  v10 = TS_row_rank(s26)
+  s16 = 1 / s12
+  v5 = 1 / v13
+  v25 = v1 * v3
+  s13 = heaviside(s26, 1.0)
+  s11 = tan(s14)
+  m2 = matmul(m5, m15)
+  s20 = exp(s19)
+  s15 = get_scalar(0.287114, 0.379858)
+  NoOp()
+  m12 = outer(v0, v28)
+  m18 = bcast(v20, axis=0)
+  v24 = minimum(v26, v3)
+  s19 = cos(s18)
+  s22 = s6 - s16
+  s6 = mean(v28)
+  s14 = norm(v23)
+  s23 = mean(m5)
+  v23 = get_row(0.0444292)
+  s12 = arctan(s26)
+  v7 = v2 + v17
+  v15 = v7 + v5
+  v15 = 1 / v25
+  s26 = correlation(v25, v24, 0.909828)
+  s25 = relation_rank(s20)
+  s4 = relation_demean(s11)
+  s22 = maximum(s8, s16)
+  s3 = relation_rank(s24)
+  v10 = uniform(-0.847906, 0.00409345, n_features)
+  v22 = mean(m23, axis=1)
+  m11 = s0 * m9
+  s18 = mean(v11)
+  v28 = bcast(s9)
+  s9 = norm(v19)
+  m8 = transpose(m6)
+  v21 = s13 * v17
+  s23 = heaviside(s5, 1.0)
+  s27 = relation_demean(s17)
+  NoOp()
+  s6 = relation_rank(s22)
+  s29 = s13 - s24
+  s29 = exp(s3)
+  s16 = get_scalar(0.644757, 0.868614)
+  s5 = arccos(s11)
+def Learn():
+  v3 = uniform(0.132774, 0.133312, n_features)
+  s7 = std(v6)
+  s8 = get_scalar(0.762648, 0.688477)
+  s19 = s17 / s19
+  m20 = abs(m4)
+  m7 = maximum(m8, m10)
+  s16 = s18 - s15
+  s24 = sin(s29)
+  m1 = m22 * m1
+  s14 = correlation(v29, v15, 0.510065)
+  s21 = exp(s16)
+  v13 = dot(m22, v5)
+  m24 = m23 / m10
+  s3 = log(s16)
+  m20 = heaviside(m8, 1.0)
+  v15 = 1 / v3
+  m24 = transpose(m13)
+  v17 = bcast(s26)
+  v14 = mean(m2, axis=1)
+  v10 = v3 * v2
+  s17 = mean(v16)
+  v18 = get_row(0.154572)
+  s16 = mean(v0)
+  NoOp()
+  v26 = dot(m7, v8)
+  v10 = abs(v14)
+  s12 = sin(s6)
+  v26 = get_column(0.645875)
+  s2 = 1 / s3
+  v28 = v14 - v25
+  s12 = arcsin(s22)
+  s17 = mean(m13)
+  m5 = maximum(m10, m23)
+  v4 = norm(m1, axis=0)
+  s16 = arctan(s24)
+  s17 = s7 - s28
+  v6 = 1 / v9
+  s21 = 1 / s6
+  s11 = sin(s0)
+  s5 = minimum(s15, s9)
+  s22 = minimum(s8, s12)
+  v29 = maximum(v20, v8)
+ 

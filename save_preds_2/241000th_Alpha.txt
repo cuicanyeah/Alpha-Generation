@@ -1,0 +1,88 @@
+def Setup():
+  v29 = gaussian(0.219441, 0.81615, n_features)
+  m21[0.973858, 0.515937] = 0.72663
+  v22[0.149797] = 0.926101
+  s1 = uniform(-0.103374, 0.751907)
+  s19 = uniform(-0.215798, -0.912542)
+  s15 = -0.280402
+  s18 = -0.373511
+def Predict():
+  m12 = maximum(m9, m14)
+  s26 = s3 + s28
+  v19 = norm(m0, axis=1)
+  s6 = tan(s7)
+  s8 = std(v26)
+  s29 = 1 / s4
+  s21 = mean(m20)
+  s8 = s19 * s15
+  s6 = s17 - s19
+  m7 = maximum(m16, m22)
+  NoOp()
+  v13 = TS_row_rank(s22)
+  v17 = dot(m20, v19)
+  s21 = s13 * s11
+  s15 = covariance(v28, v16, 0.653939)
+  s19 = relation_rank(s11)
+  v4 = v22 / v2
+  s1 = tan(s6)
+  v22 = uniform(-0.42035, -0.870823, n_features)
+  s20 = maximum(s20, s14)
+  v17 = v13 * v10
+  m3 = minimum(m22, m18)
+  s23 = TS_rank(s0)
+  m24 = matmul(m11, m13)
+  s12 = 1 / s4
+  s8 = tan(s2)
+  v22 = norm(m14, axis=0)
+  s9 = abs(s21)
+  s20 = covariance(v3, v27, 0.824256)
+  s25 = s15 - s17
+  m21 = m22 - m9
+  NoOp()
+  m22 = s19 * m2
+  s24 = TS_rank(s11)
+  s9 = s10 + s8
+  v13 = minimum(v26, v5)
+  s27 = 1 / s9
+  s3 = previous_rank(s6)
+  s22 = log(s3)
+  v1 = get_column(0.316674)
+  s10 = mean(v21)
+  s17 = norm(m8)
+  v9 = abs(v8)
+  m15 = m24 / m13
+  m24 = maximum(m13, m14)
+  s19 = arccos(s4)
+  v16 = s22 * v11
+  s19 = get_scalar(0.950129, 0.237406)
+  m17 = outer(v4, v2)
+  s23 = relation_rank(s2)
+  s23 = abs(s14)
+  s27 = previous_rank(s15)
+  v18 = mean(m4, axis=1)
+  s9 = norm(v10)
+  v14 = v21 + v25
+  m3 = maximum(m24, m6)
+  v17 = dot(m16, v5)
+  s11 = sin(s13)
+def Learn():
+  v17 = uniform(-2.32021, 0.891355, n_features)
+  v18 = dot(m8, v17)
+  s24 = arcsin(s25)
+  v6 = heaviside(v14, 1.0)
+  v16 = v11 + v26
+  m2 = bcast(v27, axis=1)
+  s19 = maximum(s11, s22)
+  s13 = arccos(s24)
+  s19 = exp(s26)
+  s5 = heaviside(s21, 1.0)
+  m4 = uniform(0.537281, -0.163306, (n_features, n_features))
+  v4 = 1 / v27
+  m19 = m2 * m14
+  NoOp()
+  s4 = std(v28)
+  s17 = mean(v19)
+  m11 = minimum(m6, m0)
+  s28 = get_scalar(0.26376, 0.054291)
+  s21 = minimum(s3, s12)
+ 

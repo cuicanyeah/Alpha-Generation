@@ -1,0 +1,86 @@
+def Setup():
+  s20 = gaussian(0.510213, 0.517384)
+  m20 = gaussian(-0.0652967, 0.145438, (n_features, n_features))
+  v11 = gaussian(0.538299, 0.128336, n_features)
+  m9[0.0457932, 0.152243] = -0.504593
+  v2[0.3981] = 0.545244
+  m16 = gaussian(0.239086, 0.524031, (n_features, n_features))
+  m2[0.598099, 0.398195] = -0.437534
+  v2[0.244697] = 0.7726
+def Predict():
+  s24 = s3 + s3
+  m16 = m4 - m9
+  m4 = s2 * m0
+  v13 = v1 + v2
+  m24 = m2 + m20
+  v8 = 1 / v5
+  m2 = bcast(v27, axis=0)
+  s7 = relation_rank(s21)
+  m17 = abs(m10)
+  v16 = dot(m14, v25)
+  s14 = dot(v27, v12)
+  s17 = sin(s4)
+  s7 = cos(s21)
+  v9 = get_row(0.266353)
+  s19 = get_scalar(0.711023, 0.357329)
+  m22 = uniform(-0.904617, 0.0601628, (n_features, n_features))
+  v7 = dot(m6, v4)
+  v21 = minimum(v14, v29)
+  s1 = tan(s24)
+  s23 = norm(v18)
+  v18 = v11 * v10
+  m1 = minimum(m16, m1)
+  s29 = arcsin(s3)
+  s13 = mean(m23)
+  m17 = m4 * m24
+  v17 = heaviside(v24, 1.0)
+  v21 = v7 - v26
+  s16 = 1 / s23
+  s13 = exp(s24)
+  s24 = minimum(s3, s5)
+  s12 = s20 - s2
+  s3 = get_scalar(0.699785, 0.851497)
+  m20 = maximum(m4, m12)
+  v14 = TS_row_rank(s7)
+  s8 = exp(s15)
+  s26 = correlation(v17, v15, 0.198363)
+  s16 = TS_rank(s24)
+  s12 = s1 / s27
+  v2 = uniform(-0.494298, -0.594965, n_features)
+def Learn():
+  v21 = norm(m10, axis=1)
+  s4 = arccos(s23)
+  m13 = bcast(v21, axis=0)
+  m3 = bcast(v20, axis=0)
+  m13 = m3 / m12
+  v11 = v11 - v1
+  s16 = arccos(s10)
+  s19 = std(v9)
+  v5 = heaviside(v13, 1.0)
+  s5 = s15 + s19
+  m14 = maximum(m12, m24)
+  v16 = abs(v2)
+  v6 = mean(m16, axis=1)
+  v8 = dot(m22, v7)
+  v19 = dot(m22, v1)
+  m16 = m20 - m0
+  s16 = covariance(v17, v19, 0.233764)
+  v1 = minimum(v16, v17)
+  s8 = get_scalar(0.603185, 0.993454)
+  s27 = sin(s26)
+  v24 = v17 - v6
+  m16 = abs(m11)
+  s15 = minimum(s0, s20)
+  v13 = maximum(v6, v23)
+  v19 = maximum(v2, v14)
+  s18 = tan(s15)
+  s21 = mean(v5)
+  v14 = minimum(v25, v17)
+  s25 = s27 * s10
+  s24 = exp(s29)
+  s3 = tan(s8)
+  m19 = m2 + m6
+  s3 = norm(v24)
+  s8 = mean(v7)
+  s2 = std(v28)
+ 

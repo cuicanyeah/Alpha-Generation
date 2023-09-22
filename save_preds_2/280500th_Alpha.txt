@@ -1,0 +1,94 @@
+def Setup():
+  s13 = -0.498137
+  m21 = uniform(-0.267314, 0.849602, (n_features, n_features))
+  s15 = -0.0458821
+  v28 = uniform(-0.971232, 0.779657, n_features)
+  v23[0.69919] = 0.805229
+  s14 = uniform(0.0274817, -0.86111)
+  m23 = uniform(0.515148, 0.773715, (n_features, n_features))
+def Predict():
+  v15 = norm(m5, axis=1)
+  m12 = maximum(m10, m14)
+  s26 = s14 + s28
+  v28 = s28 * v4
+  s8 = sin(s22)
+  v8 = bcast(s7)
+  v19 = norm(m0, axis=1)
+  s29 = tan(s23)
+  m5 = maximum(m12, m1)
+  m3 = abs(m19)
+  s25 = s2 * s5
+  s3 = cos(s29)
+  s6 = s17 - s19
+  v3 = TS_row_rank(s22)
+  v17 = dot(m9, v19)
+  s23 = covariance(v28, v20, 0.653939)
+  s17 = dot(v23, v17)
+  v26 = norm(m12, axis=0)
+  m12 = m14 / m21
+  s19 = relation_rank(s12)
+  s3 = maximum(s20, s13)
+  v17 = dot(m0, v15)
+  s1 = tan(s6)
+  m21 = m12 + m3
+  s23 = TS_rank(s0)
+  s7 = arctan(s19)
+  m7 = matmul(m12, m13)
+  s13 = minimum(s3, s25)
+  s15 = std(m3)
+  s12 = 1 / s4
+  s7 = s12 * s0
+  s8 = tan(s29)
+  v14 = norm(m14, axis=0)
+  s11 = arctan(s19)
+  s29 = s5 / s6
+  s28 = s4 - s17
+  m3 = outer(v6, v24)
+  s25 = relation_rank(s7)
+  m2 = minimum(m1, m2)
+  s17 = norm(m15)
+  v14 = norm(m8, axis=1)
+  v20 = abs(v2)
+  s6 = minimum(s25, s1)
+  m19 = m12 / m6
+  m6 = outer(v23, v13)
+  m24 = maximum(m13, m15)
+  s19 = arccos(s4)
+  s19 = get_scalar(0.950129, 0.298653)
+  m13 = heaviside(m18, 1.0)
+  m8 = transpose(m4)
+  m23 = bcast(v6, axis=0)
+  v14 = v21 + v25
+  m4 = maximum(m24, m6)
+  s21 = relation_demean(s16)
+  s27 = arccos(s14)
+  m12 = m12 / m6
+  NoOp()
+def Learn():
+  NoOp()
+  m20 = bcast(v12, axis=1)
+  m18 = bcast(v26, axis=0)
+  s7 = maximum(s13, s15)
+  s20 = std(v27)
+  s19 = exp(s26)
+  m17 = bcast(v8, axis=1)
+  v28 = v6 / v25
+  v13 = maximum(v20, v17)
+  s25 = std(v12)
+  s14 = correlation(v28, v24, 0.821673)
+  s18 = exp(s14)
+  v8 = v25 * v14
+  s2 = s10 * s10
+  m21 = uniform(0.475541, 0.658314, (n_features, n_features))
+  s4 = correlation(v7, v15, 0.405465)
+  s12 = heaviside(s13, 1.0)
+  v12 = abs(v6)
+  s17 = mean(v19)
+  s16 = arctan(s28)
+  s28 = get_scalar(0.304351, 0.054291)
+  m13 = transpose(m9)
+  v25 = 1 / v10
+  s11 = abs(s13)
+  s9 = abs(s22)
+  m11 = matmul(m23, m9)
+ 

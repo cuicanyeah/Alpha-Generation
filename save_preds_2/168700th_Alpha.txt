@@ -1,0 +1,95 @@
+def Setup():
+  m6 = uniform(0.855286, 0.997646, (n_features, n_features))
+  m10[0.965514, 0.888001] = -0.724468
+  s26 = uniform(0.558766, 0.432566)
+def Predict():
+  s28 = relation_demean(s5)
+  v2 = norm(m3, axis=0)
+  s8 = covariance(v15, v29, 0.727625)
+  v17 = get_row(0.695176)
+  s8 = s1 - s14
+  s22 = TS_rank(s23)
+  s2 = get_scalar(0.760499, 0.664246)
+  m1 = uniform(-0.34245, 0.948406, (n_features, n_features))
+  v17 = v11 / v6
+  s16 = s20 * s2
+  m3 = m24 / m14
+  m19 = matmul(m12, m3)
+  s12 = cos(s2)
+  s4 = sin(s25)
+  m8 = minimum(m6, m13)
+  v9 = get_column(0.232924)
+  m12 = bcast(v22, axis=0)
+  s7 = s28 * s5
+  s18 = abs(s1)
+  s13 = abs(s16)
+  s6 = norm(m11)
+  s27 = 1 / s28
+  v29 = get_column(0.734914)
+  m21 = abs(m3)
+  s8 = get_scalar(0.165442, 0.0666143)
+  v4 = TS_row_rank(s7)
+  s20 = sin(s22)
+  s14 = previous_rank(s7)
+  s5 = minimum(s12, s26)
+  s14 = relation_rank(s23)
+  s28 = maximum(s7, s19)
+  s17 = arctan(s0)
+  s11 = std(m24)
+  s10 = mean(m20)
+  s18 = exp(s25)
+  s26 = s28 / s15
+  v4 = norm(m19, axis=0)
+  m9 = matmul(m18, m1)
+  s6 = relation_demean(s11)
+  s22 = relation_demean(s8)
+  s19 = s19 - s22
+  s4 = heaviside(s5, 1.0)
+  m16 = uniform(-0.594748, -0.241016, (n_features, n_features))
+  s9 = norm(v4)
+  m3 = m0 - m8
+  s16 = cos(s7)
+  s2 = log(s19)
+  s1 = minimum(s28, s12)
+  m17 = outer(v29, v24)
+  s22 = previous_rank(s26)
+  m14 = m20 - m17
+  v11 = dot(m3, v14)
+  m2 = heaviside(m15, 1.0)
+  m15 = 1 / m17
+  s3 = cos(s6)
+  m24 = s10 * m18
+  s25 = abs(s20)
+  m2 = s2 * m24
+  s12 = s0 - s2
+  m3 = m10 - m1
+  NoOp()
+  s26 = exp(s27)
+  s14 = maximum(s23, s1)
+  s2 = 1 / s7
+  v7 = norm(m6, axis=0)
+def Learn():
+  m7 = s8 * m13
+  v4 = v22 / v14
+  v3 = minimum(v26, v18)
+  v19 = v17 * v20
+  v20 = get_column(0.593898)
+  s10 = s23 + s22
+  s20 = arctan(s4)
+  s26 = get_scalar(0.595893, 0.915795)
+  v11 = bcast(s5)
+  v23 = v13 / v24
+  s18 = std(v23)
+  v16 = maximum(v20, v7)
+  m19 = m15 + m5
+  s2 = heaviside(s23, 1.0)
+  s27 = std(m9)
+  m10 = transpose(m21)
+  m2 = m21 - m14
+  m20 = m19 - m10
+  v3 = v23 + v25
+  m7 = transpose(m11)
+  s4 = s1 - s22
+  m1 = minimum(m22, m3)
+  s13 = mean(v9)
+ 

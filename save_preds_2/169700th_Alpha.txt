@@ -1,0 +1,94 @@
+def Setup():
+  v29 = uniform(-0.24809, -0.875498, n_features)
+  s22 = -0.557098
+  m8 = uniform(-0.196352, 0.620021, (n_features, n_features))
+  v22 = uniform(-0.76142, -0.285912, n_features)
+  v16[0.591036] = 0.346177
+  v27 = gaussian(-0.897176, 0.322933, n_features)
+  m16 = gaussian(0.514852, 0.394145, (n_features, n_features))
+  m6[0.326485, 0.68014] = 0.947398
+  v26[0.197779] = 0.716859
+def Predict():
+  m22 = 1 / m9
+  v17 = minimum(v22, v25)
+  v1 = 1 / v11
+  v8 = norm(m6, axis=1)
+  m5 = 1 / m6
+  v24 = v25 + v27
+  v22 = 1 / v29
+  s10 = relation_demean(s10)
+  s1 = s29 / s29
+  m24 = m22 / m21
+  v16 = bcast(s19)
+  s10 = norm(m23)
+  v5 = get_row(0.966882)
+  s19 = mean(m17)
+  m5 = outer(v10, v1)
+  NoOp()
+  s23 = cos(s13)
+  v22 = TS_row_rank(s4)
+  m9 = m24 * m17
+  m9 = matmul(m9, m5)
+  s13 = s12 * s2
+  v13 = 1 / v18
+  v11 = norm(m10, axis=1)
+  s13 = tan(s4)
+  m17 = 1 / m17
+  s29 = TS_rank(s6)
+  s9 = std(v26)
+  s26 = mean(v28)
+  v24 = norm(m2, axis=0)
+  m15 = abs(m8)
+  s16 = s23 - s19
+  v29 = mean(m12, axis=1)
+  v26 = s8 * v26
+  s6 = tan(s17)
+  s11 = exp(s9)
+  s26 = get_scalar(0.0527558, 0.85342)
+  v26 = abs(v27)
+  v29 = v28 / v4
+  s22 = dot(v22, v25)
+  m16 = heaviside(m16, 1.0)
+  s12 = std(m5)
+  v4 = norm(m9, axis=1)
+  s28 = TS_rank(s23)
+  NoOp()
+def Learn():
+  v28 = get_row(0.998004)
+  m14 = maximum(m16, m8)
+  m10 = matmul(m7, m5)
+  s22 = std(m19)
+  m3 = matmul(m12, m18)
+  v27 = get_column(0.910371)
+  s7 = covariance(v26, v22, 0.860819)
+  s4 = mean(m24)
+  v26 = norm(m7, axis=0)
+  v10 = norm(m6, axis=0)
+  v9 = maximum(v22, v5)
+  m14 = bcast(v27, axis=1)
+  s22 = arcsin(s12)
+  v11 = 1 / v21
+  s6 = abs(s6)
+  s20 = s1 + s21
+  v22 = v11 / v1
+  s2 = cos(s24)
+  m23 = matmul(m6, m14)
+  s19 = sin(s8)
+  s17 = covariance(v9, v13, 0.730211)
+  s13 = exp(s19)
+  v10 = uniform(-0.427742, 0.353379, n_features)
+  s15 = norm(m11)
+  s13 = minimum(s25, s7)
+  v26 = v20 - v17
+  s17 = exp(s26)
+  s6 = s6 / s29
+  s6 = maximum(s6, s2)
+  m11 = uniform(0.469674, -0.0416482, (n_features, n_features))
+  s12 = arcsin(s10)
+  s22 = arcsin(s8)
+  v13 = v22 + v12
+  s24 = s28 * s3
+  m9 = 1 / m0
+  v26 = norm(m11, axis=0)
+  v10 = norm(m0, axis=1)
+ 

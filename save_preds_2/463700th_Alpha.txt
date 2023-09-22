@@ -1,0 +1,97 @@
+def Setup():
+  v21[0.198324] = -0.554529
+  v17 = uniform(-0.698674, -0.40719, n_features)
+def Predict():
+  v29 = norm(m4, axis=1)
+  v10 = v18 + v21
+  v12 = norm(m6, axis=0)
+  m22 = maximum(m1, m0)
+  m1 = abs(m11)
+  s11 = correlation(v22, v19, 0.902766)
+  s21 = maximum(s1, s17)
+  s22 = 1 / s4
+  m15 = heaviside(m1, 1.0)
+  m18 = heaviside(m12, 1.0)
+  v16 = v26 + v6
+  v19 = mean(m19, axis=1)
+  s22 = abs(s13)
+  v12 = mean(m8, axis=1)
+  s3 = dot(v21, v17)
+  v19 = norm(m0, axis=1)
+  v1 = v20 - v19
+  m9 = minimum(m18, m14)
+  s13 = covariance(v9, v16, 0.295811)
+  m9 = abs(m10)
+  s24 = s27 - s2
+  v23 = 1 / v6
+  v28 = v5 - v2
+  m12 = s18 * m9
+  m22 = uniform(-1.26561, 0.25407, (n_features, n_features))
+  m18 = m1 - m6
+  s6 = s17 - s19
+  s18 = TS_rank(s4)
+  v27 = norm(m6, axis=1)
+  s11 = correlation(v21, v27, 0.438334)
+  s19 = arctan(s8)
+  v23 = maximum(v27, v26)
+  v20 = v3 + v17
+  v3 = dot(m12, v2)
+  s21 = abs(s12)
+  v26 = norm(m22, axis=0)
+  m17 = m17 + m21
+  s1 = tan(s6)
+  s21 = 1 / s9
+  m11 = 1 / m3
+  m23 = m14 / m24
+  s1 = s1 / s28
+  m4 = matmul(m9, m10)
+  v27 = heaviside(v22, 1.0)
+  v23 = 1 / v7
+  s19 = get_scalar(0.950129, 0.298653)
+  m18 = 1 / m22
+  v29 = bcast(s1)
+  m21 = s1 * m19
+  v15 = std(m16, axis=1)
+  s3 = abs(s25)
+  v21 = uniform(0.987895, 0.850461, n_features)
+  v18 = std(m17, axis=1)
+  v17 = v15 - v25
+  v7 = uniform(0.469164, 0.503957, n_features)
+def Learn():
+  s19 = exp(s4)
+  m9 = uniform(0.327485, 0.0537587, (n_features, n_features))
+  s3 = s14 + s13
+  v1 = v17 / v29
+  s9 = maximum(s8, s23)
+  s7 = covariance(v24, v13, 0.5974)
+  m6 = m7 / m5
+  s28 = maximum(s28, s4)
+  s9 = exp(s14)
+  v27 = get_column(0.269274)
+  m20 = minimum(m4, m4)
+  s5 = log(s24)
+  v14 = norm(m2, axis=0)
+  v8 = minimum(v4, v19)
+  m3 = matmul(m1, m24)
+  s13 = heaviside(s22, 1.0)
+  s8 = s25 / s28
+  s16 = s8 * s18
+  v17 = minimum(v29, v3)
+  s24 = correlation(v10, v0, 0.0871475)
+  s4 = s8 - s25
+  s17 = mean(v19)
+  v11 = v5 - v22
+  m24 = uniform(-0.972763, -0.721689, (n_features, n_features))
+  s27 = arcsin(s16)
+  v23 = s6 * v11
+  m7 = s8 * m20
+  s4 = get_scalar(0.304351, 0.0290507)
+  m6 = matmul(m1, m0)
+  s27 = arccos(s20)
+  s4 = arcsin(s4)
+  v4 = dot(m11, v0)
+  v21 = s27 * v23
+  s22 = s23 / s29
+  m11 = m19 * m3
+  s26 = mean(v15)
+ 

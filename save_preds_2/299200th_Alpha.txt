@@ -1,0 +1,86 @@
+def Setup():
+  s11 = gaussian(0.267007, 0.372185)
+  m15 = uniform(-0.720959, 0.745663, (n_features, n_features))
+  v16[0.53636] = 0.576161
+  s19 = uniform(0.808881, 0.561676)
+  v10 = gaussian(0.39768, 0.471003, n_features)
+  m23 = gaussian(0.637538, 0.571754, (n_features, n_features))
+  m13[0.754483, 0.581118] = 0.937187
+  s17 = 1.08426
+  s4 = 0.887004
+  v26 = uniform(-0.660846, 0.751072, n_features)
+  v3 = gaussian(-0.494826, 0.983762, n_features)
+  s27 = -0.762618
+  v26 = gaussian(-0.69517, 0.0522964, n_features)
+  v13 = gaussian(-0.860759, 0.782291, n_features)
+  s2 = -0.724333
+  s28 = uniform(0.135812, -0.665545)
+  v9 = gaussian(0.560995, 0.862526, n_features)
+  v24[0.0540491] = -0.0102006
+  m14 = gaussian(0.681989, 0.149687, (n_features, n_features))
+  v18 = uniform(0.875544, -0.694577, n_features)
+def Predict():
+  m24 = bcast(v26, axis=0)
+  s1 = norm(v28)
+  s1 = TS_rank(s8)
+  s28 = relation_rank(s0)
+  s6 = abs(s5)
+  v26 = 1 / v25
+  m5 = m3 - m10
+  m15 = m6 * m4
+  v16 = get_column(0.569159)
+  s27 = abs(s1)
+  v23 = get_row(0.848364)
+  s28 = arctan(s10)
+  v21 = v14 + v12
+  m23 = 1 / m3
+  v25 = 1 / v19
+  v4 = s7 * v17
+  s3 = previous_rank(s14)
+  v26 = get_column(0.360537)
+  v9 = minimum(v7, v16)
+  v8 = norm(m17, axis=0)
+  s3 = s3 * s2
+def Learn():
+  s20 = mean(v7)
+  m19 = bcast(v18, axis=0)
+  s14 = abs(s0)
+  m9 = outer(v1, v8)
+  v23 = uniform(-0.957471, -0.181075, n_features)
+  m16 = uniform(0.41212, -0.316492, (n_features, n_features))
+  m8 = uniform(-0.327718, 0.19712, (n_features, n_features))
+  m12 = matmul(m21, m10)
+  s26 = log(s4)
+  s2 = minimum(s27, s19)
+  s12 = std(m2)
+  m1 = m23 + m17
+  v12 = norm(m24, axis=1)
+  s9 = abs(s14)
+  v8 = dot(m3, v25)
+  v6 = bcast(s10)
+  m22 = abs(m21)
+  s5 = arctan(s4)
+  s26 = correlation(v28, v10, 0.526298)
+  s8 = arcsin(s12)
+  v17 = v8 + v21
+  m10 = transpose(m20)
+  m5 = m24 + m17
+  m11 = matmul(m16, m0)
+  s7 = mean(v16)
+  m18 = maximum(m10, m19)
+  m10 = bcast(v18, axis=0)
+  s23 = abs(s19)
+  s5 = s19 + s7
+  s12 = cos(s2)
+  s13 = abs(s17)
+  m2 = maximum(m9, m2)
+  v9 = 1 / v15
+  m13 = m4 + m7
+  v27 = v1 / v2
+  v1 = get_column(0.728029)
+  s21 = sin(s22)
+  m21 = m0 * m18
+  v27 = mean(m5, axis=1)
+  m17 = m18 + m11
+  s16 = correlation(v23, v6, 0.539639)
+ 

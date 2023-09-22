@@ -1,0 +1,99 @@
+def Setup():
+  m19[0.638759, 0.617394] = -0.572737
+  v7 = uniform(0.624353, 0.646096, n_features)
+  m2[0.783757, 0.331113] = 0.338749
+  s12 = 0.858387
+  m12 = gaussian(-0.397374, 0.0282829, (n_features, n_features))
+  v22 = gaussian(-0.778286, 0.395455, n_features)
+def Predict():
+  s18 = TS_rank(s5)
+  m9 = bcast(v1, axis=0)
+  s3 = get_scalar(0.723354, 0.119472)
+  v20 = minimum(v24, v25)
+  s19 = tan(s28)
+  s12 = relation_demean(s6)
+  s20 = sin(s9)
+  s8 = arctan(s28)
+  s24 = arccos(s20)
+  s20 = arcsin(s21)
+  s18 = maximum(s3, s19)
+  m12 = heaviside(m5, 1.0)
+  m3 = abs(m12)
+  v21 = v11 - v6
+  m16 = transpose(m7)
+  NoOp()
+  s12 = heaviside(s5, 1.0)
+  NoOp()
+  s27 = exp(s8)
+  s9 = relation_demean(s0)
+  v9 = get_column(0.531151)
+  v24 = v18 + v13
+  s20 = cos(s27)
+  m11 = m1 / m6
+  v20 = uniform(-0.247274, 0.215244, n_features)
+  s1 = arctan(s28)
+  s19 = heaviside(s22, 1.0)
+  s18 = heaviside(s0, 1.0)
+  s7 = mean(m24)
+  s22 = exp(s14)
+  s25 = previous_rank(s10)
+  m7 = heaviside(m8, 1.0)
+  v15 = minimum(v18, v26)
+  s16 = cos(s2)
+  m17 = matmul(m0, m21)
+  s28 = abs(s6)
+  s28 = norm(m15)
+  m20 = s15 * m4
+  v13 = abs(v9)
+  s14 = s5 - s2
+  v8 = s0 * v25
+  s28 = cos(s1)
+  v3 = minimum(v8, v7)
+  s23 = exp(s2)
+  s9 = std(v11)
+  s27 = std(v21)
+  s5 = relation_rank(s5)
+  v22 = bcast(s15)
+  m19 = abs(m12)
+  m7 = m16 + m17
+  s1 = 1 / s20
+  v12 = 1 / v27
+  s26 = TS_rank(s29)
+  v24 = norm(m20, axis=1)
+  v13 = norm(m8, axis=1)
+  s26 = minimum(s21, s22)
+  v21 = v9 - v11
+  v21 = v13 + v29
+  v5 = 1 / v0
+  m1 = transpose(m22)
+  s11 = relation_rank(s27)
+  v16 = TS_row_rank(s26)
+  m21 = m1 - m23
+def Learn():
+  s17 = sin(s29)
+  s20 = std(v24)
+  v13 = bcast(s8)
+  m8 = m22 - m22
+  s24 = correlation(v12, v19, 0.767525)
+  v13 = minimum(v22, v10)
+  m10 = bcast(v2, axis=0)
+  m7 = transpose(m14)
+  s19 = arcsin(s23)
+  s13 = exp(s27)
+  s22 = correlation(v23, v7, 0.647574)
+  s15 = cos(s10)
+  v3 = get_row(0.7342)
+  m11 = 1 / m19
+  m6 = m2 - m7
+  v29 = abs(v21)
+  v5 = v0 / v24
+  s12 = log(s29)
+  s23 = 1 / s11
+  v13 = mean(m23, axis=1)
+  s14 = s4 - s6
+  m19 = maximum(m24, m0)
+  NoOp()
+  s21 = norm(v1)
+  s28 = mean(v9)
+  s25 = covariance(v1, v27, 0.0561055)
+ 

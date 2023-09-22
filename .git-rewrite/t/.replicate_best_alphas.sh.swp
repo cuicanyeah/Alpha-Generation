@@ -1,0 +1,63 @@
+def Setup():
+m3 = uniform(0.532064, 0.0593286, (n_features, n_features))
+v10 = uniform(-0.901236, 0.467453, n_features)
+s12 = uniform(0.941491, 0.921981)
+s26 = gaussian(-0.646689, 0.262056)
+s28 = gaussian(0.745168, 0.251044)
+v16[0.318599] = 0.675065
+m22[0.487974, 0.453501] = -0.933003
+s2 = uniform(-0.751226, 0.257249)
+v3[0.286967] = -0.771925
+s29 = uniform(-0.956119, 0.699675)
+def Predict():
+v2 = heaviside(v26, 1.0)
+s1 = exp(s15)
+m8 = m7 * m1
+m1 = maximum(m21, m14)
+s13 = correlation(v25, v25, 0.0258104)
+s3 = previous_rank(s12)
+s2 = previous_rank(s4)
+s13 = arccos(s2)
+s3 = norm(m3)
+NoOp()
+s4 = norm(v18)
+m17 = heaviside(m5, 1.0)
+s22 = s25 - s28
+s16 = norm(m5)
+m22 = uniform(0.5647, 0.0899963, (n_features, n_features))
+v28 = s3 * v4
+s4 = s27 / s28
+s27 = mean(m9)
+m8 = s16 * m3
+v20 = norm(m7, axis=0)
+s2 = maximum(s14, s26)
+s16 = s16 - s26
+NoOp()
+v2 = abs(v28)
+v22 = s22 * v13
+s23 = dot(v29, v3)
+s19 = std(v23)
+s16 = correlation(v5, v19, 0.45167)
+s9 = log(s7)
+m6 = maximum(m18, m6)
+s22 = arccos(s11)
+m20 = m10 / m18
+s22 = covariance(v19, v19, 0.425568)
+s24 = maximum(s13, s27)
+m17 = bcast(v22, axis=1)
+m8 = bcast(v15, axis=1)
+v13 = abs(v1)
+s11 = norm(m15)
+v28 = std(m17, axis=1)
+v5 = minimum(v28, v5)
+m1 = bcast(v2, axis=0)
+s6 = arcsin(s2)
+v20 = TS_row_rank(s14)
+m12 = heaviside(m22, 1.0)
+v25 = s12 * v11
+s15 = covariance(v25, v28, 0.999457)
+v8 = std(m13, axis=1)
+v5 = mean(m19, axis=1)
+s18 = correlation(v26, v0, 0.994102)
+v21 = 1 / v12
+s18 = sin(s21)

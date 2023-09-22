@@ -1,0 +1,79 @@
+def Setup():
+  m7[0.979262, 0.569459] = 0.333414
+  v27[0.682174] = 0.82822
+  m4 = gaussian(0.54018, 0.137693, (n_features, n_features))
+  v8 = uniform(0.360795, 0.0659603, n_features)
+  s1 = gaussian(0.630527, 0.40987)
+  s29 = uniform(-0.405039, -0.933943)
+  s24 = gaussian(0.539427, 0.823395)
+  s9 = uniform(0.477967, -0.524229)
+  s20 = -0.222014
+  v5[0.606992] = 0.264226
+  v7 = gaussian(-0.604932, 0.662253, n_features)
+  m21 = uniform(-0.562712, -0.868414, (n_features, n_features))
+def Predict():
+  m19 = outer(v24, v25)
+  s12 = tan(s18)
+  m23 = uniform(0.188823, 0.612794, (n_features, n_features))
+  m12 = maximum(m14, m17)
+  s10 = norm(m17)
+  s1 = TS_rank(s8)
+  m11 = heaviside(m16, 1.0)
+  s8 = abs(s28)
+  NoOp()
+  s20 = correlation(v27, v25, 0.0698045)
+  v23 = maximum(v22, v25)
+  v12 = 1 / v3
+  s18 = tan(s19)
+  s3 = previous_rank(s16)
+  s4 = mean(m20)
+  v8 = norm(m17, axis=0)
+  v15 = get_row(0.0707215)
+  s24 = dot(v0, v4)
+  v23 = v9 * v10
+def Learn():
+  m21 = bcast(v28, axis=0)
+  s14 = abs(s16)
+  m9 = outer(v1, v8)
+  v2 = uniform(-0.0524901, -0.957471, n_features)
+  m16 = uniform(0.41212, -0.316492, (n_features, n_features))
+  v4 = std(m12, axis=1)
+  NoOp()
+  s12 = std(m2)
+  s5 = dot(v1, v24)
+  m21 = m6 + m17
+  v12 = norm(m5, axis=1)
+  s7 = abs(s14)
+  v24 = v28 + v13
+  m19 = maximum(m14, m3)
+  m8 = bcast(v9, axis=1)
+  v8 = dot(m3, v15)
+  s2 = maximum(s27, s6)
+  s17 = minimum(s22, s13)
+  m19 = abs(m6)
+  s5 = arctan(s4)
+  s6 = correlation(v9, v18, 0.465964)
+  s26 = correlation(v15, v16, 0.526298)
+  s8 = arcsin(s12)
+  m5 = m24 + m0
+  m11 = matmul(m16, m0)
+  s5 = 1 / s11
+  s7 = mean(v16)
+  m7 = maximum(m9, m19)
+  v26 = mean(m11, axis=1)
+  s13 = abs(s17)
+  s11 = heaviside(s10, 1.0)
+  m2 = maximum(m9, m2)
+  s1 = arccos(s13)
+  v10 = 1 / v15
+  m13 = m4 + m7
+  v25 = minimum(v11, v15)
+  v1 = get_column(0.719881)
+  s12 = sin(s1)
+  m21 = m0 * m18
+  v27 = mean(m5, axis=1)
+  s20 = std(m20)
+  s17 = std(m4)
+  m17 = m22 + m11
+  s12 = correlation(v23, v6, 0.00678911)
+ 

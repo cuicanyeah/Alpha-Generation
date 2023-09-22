@@ -1,0 +1,96 @@
+def Setup():
+  s14 = gaussian(0.404748, 0.751978)
+  v24 = gaussian(-0.921907, 0.769432, n_features)
+  s15 = -0.497938
+def Predict():
+  s13 = norm(m4)
+  m20 = uniform(0.980851, -0.888494, (n_features, n_features))
+  v6 = s10 * v0
+  m17 = heaviside(m11, 1.0)
+  s19 = abs(s19)
+  v25 = minimum(v4, v6)
+  s1 = correlation(v16, v21, 0.411734)
+  s26 = s14 + s28
+  v19 = norm(m0, axis=1)
+  v9 = get_row(0.27016)
+  s1 = 1 / s16
+  v4 = std(m10, axis=1)
+  v10 = v20 - v14
+  s6 = s17 - s19
+  s16 = correlation(v21, v29, 0.438334)
+  s28 = log(s20)
+  s28 = std(m3)
+  v27 = get_row(0.769603)
+  s20 = get_scalar(0.397885, 0.979001)
+  s1 = tan(s6)
+  s20 = 1 / s7
+  s6 = previous_rank(s27)
+  v10 = abs(v25)
+  s9 = 1 / s16
+  s5 = TS_rank(s15)
+  s25 = arctan(s5)
+  s14 = sin(s19)
+  m22 = 1 / m2
+  v7 = std(m6, axis=1)
+  s8 = tan(s24)
+  v2 = get_row(0.442877)
+  m19 = minimum(m2, m23)
+  s11 = abs(s3)
+  m18 = m24 + m2
+  v22 = v12 + v2
+  s14 = log(s28)
+  v7 = v25 - v16
+  s1 = s1 / s28
+  s6 = mean(v24)
+  v10 = minimum(v20, v25)
+  s21 = covariance(v28, v27, 0.706664)
+  m21 = outer(v18, v17)
+  v29 = heaviside(v29, 1.0)
+  v2 = norm(m6, axis=1)
+  v18 = std(m23, axis=1)
+  m18 = m4 * m5
+  s19 = get_scalar(0.950129, 0.298653)
+  s12 = minimum(s7, s23)
+  v2 = norm(m15, axis=1)
+  m12 = m14 * m10
+  s11 = s27 - s28
+  m1 = outer(v11, v19)
+  s18 = abs(s4)
+  v7 = uniform(0.268652, 0.469164, n_features)
+  v11 = maximum(v17, v20)
+  v18 = minimum(v27, v0)
+  s20 = s11 + s18
+def Learn():
+  m15 = heaviside(m11, 1.0)
+  s26 = tan(s26)
+  s19 = exp(s26)
+  v8 = abs(v18)
+  v3 = v23 / v24
+  s4 = norm(v12)
+  v1 = mean(m20, axis=1)
+  s23 = exp(s4)
+  m16 = 1 / m16
+  s24 = s20 - s21
+  s3 = 1 / s29
+  v27 = 1 / v0
+  m4 = matmul(m14, m16)
+  s21 = arcsin(s21)
+  v1 = uniform(-0.732025, -0.19421, n_features)
+  m4 = abs(m3)
+  v28 = 1 / v1
+  v5 = v11 + v25
+  v13 = minimum(v25, v28)
+  v29 = v4 - v27
+  m12 = m5 * m15
+  s27 = cos(s15)
+  m19 = transpose(m10)
+  v25 = bcast(s11)
+  s9 = tan(s24)
+  m17 = m20 * m8
+  s14 = s0 - s8
+  m5 = m6 / m8
+  s17 = mean(v19)
+  s28 = get_scalar(0.304351, 0.054291)
+  m20 = m17 * m15
+  v24 = s12 * v10
+ 

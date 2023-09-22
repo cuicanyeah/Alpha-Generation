@@ -1,0 +1,94 @@
+def Setup():
+  s13 = -0.781164
+  s19 = -0.113094
+  v9 = uniform(0.419696, 0.659088, n_features)
+  s2 = gaussian(0.982564, 0.122624)
+  v5 = gaussian(0.163085, 0.788939, n_features)
+  m17 = gaussian(-0.164626, 0.863458, (n_features, n_features))
+  v8[0.4799] = -0.319161
+  v1 = gaussian(-0.586614, 0.231311, n_features)
+  s4 = uniform(0.812725, -0.742806)
+  s19 = uniform(-0.296416, -0.71712)
+  m23 = gaussian(-0.463322, 0.692635, (n_features, n_features))
+def Predict():
+  s28 = relation_demean(s5)
+  s22 = s10 * s11
+  s8 = covariance(v15, v29, 0.76405)
+  v16 = std(m0, axis=1)
+  v18 = get_row(0.695176)
+  s11 = s1 - s14
+  s17 = TS_rank(s23)
+  s2 = get_scalar(0.760499, 0.956169)
+  v3 = v23 / v13
+  m13 = maximum(m20, m6)
+  m1 = uniform(-0.34245, 1.17045, (n_features, n_features))
+  m13 = 1 / m23
+  m3 = m24 / m14
+  v12 = minimum(v18, v17)
+  v20 = v23 * v11
+  s12 = cos(s2)
+  s15 = arcsin(s1)
+  s4 = sin(s25)
+  s7 = s28 * s5
+  s24 = s23 + s16
+  s8 = get_scalar(0.165442, 0.096849)
+  v10 = TS_row_rank(s7)
+  m15 = m1 - m4
+  s5 = minimum(s12, s26)
+  s28 = maximum(s7, s19)
+  s20 = dot(v28, v13)
+  s18 = relation_rank(s28)
+  s26 = s26 / s15
+  v25 = norm(m19, axis=0)
+  m18 = m23 / m0
+  s2 = arctan(s21)
+  s22 = relation_demean(s8)
+  v2 = dot(m21, v17)
+  m8 = matmul(m4, m21)
+  s19 = s19 - s22
+  v27 = dot(m23, v7)
+  s13 = norm(v9)
+  s23 = dot(v7, v25)
+  v10 = TS_row_rank(s21)
+  s12 = mean(v22)
+  s1 = minimum(s28, s12)
+  v26 = bcast(s20)
+  s23 = s5 * s7
+  s25 = std(v12)
+  m24 = outer(v29, v17)
+  s8 = minimum(s1, s28)
+  s23 = sin(s22)
+  m14 = m2 - m17
+  s10 = TS_rank(s27)
+  s14 = mean(m21)
+  m10 = 1 / m17
+  s16 = get_scalar(0.221146, 0.222438)
+  s7 = previous_rank(s25)
+  s17 = s3 - s15
+  NoOp()
+  s26 = exp(s28)
+  s20 = maximum(s23, s14)
+  s2 = 1 / s7
+def Learn():
+  m17 = maximum(m3, m12)
+  s18 = arcsin(s4)
+  m23 = outer(v0, v13)
+  m4 = m6 / m1
+  s15 = tan(s26)
+  s16 = s16 * s3
+  s10 = s24 - s19
+  v21 = v9 - v29
+  m3 = m14 + m0
+  v7 = maximum(v22, v9)
+  s22 = norm(m11)
+  v12 = 1 / v15
+  s26 = 1 / s10
+  m5 = bcast(v4, axis=0)
+  s16 = abs(s13)
+  v6 = norm(m17, axis=1)
+  v25 = v14 * v4
+  s15 = arccos(s2)
+  s26 = get_scalar(0.611343, 0.489661)
+  s3 = mean(v17)
+  v19 = 1 / v21
+ 

@@ -1,0 +1,95 @@
+def Setup():
+  s9 = -0.475689
+  v15 = gaussian(-0.795115, 0.200357, n_features)
+  s2 = uniform(-0.0571081, 0.236615)
+  s2 = 0.205947
+  m10 = gaussian(-0.673097, 0.635608, (n_features, n_features))
+  s29 = uniform(0.762202, 0.279516)
+  s11 = gaussian(-0.424956, 0.427306)
+  m6 = uniform(-0.206351, 0.0142632, (n_features, n_features))
+  s2 = -0.474671
+  v14 = gaussian(0.133681, 0.538866, n_features)
+  v14 = uniform(-0.990013, -0.965549, n_features)
+  m12[0.714699, 0.956814] = -0.732662
+  s21 = gaussian(0.690509, 0.721074)
+  m24 = uniform(0.0888379, -0.495382, (n_features, n_features))
+  m7 = uniform(0.0686662, 0.836189, (n_features, n_features))
+  m18 = uniform(0.318627, -0.522143, (n_features, n_features))
+def Predict():
+  s1 = get_scalar(0.23692, 0.727648)
+  s9 = get_scalar(0.917908, 0.77634)
+  v10 = norm(m7, axis=1)
+  s1 = arcsin(s1)
+  s5 = 1 / s9
+  s2 = arcsin(s1)
+  s7 = std(m3)
+  v25 = s13 * v27
+  s5 = minimum(s5, s2)
+  s5 = tan(s5)
+  s5 = tan(s5)
+  s1 = s5 / s7
+  v20 = v14 / v18
+  NoOp()
+  NoOp()
+  s3 = s23 - s7
+  NoOp()
+  NoOp()
+  NoOp()
+  NoOp()
+  v21 = minimum(v25, v21)
+  NoOp()
+  s25 = dot(v8, v5)
+  NoOp()
+  NoOp()
+  m24 = m3 - m9
+  v26 = norm(m4, axis=0)
+  NoOp()
+  NoOp()
+  NoOp()
+  NoOp()
+  s21 = tan(s22)
+  NoOp()
+  m22 = s6 * m5
+  s27 = get_scalar(0.998294, 0.357082)
+  NoOp()
+  s13 = log(s9)
+  NoOp()
+  NoOp()
+  NoOp()
+  NoOp()
+  NoOp()
+  NoOp()
+  m4 = outer(v12, v12)
+  NoOp()
+  v11 = s14 * v21
+  NoOp()
+  NoOp()
+  NoOp()
+  NoOp()
+  NoOp()
+  NoOp()
+  NoOp()
+  NoOp()
+  NoOp()
+def Learn():
+  m1 = bcast(v3, axis=0)
+  m24 = transpose(m24)
+  v10 = get_column(0.103899)
+  v27 = bcast(s15)
+  m15 = minimum(m9, m11)
+  m3 = abs(m2)
+  m3 = transpose(m3)
+  m3 = maximum(m3, m1)
+  m20 = bcast(v6, axis=1)
+  m1 = m0 * m0
+  v14 = v9 + v3
+  v6 = uniform(-0.117976, 0.0401925, n_features)
+  s9 = arccos(s5)
+  s4 = mean(m0)
+  m2 = transpose(m3)
+  v27 = v22 * v0
+  v3 = norm(m0, axis=0)
+  NoOp()
+  m3 = matmul(m2, m1)
+  v10 = dot(m7, v26)
+ 

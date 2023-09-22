@@ -1,0 +1,79 @@
+def Setup():
+  s11 = 0.629329
+  v16 = gaussian(0.484986, 0.430756, n_features)
+  v10 = gaussian(0.908345, 0.279752, n_features)
+  s6 = gaussian(0.76289, 0.299052)
+  v28 = uniform(0.0578763, 0.842874, n_features)
+  m4 = uniform(-0.944476, -0.177959, (n_features, n_features))
+  s10 = uniform(-0.168128, 0.440797)
+  m17 = uniform(-0.551561, -0.516928, (n_features, n_features))
+  s28 = gaussian(0.756072, 0.889173)
+  v17 = gaussian(-0.188654, 0.681578, n_features)
+  v12[0.855834] = -0.723543
+  m22[0.236734, 0.821033] = 0.515908
+  s13 = uniform(0.379871, -0.771903)
+  v7[0.12909] = 0.120135
+  v27 = gaussian(0.726742, 0.0116139, n_features)
+def Predict():
+  s1 = norm(v16)
+  s13 = std(v17)
+  m12 = maximum(m14, m17)
+  s14 = norm(m9)
+  s1 = TS_rank(s8)
+  s28 = relation_rank(s0)
+  v29 = v6 * v19
+  v16 = get_column(0.384958)
+  v23 = get_row(0.381768)
+  s28 = arctan(s10)
+  m23 = 1 / m4
+  v18 = 1 / v19
+  m4 = matmul(m6, m16)
+  s3 = previous_rank(s9)
+  v29 = get_column(0.360537)
+  v9 = minimum(v7, v16)
+  v8 = norm(m17, axis=0)
+def Learn():
+  m19 = bcast(v18, axis=0)
+  s14 = abs(s0)
+  m9 = outer(v1, v8)
+  v23 = uniform(-0.0524901, -0.957471, n_features)
+  m8 = outer(v17, v3)
+  m16 = uniform(0.41212, -0.316492, (n_features, n_features))
+  m8 = uniform(-0.327718, 0.19712, (n_features, n_features))
+  NoOp()
+  m12 = matmul(m21, m10)
+  s26 = log(s4)
+  s2 = minimum(s27, s19)
+  s12 = std(m2)
+  m1 = m23 + m17
+  v12 = norm(m24, axis=1)
+  s9 = abs(s14)
+  m10 = bcast(v9, axis=1)
+  v8 = dot(m3, v25)
+  m22 = abs(m21)
+  s5 = arctan(s4)
+  s26 = correlation(v15, v16, 0.526298)
+  s8 = arcsin(s12)
+  v17 = v8 + v0
+  m5 = m24 + m17
+  m11 = matmul(m16, m0)
+  s7 = mean(v16)
+  m7 = maximum(m10, m19)
+  m10 = bcast(v18, axis=0)
+  s23 = abs(s19)
+  s5 = s19 + s7
+  s12 = cos(s2)
+  s13 = abs(s17)
+  m2 = maximum(m9, m2)
+  s1 = arccos(s4)
+  v9 = 1 / v15
+  m13 = m4 + m7
+  v27 = v1 / v2
+  v1 = get_column(0.728029)
+  s21 = sin(s22)
+  m21 = m0 * m18
+  v27 = mean(m5, axis=1)
+  m17 = m7 + m11
+  s11 = get_scalar(0.224142, 0.438387)
+  s16 = correlation(v23, v6, 0.408462)
+ 

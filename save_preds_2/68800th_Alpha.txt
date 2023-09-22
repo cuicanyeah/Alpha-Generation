@@ -1,0 +1,95 @@
+def Setup():
+  s26 = uniform(0.5374, 0.161505)
+  s9 = -0.463448
+  m18[0.0682371, 0.184086] = 0.372767
+  s2 = uniform(0.755779, 0.974664)
+  m9[0.855833, 0.0212703] = 0.833827
+def Predict():
+  m1 = abs(m19)
+  s24 = s19 + s19
+  v19 = s15 * v27
+  v4 = TS_row_rank(s28)
+  m1 = outer(v8, v27)
+  s5 = exp(s8)
+  v1 = minimum(v2, v14)
+  v1 = s3 * v25
+  v4 = maximum(v18, v2)
+  s18 = arcsin(s17)
+  v13 = v24 + v2
+  v23 = bcast(s10)
+  v6 = 1 / v5
+  s17 = exp(s18)
+  m2 = bcast(v27, axis=0)
+  m23 = abs(m10)
+  s17 = sin(s4)
+  m6 = minimum(m6, m17)
+  v9 = get_row(0.490157)
+  v1 = abs(v21)
+  s26 = log(s9)
+  s6 = arctan(s15)
+  v13 = uniform(-0.137291, -0.0349391, n_features)
+  s17 = std(m0)
+  v14 = maximum(v1, v18)
+  s19 = get_scalar(0.0400491, 0.582303)
+  s7 = maximum(s28, s5)
+  v16 = v8 - v23
+  m23 = m3 / m10
+  s14 = dot(v28, v28)
+  s25 = tan(s12)
+  m14 = uniform(0.61279, -0.904617, (n_features, n_features))
+  s1 = tan(s24)
+  m13 = m19 + m6
+  m22 = transpose(m2)
+  s17 = std(m14)
+  s10 = 1 / s23
+  s13 = tan(s16)
+  m16 = bcast(v12, axis=1)
+  v6 = TS_row_rank(s1)
+  s24 = minimum(s20, s5)
+  s15 = s20 - s2
+  s3 = get_scalar(0.674243, 0.119507)
+  m20 = maximum(m21, m4)
+  v20 = norm(m18, axis=0)
+  s8 = arcsin(s17)
+  s26 = exp(s15)
+  s2 = TS_rank(s17)
+def Learn():
+  s15 = maximum(s7, s8)
+  m2 = outer(v5, v14)
+  s29 = std(v9)
+  v23 = get_row(0.739896)
+  v4 = 1 / v13
+  m23 = 1 / m20
+  v19 = s22 * v20
+  s13 = cos(s13)
+  s10 = cos(s1)
+  s15 = std(m19)
+  NoOp()
+  v17 = s2 * v9
+  s7 = abs(s13)
+  v22 = abs(v4)
+  v7 = norm(m5, axis=0)
+  m7 = abs(m23)
+  s21 = abs(s16)
+  s19 = exp(s19)
+  v12 = std(m12, axis=1)
+  s14 = mean(m12)
+  m13 = uniform(0.247267, 0.641778, (n_features, n_features))
+  v19 = norm(m0, axis=1)
+  s20 = maximum(s23, s21)
+  s28 = get_scalar(0.646618, 0.989851)
+  v13 = std(m23, axis=1)
+  m3 = abs(m7)
+  v10 = std(m15, axis=1)
+  NoOp()
+  s18 = cos(s5)
+  s23 = std(v20)
+  s25 = arctan(s24)
+  v17 = norm(m12, axis=0)
+  v1 = uniform(-0.646089, 0.487127, n_features)
+  m20 = m15 + m15
+  s29 = mean(v24)
+  m13 = maximum(m17, m3)
+  v25 = get_row(0.761347)
+  s1 = heaviside(s11, 1.0)
+ 

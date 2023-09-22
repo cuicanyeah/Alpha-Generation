@@ -1,0 +1,120 @@
+  s6 = get_scalar(0.852307, 0.999995)
+
+  s7 = get_scalar(0.779995, 0.999995)
+
+  s8 = get_scalar(0.702307, 0.999995)
+
+  s4 = get_scalar(0.629995, 0.999995)
+
+  s5 = s6 - s9
+
+  s3 = s4 + s2
+
+  s1 = s5 / s3
+
+  s1 = s2 - s1
+
+  m8 = m4 / m10
+
+  NoOp()
+
+  NoOp()
+
+  NoOp()
+
+  NoOp()
+
+  NoOp()
+
+  NoOp()
+
+  NoOp()
+
+  NoOp()
+
+  NoOp()
+
+  NoOp()
+
+  NoOp()
+
+  NoOp()
+
+  NoOp()
+
+  NoOp()
+
+  NoOp()
+
+  v11 = v26 + v19
+
+  NoOp()
+
+  NoOp()
+
+  NoOp()
+
+  NoOp()
+
+  NoOp()
+
+  NoOp()
+
+  NoOp()
+
+  NoOp()
+
+  NoOp()
+
+  NoOp()
+
+  NoOp()
+
+  NoOp()
+
+  NoOp()
+
+  NoOp()
+
+  NoOp()
+
+  NoOp()
+
+  NoOp()
+
+  NoOp()
+
+  NoOp()
+
+  NoOp()
+
+  NoOp()
+
+  NoOp()
+
+  NoOp()
+
+  NoOp()
+
+  NoOp()
+
+  s11 = cos(s12)
+
+  m9 = m0 + m9
+
+  s12 = dot(v27, v9)
+
+  s2 = minimum(s9, s0)
+
+  v5 = bcast(s19)
+
+  s1 = minimum(s8, s19)
+
+  s25 = dot(v25, v23)
+
+  s5 = cos(s16)
+
+  m5 = maximum(m6, m18)
+
+  v19 = norm(m17, axis=1)
+

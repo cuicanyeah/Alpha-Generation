@@ -1,0 +1,81 @@
+def Setup():
+  s21 = -0.350136
+def Predict():
+  s28 = relation_demean(s5)
+  m14 = s0 * m21
+  v2 = norm(m3, axis=0)
+  m10 = m21 - m2
+  s8 = arccos(s26)
+  s8 = covariance(v15, v29, 0.727625)
+  v17 = get_row(0.764261)
+  s8 = s1 - s14
+  s2 = get_scalar(0.66414, 0.664246)
+  m1 = uniform(-0.34245, 0.948406, (n_features, n_features))
+  v8 = maximum(v20, v15)
+  v17 = v11 / v6
+  m13 = 1 / m2
+  m19 = matmul(m12, m3)
+  s12 = cos(s2)
+  s4 = sin(s25)
+  v9 = get_column(0.7677)
+  v28 = get_column(0.143534)
+  s18 = abs(s1)
+  s2 = arctan(s12)
+  s2 = abs(s16)
+  s6 = norm(m11)
+  s27 = 1 / s28
+  v29 = get_column(0.734914)
+  m21 = abs(m3)
+  s8 = get_scalar(0.165442, 0.0666143)
+  s18 = std(v4)
+  v18 = norm(m4, axis=1)
+  v4 = TS_row_rank(s25)
+  s14 = previous_rank(s7)
+  s5 = minimum(s12, s26)
+  s28 = maximum(s7, s19)
+  s16 = TS_rank(s5)
+  s26 = std(m0)
+  v21 = abs(v10)
+  s18 = exp(s25)
+  v4 = norm(m19, axis=0)
+  m9 = matmul(m18, m1)
+  s6 = relation_demean(s11)
+  s22 = relation_demean(s8)
+  s19 = s19 - s22
+  m4 = m0 - m8
+  s21 = cos(s1)
+  s8 = log(s19)
+  s1 = minimum(s28, s12)
+  m2 = outer(v29, v24)
+  m18 = s6 * m20
+  s9 = previous_rank(s27)
+  m14 = m20 - m17
+  m24 = s10 * m18
+  s25 = abs(s20)
+  m2 = s21 * m24
+  m3 = m10 - m1
+  NoOp()
+  s26 = exp(s27)
+def Learn():
+  v24 = uniform(-0.128339, -0.340869, n_features)
+  m19 = transpose(m1)
+  v18 = norm(m2, axis=1)
+  v9 = norm(m0, axis=1)
+  s29 = covariance(v10, v9, 0.257509)
+  s23 = abs(s13)
+  v27 = norm(m22, axis=0)
+  v23 = dot(m11, v8)
+  m19 = outer(v18, v22)
+  s9 = arcsin(s10)
+  s5 = mean(v28)
+  s16 = arctan(s4)
+  s2 = s16 / s14
+  v17 = v2 - v4
+  s27 = dot(v23, v16)
+  s29 = s2 + s13
+  s29 = norm(v15)
+  s5 = covariance(v7, v21, 0.957909)
+  m12 = m24 + m7
+  s7 = std(m3)
+  s29 = correlation(v13, v8, 0.717706)
+ 

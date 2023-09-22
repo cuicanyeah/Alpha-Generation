@@ -1,0 +1,91 @@
+def Setup():
+  v7 = uniform(-0.323626, 0.389936, n_features)
+  s4 = uniform(0.0175346, -0.205481)
+  v14[0.850384] = 0.654643
+  s29 = gaussian(0.0185841, 0.0325405)
+  s24 = uniform(0.833523, 0.658003)
+  m8 = gaussian(0.0321273, 0.549648, (n_features, n_features))
+  m17 = uniform(0.113913, -0.473484, (n_features, n_features))
+  m7[0.33741, 0.0575936] = -0.614105
+def Predict():
+  s24 = s3 + s3
+  s9 = abs(s23)
+  m16 = maximum(m9, m0)
+  s17 = relation_demean(s13)
+  v16 = bcast(s5)
+  s5 = s17 * s0
+  m3 = abs(m17)
+  s2 = mean(v6)
+  s14 = TS_rank(s19)
+  v7 = minimum(v28, v13)
+  s22 = cos(s0)
+  m17 = abs(m14)
+  v3 = maximum(v26, v12)
+  m11 = 1 / m15
+  m10 = minimum(m24, m23)
+  m15 = transpose(m6)
+  v12 = norm(m11, axis=0)
+  v18 = bcast(s21)
+  s1 = tan(s24)
+  s3 = dot(v23, v27)
+  v28 = dot(m14, v1)
+  v5 = bcast(s12)
+  v21 = dot(m0, v7)
+  s29 = norm(v19)
+  v26 = v20 * v20
+  s29 = maximum(s22, s25)
+  s3 = get_scalar(0.699785, 0.851497)
+  v26 = get_row(0.772051)
+  s10 = s3 - s4
+  s29 = s6 / s27
+  m10 = matmul(m6, m17)
+  v14 = s18 * v13
+  v10 = heaviside(v24, 1.0)
+  m1 = 1 / m3
+  s24 = relation_rank(s2)
+  m21 = m18 + m7
+  s12 = s12 - s4
+def Learn():
+  m23 = matmul(m1, m18)
+  m15 = bcast(v3, axis=1)
+  s13 = s16 * s1
+  m19 = s1 * m9
+  s16 = norm(m14)
+  v24 = mean(m6, axis=1)
+  m17 = bcast(v9, axis=0)
+  s3 = maximum(s17, s10)
+  s18 = s22 * s0
+  m2 = m5 - m21
+  m7 = m16 + m20
+  s5 = maximum(s19, s9)
+  s7 = norm(m2)
+  v6 = std(m12, axis=1)
+  s9 = norm(v6)
+  v7 = bcast(s18)
+  s7 = std(v4)
+  v4 = bcast(s27)
+  s3 = s3 * s23
+  s13 = get_scalar(0.865411, 0.32537)
+  s8 = mean(m18)
+  m12 = matmul(m7, m19)
+  v11 = maximum(v1, v29)
+  s23 = mean(v20)
+  m21 = m4 * m23
+  v17 = uniform(-0.203258, 0.717857, n_features)
+  m23 = bcast(v21, axis=0)
+  v28 = get_column(0.903572)
+  v6 = uniform(0.209212, -0.83502, n_features)
+  s11 = dot(v1, v9)
+  s1 = mean(v3)
+  s12 = sin(s18)
+  m10 = maximum(m9, m12)
+  s10 = minimum(s7, s19)
+  s28 = mean(v16)
+  s19 = arccos(s4)
+  s7 = minimum(s27, s6)
+  m4 = abs(m11)
+  m13 = outer(v16, v10)
+  s23 = get_scalar(0.936739, 0.486029)
+  m6 = minimum(m0, m8)
+  v26 = v8 / v6
+ 

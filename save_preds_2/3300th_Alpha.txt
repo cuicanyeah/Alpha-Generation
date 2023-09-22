@@ -1,0 +1,86 @@
+def Setup():
+  s27 = -0.999833
+  v12[0.38133] = -0.542866
+  v7[0.260031] = -0.545913
+  s27 = -0.357432
+  v2 = gaussian(0.647369, 0.78054, n_features)
+  v6 = uniform(0.988588, 0.516342, n_features)
+  m11[0.199537, 0.652404] = 0.722012
+  s21 = gaussian(0.806275, 0.591378)
+  m24 = uniform(-0.594379, 0.749152, (n_features, n_features))
+  v4 = gaussian(0.688383, 0.304686, n_features)
+  v2[0.415083] = 0.610572
+def Predict():
+  v24 = v13 / v8
+  s1 = get_scalar(0.23692, 0.727648)
+  s9 = get_scalar(0.917908, 0.77634)
+  s1 = arcsin(s1)
+  s5 = 1 / s9
+  m20 = m9 + m3
+  v28 = norm(m15, axis=0)
+  v17 = std(m9, axis=1)
+  s2 = arcsin(s1)
+  s7 = std(m3)
+  s5 = minimum(s5, s2)
+  s5 = tan(s5)
+  s5 = tan(s5)
+  s1 = s5 / s7
+  NoOp()
+  NoOp()
+  NoOp()
+  v13 = s0 * v18
+  NoOp()
+  NoOp()
+  NoOp()
+  NoOp()
+  NoOp()
+  NoOp()
+  v23 = mean(m10, axis=1)
+  NoOp()
+  NoOp()
+  NoOp()
+  NoOp()
+  NoOp()
+  NoOp()
+  NoOp()
+  s16 = relation_rank(s21)
+  NoOp()
+  NoOp()
+  v4 = get_column(0.548186)
+  NoOp()
+  NoOp()
+  NoOp()
+  m6 = s21 * m18
+  s21 = log(s20)
+  NoOp()
+  NoOp()
+  NoOp()
+  NoOp()
+  NoOp()
+  v18 = v29 / v23
+  NoOp()
+  NoOp()
+  NoOp()
+  NoOp()
+  NoOp()
+  NoOp()
+  NoOp()
+  NoOp()
+  NoOp()
+  NoOp()
+  NoOp()
+def Learn():
+  m1 = bcast(v14, axis=0)
+  m18 = minimum(m12, m18)
+  m3 = abs(m2)
+  m3 = transpose(m3)
+  v6 = get_column(0.115771)
+  m3 = maximum(m3, m1)
+  m1 = m0 * m0
+  v14 = v6 + v3
+  s29 = mean(m9)
+  m2 = transpose(m3)
+  v3 = norm(m0, axis=0)
+  m3 = matmul(m2, m1)
+  s25 = get_scalar(0.884194, 0.617201)
+ 

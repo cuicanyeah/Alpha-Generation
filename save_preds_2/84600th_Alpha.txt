@@ -1,0 +1,88 @@
+def Setup():
+  m22 = gaussian(-0.203436, 0.149594, (n_features, n_features))
+  m5[0.19612, 0.0967207] = 0.492864
+  s4 = uniform(-0.584848, 0.609725)
+  s26 = uniform(-0.368488, -0.876301)
+  v17 = uniform(0.208309, -0.450673, n_features)
+  s4 = gaussian(-0.678407, 0.931414)
+  v9[0.114711] = -0.647616
+  m6[0.85195, 0.306573] = 0.768545
+def Predict():
+  m1 = abs(m19)
+  s24 = s19 + s3
+  m16 = m4 - m9
+  m4 = s2 * m0
+  m16 = outer(v8, v26)
+  v4 = maximum(v18, v2)
+  v13 = v1 + v2
+  v2 = bcast(s26)
+  m24 = m21 + m9
+  v23 = 1 / v5
+  s21 = mean(v23)
+  m2 = bcast(v27, axis=0)
+  m17 = abs(m10)
+  s9 = 1 / s11
+  v16 = dot(m14, v25)
+  s17 = sin(s4)
+  v9 = get_row(0.212135)
+  s26 = log(s9)
+  v13 = uniform(-0.137291, -0.0355946, n_features)
+  v14 = maximum(v11, v18)
+  s19 = get_scalar(0.711023, 0.582303)
+  s25 = tan(s17)
+  m22 = uniform(0.61279, -0.904617, (n_features, n_features))
+  v21 = dot(m6, v4)
+  s1 = tan(s24)
+  s29 = covariance(v13, v22, 0.499605)
+  v18 = v11 * v10
+  m1 = minimum(m18, m1)
+  s17 = std(m14)
+  s16 = 1 / s23
+  s13 = tan(s16)
+  v17 = abs(v1)
+  s25 = mean(v3)
+  s24 = minimum(s3, s5)
+  s15 = s20 - s2
+  s3 = get_scalar(0.757098, 0.851497)
+  v17 = mean(m12, axis=1)
+  m20 = maximum(m18, m4)
+  s8 = exp(s15)
+  s16 = TS_rank(s24)
+  v28 = uniform(-0.494298, -0.594965, n_features)
+def Learn():
+  s10 = covariance(v13, v12, 0.899899)
+  s5 = arccos(s23)
+  m20 = bcast(v21, axis=0)
+  v13 = bcast(s17)
+  m13 = m23 / m12
+  s12 = abs(s6)
+  s16 = arccos(s10)
+  s6 = mean(v20)
+  s19 = std(v9)
+  s9 = covariance(v22, v21, 0.932469)
+  m24 = abs(m3)
+  s13 = s18 / s12
+  v5 = heaviside(v13, 1.0)
+  s5 = s15 + s19
+  v16 = abs(v2)
+  v6 = mean(m16, axis=1)
+  v4 = minimum(v0, v27)
+  v8 = dot(m22, v7)
+  s16 = covariance(v17, v19, 0.233764)
+  s12 = get_scalar(0.603185, 0.993454)
+  v4 = maximum(v25, v18)
+  m12 = bcast(v4, axis=0)
+  v24 = v17 - v6
+  s15 = minimum(s0, s20)
+  v13 = maximum(v6, v23)
+  s4 = arccos(s1)
+  s28 = mean(m12)
+  s21 = mean(v10)
+  m2 = abs(m4)
+  s25 = s27 * s10
+  s24 = exp(s17)
+  s1 = tan(s8)
+  s3 = norm(v24)
+  s8 = mean(v7)
+  v27 = dot(m6, v15)
+ 

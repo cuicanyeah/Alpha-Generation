@@ -1,0 +1,91 @@
+def Setup():
+  s24 = gaussian(1.81167, 0.70254)
+  s21 = gaussian(0.0949366, 0.579035)
+  m19[0.0759744, 0.608033] = -0.885548
+  m8[0.0591076, 0.085889] = 0.572336
+def Predict():
+  m1 = abs(m19)
+  s24 = s19 + s19
+  m16 = m4 - m9
+  v4 = TS_row_rank(s28)
+  m1 = outer(v8, v26)
+  s5 = exp(s8)
+  v1 = minimum(v2, v14)
+  v1 = s3 * v25
+  v4 = maximum(v18, v2)
+  s18 = arcsin(s17)
+  v13 = v24 + v2
+  v23 = bcast(s10)
+  v6 = 1 / v5
+  s17 = exp(s18)
+  m2 = bcast(v27, axis=0)
+  m17 = abs(m10)
+  s17 = sin(s4)
+  m6 = minimum(m6, m17)
+  v9 = get_row(0.490157)
+  v1 = abs(v21)
+  s26 = log(s9)
+  s6 = arctan(s15)
+  v13 = uniform(-0.137291, -0.0349391, n_features)
+  s17 = std(m3)
+  v14 = maximum(v1, v18)
+  s19 = get_scalar(0.0400491, 0.582303)
+  v16 = v8 - v23
+  m23 = m3 / m10
+  s14 = dot(v28, v28)
+  s25 = tan(s12)
+  m14 = uniform(0.61279, -0.904617, (n_features, n_features))
+  s1 = tan(s24)
+  m13 = m19 + m6
+  m1 = minimum(m18, m1)
+  m22 = transpose(m2)
+  s17 = std(m14)
+  s10 = 1 / s23
+  s13 = tan(s16)
+  m16 = bcast(v12, axis=1)
+  s24 = minimum(s20, s5)
+  s15 = s20 - s2
+  s3 = get_scalar(0.674243, 0.119507)
+  m20 = maximum(m21, m4)
+  v20 = norm(m9, axis=0)
+  s8 = arcsin(s17)
+  s26 = exp(s15)
+  s2 = TS_rank(s21)
+  s16 = TS_rank(s0)
+def Learn():
+  v2 = v10 * v26
+  v25 = bcast(s17)
+  m24 = m2 * m9
+  s19 = std(v9)
+  s9 = arccos(s29)
+  s9 = covariance(v22, v21, 0.932469)
+  m6 = m17 - m19
+  m11 = minimum(m22, m18)
+  v2 = heaviside(v16, 1.0)
+  s29 = arctan(s8)
+  s5 = s15 + s4
+  m5 = minimum(m23, m9)
+  m13 = abs(m8)
+  v4 = minimum(v26, v27)
+  s11 = maximum(s19, s21)
+  m3 = uniform(-0.147055, 0.302821, (n_features, n_features))
+  v8 = dot(m22, v7)
+  s16 = covariance(v6, v19, 0.475116)
+  s12 = get_scalar(0.603185, 0.993454)
+  v16 = get_column(0.0706243)
+  v23 = 1 / v3
+  v26 = maximum(v25, v18)
+  s15 = std(v12)
+  s11 = s15 - s12
+  v24 = v17 - v6
+  s4 = arccos(s1)
+  s28 = mean(m12)
+  s21 = mean(v6)
+  s6 = mean(m23)
+  s24 = exp(s10)
+  s3 = norm(v20)
+  v3 = norm(m12, axis=1)
+  v2 = mean(m3, axis=1)
+  m17 = m15 - m15
+  v27 = dot(m6, v15)
+ 

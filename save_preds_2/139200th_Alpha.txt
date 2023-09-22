@@ -1,0 +1,81 @@
+def Setup():
+  v22 = gaussian(0.617625, 0.97441, n_features)
+  s27 = gaussian(-0.955526, 0.97576)
+  m9 = uniform(-0.196746, 0.0579681, (n_features, n_features))
+  s3 = -0.912442
+  s20 = gaussian(-0.986295, 0.142283)
+  s24 = uniform(0.84344, 0.895587)
+  s14 = uniform(-0.0884522, -0.340189)
+  v1 = gaussian(0.648526, 2.34827, n_features)
+  m10 = gaussian(0.00403866, 0.847179, (n_features, n_features))
+  m16[0.179628, 0.46984] = -0.1358
+def Predict():
+  m13 = heaviside(m3, 1.0)
+  s1 = 1 / s25
+  v18 = v1 / v2
+  s16 = heaviside(s13, 1.0)
+  v23 = v16 / v29
+  m21 = m5 / m12
+  s5 = TS_rank(s0)
+  v23 = abs(v12)
+  m17 = abs(m0)
+  v11 = abs(v12)
+  m15 = heaviside(m5, 1.0)
+  v15 = dot(m8, v9)
+  s13 = exp(s28)
+  s29 = minimum(s2, s28)
+  s14 = s27 + s27
+  m13 = bcast(v16, axis=0)
+  v13 = std(m14, axis=1)
+  s6 = maximum(s20, s20)
+  v10 = get_row(0.546382)
+  m9 = maximum(m12, m15)
+  s11 = arctan(s26)
+  v10 = norm(m4, axis=1)
+  s22 = s15 - s17
+  v24 = mean(m11, axis=1)
+  s11 = relation_demean(s27)
+  s22 = relation_demean(s14)
+  NoOp()
+  s5 = correlation(v5, v3, 0.513852)
+  v10 = bcast(s17)
+def Learn():
+  s14 = std(v26)
+  m23 = m22 * m9
+  v2 = norm(m11, axis=1)
+  v14 = uniform(-0.465062, 0.00668212, n_features)
+  v11 = v28 * v21
+  m9 = m4 * m23
+  m11 = transpose(m23)
+  m11 = bcast(v21, axis=1)
+  v7 = v8 * v26
+  m6 = heaviside(m2, 1.0)
+  s11 = norm(m20)
+  s4 = heaviside(s26, 1.0)
+  s15 = get_scalar(0.17891, 0.961366)
+  s21 = covariance(v29, v13, 0.831578)
+  v28 = std(m23, axis=1)
+  s2 = tan(s17)
+  s22 = sin(s2)
+  s2 = covariance(v15, v4, 0.935879)
+  s12 = abs(s10)
+  s7 = exp(s18)
+  s25 = maximum(s13, s23)
+  s23 = cos(s5)
+  m13 = bcast(v21, axis=0)
+  v12 = s4 * v19
+  v8 = heaviside(v0, 1.0)
+  m15 = 1 / m16
+  NoOp()
+  s6 = get_scalar(0.449179, 0.361915)
+  s28 = s15 - s28
+  s25 = log(s25)
+  s27 = s19 + s2
+  s7 = arctan(s22)
+  v13 = s18 * v23
+  v23 = uniform(0.761953, 0.00325644, n_features)
+  s7 = arcsin(s12)
+  s19 = exp(s20)
+  m20 = matmul(m3, m21)
+  v3 = v23 - v21
+ 

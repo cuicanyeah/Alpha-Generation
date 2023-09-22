@@ -1,0 +1,36 @@
+def Setup():
+s7 = gaussian(-0.263292, 0.366701)
+v6[0.444032] = 0.644862
+s3 = gaussian(0.371734, 0.871035)
+m2 = gaussian(-0.250734, 0.449954, (n_features, n_features))
+s6 = uniform(-0.711469, -0.943229)
+s3 = gaussian(0.238083, 0.346153)
+m3 = gaussian(-0.546306, 0.915351, (n_features, n_features))
+s4 = uniform(-0.107483, 0.552849)
+m1 = gaussian(0.364454, 0.069868, (n_features, n_features))
+m1 = gaussian(-0.0987931, 0.548811, (n_features, n_features))
+s7 = uniform(-0.42394, 0.30279)
+v6 = uniform(0.314561, -0.187581, n_features)
+m2 = uniform(-0.118024, 0.267919, (n_features, n_features))
+def Predict():
+s1 = get_scalar(0.23692, 0.727648)
+s9 = get_scalar(0.917908, 0.77634)
+s1 = arcsin(s1)
+m3 = minimum(m3, m3)
+s5 = 1 / s9
+s2 = arcsin(s1)
+s7 = std(m3)
+s5 = minimum(s5, s2)
+s5 = tan(s5)
+s5 = tan(s5)
+s1 = s5 / s7
+def Learn():
+m1 = bcast(v14, axis=0)
+m3 = abs(m2)
+m3 = transpose(m3)
+m3 = maximum(m3, m1)
+m1 = m0 * m0
+v14 = v6 + v3
+m2 = transpose(m3)
+v3 = norm(m0, axis=0)
+m3 = matmul(m2, m1)

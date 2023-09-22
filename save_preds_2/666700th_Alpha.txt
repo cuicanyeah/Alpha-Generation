@@ -1,0 +1,102 @@
+def Setup():
+  v9[0.309108] = 0.43759
+  s5 = 0.405905
+def Predict():
+  m6 = abs(m18)
+  v22 = abs(v20)
+  v18 = v16 * v7
+  s25 = std(m13)
+  s5 = sin(s7)
+  s10 = norm(v18)
+  m22 = minimum(m6, m17)
+  s29 = TS_rank(s8)
+  m14 = 1 / m24
+  s12 = arctan(s17)
+  s19 = correlation(v0, v22, 0.365692)
+  m1 = minimum(m15, m15)
+  s8 = log(s3)
+  s5 = norm(v27)
+  s8 = 1 / s29
+  s1 = minimum(s12, s8)
+  s11 = correlation(v5, v25, 0.0662359)
+  s1 = arctan(s1)
+  v5 = norm(m16, axis=1)
+  v28 = uniform(0.290917, -0.770087, n_features)
+  s20 = mean(m2)
+  s17 = arctan(s19)
+  s18 = sin(s4)
+  v22 = norm(m9, axis=1)
+  s20 = relation_demean(s23)
+  s18 = heaviside(s24, 1.0)
+  m18 = m20 * m3
+  m10 = matmul(m18, m11)
+  s17 = s29 * s22
+  v14 = v7 - v25
+  s17 = cos(s26)
+  s17 = sin(s17)
+  NoOp()
+  s17 = 1 / s17
+  s10 = std(v11)
+  s7 = std(v6)
+  s7 = arccos(s18)
+  m18 = uniform(-0.677414, -0.592066, (n_features, n_features))
+  s3 = arccos(s21)
+  m7 = m23 + m0
+  s18 = mean(v24)
+  s29 = covariance(v13, v21, 0.244125)
+  v28 = v29 + v2
+  m6 = outer(v8, v9)
+  s26 = norm(v20)
+  s21 = norm(v24)
+  m24 = outer(v9, v4)
+  s6 = std(v8)
+  s6 = mean(m8)
+  s3 = heaviside(s4, 1.0)
+  s22 = mean(m14)
+  m17 = m23 * m2
+  s8 = arcsin(s26)
+def Learn():
+  s7 = get_scalar(0.123544, 0.965776)
+  s26 = get_scalar(0.563724, 0.518887)
+  s16 = sin(s16)
+  m11 = heaviside(m14, 1.0)
+  m14 = bcast(v24, axis=1)
+  m19 = m18 - m2
+  v13 = v22 * v23
+  v20 = get_row(0.569573)
+  v1 = norm(m15, axis=1)
+  s12 = std(v10)
+  v17 = mean(m24, axis=1)
+  m16 = matmul(m19, m5)
+  s21 = s29 / s17
+  m13 = outer(v4, v12)
+  s24 = s8 / s1
+  s13 = dot(v20, v22)
+  v19 = uniform(0.530096, -0.828297, n_features)
+  m16 = abs(m21)
+  s22 = arcsin(s0)
+  v24 = norm(m16, axis=0)
+  s29 = norm(m8)
+  v22 = mean(m0, axis=1)
+  s18 = get_scalar(0.651222, 0.369214)
+  m14 = m0 / m9
+  s8 = exp(s8)
+  NoOp()
+  s3 = s20 - s8
+  s22 = arcsin(s12)
+  m1 = transpose(m12)
+  m23 = uniform(-0.766115, 0.228968, (n_features, n_features))
+  s16 = sin(s3)
+  m2 = m14 * m5
+  m10 = abs(m10)
+  s24 = arcsin(s19)
+  m2 = m21 / m23
+  s27 = mean(m17)
+  s28 = log(s13)
+  s24 = s13 - s19
+  s10 = norm(v0)
+  s6 = tan(s27)
+  m7 = s4 * m9
+  s28 = s12 / s7
+  v1 = v10 - v27
+ 

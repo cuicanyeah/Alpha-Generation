@@ -1,0 +1,103 @@
+def Setup():
+  m5 = gaussian(0.370756, 0.157399, (n_features, n_features))
+def Predict():
+  v10 = v18 + v21
+  s1 = relation_rank(s27)
+  v19 = s10 * v0
+  v12 = norm(m14, axis=0)
+  s21 = abs(s17)
+  v18 = bcast(s15)
+  m24 = heaviside(m23, 1.0)
+  s11 = correlation(v22, v19, 0.902766)
+  s18 = covariance(v1, v20, 0.810241)
+  v26 = norm(m19, axis=0)
+  v22 = v5 / v6
+  s22 = 1 / s4
+  m16 = heaviside(m11, 1.0)
+  s26 = s14 + s28
+  v16 = v26 + v6
+  m4 = abs(m23)
+  m20 = heaviside(m23, 1.0)
+  v2 = v0 / v28
+  v12 = mean(m8, axis=1)
+  v19 = norm(m0, axis=1)
+  s1 = 1 / s18
+  m13 = s13 * m22
+  v4 = std(m10, axis=1)
+  v10 = v20 - v22
+  s16 = mean(m21)
+  s6 = s17 - s19
+  s16 = correlation(v2, v27, 0.438334)
+  m11 = m8 - m11
+  m4 = m18 - m18
+  v16 = v17 - v17
+  v2 = get_row(0.217292)
+  s18 = relation_demean(s27)
+  s1 = tan(s6)
+  s20 = 1 / s9
+  s18 = 1 / s16
+  m23 = m14 / m24
+  s25 = arctan(s14)
+  s8 = tan(s24)
+  s9 = abs(s3)
+  s14 = log(s28)
+  s2 = sin(s10)
+  s1 = s1 / s28
+  s17 = std(m2)
+  s15 = relation_rank(s3)
+  s6 = norm(m15)
+  s21 = covariance(v28, v27, 0.706664)
+  m15 = heaviside(m24, 1.0)
+  v27 = heaviside(v26, 1.0)
+  s19 = get_scalar(0.950129, 0.298653)
+  s12 = minimum(s19, s12)
+  s11 = s5 + s11
+  v14 = v24 - v1
+  v9 = abs(v20)
+  m18 = 1 / m11
+  m15 = maximum(m10, m24)
+  v7 = uniform(0.469164, 0.503957, n_features)
+  v11 = maximum(v17, v20)
+def Learn():
+  s19 = exp(s4)
+  v13 = abs(v11)
+  s3 = dot(v23, v22)
+  s1 = correlation(v20, v4, 0.214842)
+  s22 = norm(v12)
+  m3 = minimum(m2, m7)
+  m7 = m19 / m23
+  s1 = cos(s16)
+  s7 = correlation(v1, v14, 0.119209)
+  v20 = v17 / v29
+  s23 = s13 - s25
+  s23 = covariance(v22, v18, 0.715643)
+  s28 = maximum(s28, s4)
+  m14 = s5 * m23
+  v1 = get_column(0.644002)
+  m8 = 1 / m24
+  s8 = arcsin(s26)
+  s24 = s20 - s5
+  v15 = 1 / v0
+  s27 = tan(s10)
+  m3 = matmul(m7, m24)
+  s20 = norm(m1)
+  s7 = cos(s21)
+  s10 = s17 / s5
+  s26 = mean(v7)
+  v28 = uniform(-1.43031, -0.0546549, n_features)
+  s20 = correlation(v8, v12, 0.0147884)
+  s13 = s19 * s14
+  v6 = minimum(v18, v10)
+  m10 = 1 / m0
+  m13 = 1 / m20
+  s9 = sin(s28)
+  v21 = s18 * v16
+  m15 = 1 / m22
+  s7 = covariance(v24, v23, 0.844974)
+  s15 = sin(s26)
+  v1 = 1 / v9
+  s14 = s0 - s8
+  s17 = mean(v19)
+  s14 = arctan(s13)
+  s4 = get_scalar(0.304351, 0.054291)
+ 
