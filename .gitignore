@@ -1,6 +1,4 @@
 *bazel*/
 *.npy
 static/
-*.swp
-*.swx
-*.swo
+
