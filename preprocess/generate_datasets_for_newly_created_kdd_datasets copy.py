@@ -26,41 +26,31 @@ class EOD_Preprocessor:
         self.date_format = '%Y-%m-%d'
         self.market_name = market_name
 
-    def _get_market_dirs(self, ticker_path):
+    def _get_market_dir(self, ticker_path):
         all_dirs = os.listdir(ticker_path)
-        self.market_ticker_dirs = []
-
+        self.market_ticker_dir = ''
         for dir_name in all_dirs:
-            if self.market_name == 'NYSE' and ('NYSE' in dir_name or 'price_data_nyse' in dir_name):
-                self.market_ticker_dirs.append(dir_name)
-            elif self.market_name == 'NASDAQ' and ('NASDAQ' in dir_name or 'price_data_nasdaq' in dir_name):
-                self.market_ticker_dirs.append(dir_name)
-            elif self.market_name == 'ALL' and (('NASDAQ' in dir_name or 'price_data_nasdaq' in dir_name) or ('NYSE' in dir_name or 'price_data_nyse' in dir_name)):
-                self.market_ticker_dirs.append(dir_name)
-
-        return self.market_ticker_dirs
-      
+            if self.market_name == 'NYSE' and ('NYSE' in dir_name or 'nyse' in dir_name):
+                self.market_ticker_dir = dir_name 
+            elif self.market_name == 'NASDAQ' and ('NASDAQ' in dir_name or 'nasdaq' in dir_name):
+                self.market_ticker_dir = dir_name        
 
     def _read_EOD_data(self, data_path):
-        self.data_EOD = []       
-        for ticker in self.tickers:
-            for market_ticker_dir in self.market_ticker_dirs:
-                try:
-                    single_EOD = np.genfromtxt(
-                        os.path.join(data_path, market_ticker_dir, ticker), dtype=str, delimiter=',',
-                        skip_header=True
-                    )
-                except:
-                    continue
-                # delete the 'count' feature
-                single_EOD = np.delete(single_EOD, [5], axis=1)
-                
-                permutation = [0, 1, 3, 4, 2, 5]
-                idx = np.empty_like(permutation)
-                idx[permutation] = np.arange(len(permutation))
+        self.data_EOD = []
+        for index, ticker in enumerate(self.tickers):
+            single_EOD = np.genfromtxt(
+                os.path.join(data_path, self.market_ticker_dir, ticker + '.csv'), dtype=str, delimiter=',',
+                skip_header=True
+            )
+            # delete the 'count' feature
+            single_EOD = np.delete(single_EOD, [5], axis=1)
+            
+            permutation = [0, 1, 3, 4, 2, 5]
+            idx = np.empty_like(permutation)
+            idx[permutation] = np.arange(len(permutation))
 
-                single_EOD[:] = single_EOD[:, idx]
-                self.data_EOD.append(single_EOD)
+            single_EOD[:] = single_EOD[:, idx]
+            self.data_EOD.append(single_EOD)
 
         print('#stocks\' EOD data readin:', len(self.data_EOD))
         assert len(self.tickers) == len(self.data_EOD), 'length of tickers ' \
@@ -91,85 +81,52 @@ class EOD_Preprocessor:
                     #     print('daily_EOD col', daily_EOD)
                     #     import sys
                     #     sys.exit() 
-        # print('count: ', count)                                                   
+        print('count: ', count)                                                   
         return selected_EOD
 
-    def _get_dates(self, ticker_path, start_date, end_date, topN=3000):
-        '''
-        from the folder all stocks (NYSE~3000 NASDAQ~5000) select the stocks considered in our work and get a list of dates
-        '''
-        # self.market_ticker_dirs is a list because we consider selecting all we have both stock markets
-        self._get_market_dirs(ticker_path)
-        init_df = pd.DataFrame()
-        count = 0
-        avg_volumes = {}
-        all_tickers = []
+def _get_dates(self, ticker_path, start_date, end_date):
+    market_ticker_dirs = self._get_market_dirs(ticker_path)
+    all_tickers_df = {}
+    init_df = pd.DataFrame()
+    count = 0
 
-        for market_ticker_dir in self.market_ticker_dirs:
-            all_tickers = [file for file in os.listdir(os.path.join(ticker_path, market_ticker_dir)) if file.endswith('.csv')]
-            for ticker in all_tickers:
-                # print(os.path.join(ticker_path, market_ticker_dir, ticker))
-                ticker_df = pd.read_csv(os.path.join(ticker_path, market_ticker_dir, ticker), index_col = 'Date')
-                # drop count since count is mainly used for OTC market instruments
-                ticker_df = ticker_df.drop(['COUNT'], axis=1)
-                
-                # Calculate the average volume for the last 3 months before the start date
-                three_months_before_start = pd.Timestamp(start_date) - pd.DateOffset(months=3)
-                formatted_three_months_before_start = three_months_before_start.strftime('%Y-%m-%d')
-                avg_volume = ticker_df.loc[formatted_three_months_before_start:start_date, 'VOLUME'].mean()
-                if not pd.isna(avg_volume):  # Only add tickers with valid average volume
-                    avg_volumes[ticker] = avg_volume
-
-        # Sort the dictionary by volume in descending order
-        sorted_avg_volumes = dict(sorted(avg_volumes.items(), key=lambda item: item[1], reverse=True))
-        print(sorted_avg_volumes)
-
-        # Get the top N tickers based on average volume
-        top_n_tickers = list(sorted_avg_volumes.keys())[:topN]
+    for market_ticker_dir in market_ticker_dirs:
+        all_tickers = os.listdir(os.path.join(ticker_path, market_ticker_dir))
 
         for ticker in all_tickers:
-            if ticker not in top_n_tickers:
-                continue
-
-            ticker_df = pd.read_csv(os.path.join(ticker_path, market_ticker_dir, ticker), index_col = 'Date')
-
+            ticker_df = pd.read_csv(os.path.join(ticker_path, market_ticker_dir, ticker), index_col='Date')
+            ticker_df = ticker_df.drop(['COUNT'], axis=1)
+            all_tickers_df[ticker] = ticker_df
             if not init_df.empty:
-                # adding a suffix to each column name in the ticker_df DataFrame
                 ticker_df = ticker_df.add_suffix('__' + ticker[:-4])
                 ticker_df = ticker_df[start_date:end_date]
-
-                # [Question] not sure what is this check
                 if ticker_df[ticker_df < 5].any().sum() > 0:
                     continue
-
                 init_df = init_df.merge(ticker_df, left_index=True, right_index=True, how='outer')
             else:
                 init_df = ticker_df
                 init_df = init_df.add_suffix('__' + ticker[:-4])
-            # print(init_df)
+            print(init_df)
             count += 1
 
-        # check useless indices/dates of a all stocks' df, i.e., init_df, by identifying na rato > 0.8
         all_useful_dates = []
         all_useless_idx = []
         for idx, _ in init_df.iterrows():
-            if init_df.loc[[idx]].isna().sum().sum() / len(init_df.columns) > 0.8:
+            if init_df.loc[[idx]].isna().sum().sum() / len(init_df.columns) > 0.3:
                 all_useless_idx.append(idx)
             else:
                 all_useful_dates.append(idx)
 
         init_df = init_df.drop(index=all_useless_idx)
 
-        # # filter stocks
-        # all_useful_tickers = []
-        # for column in init_df.columns:
-        #     if init_df[column].isna().sum() / len(init_df) < 0.02:
-        #         all_useful_tickers.append(column.split('__')[-1])
+        all_useful_tickers = []
+        for column in init_df.columns:
+            if init_df[column].isna().sum() / len(init_df) < 0.02:
+                all_useful_tickers.append(column.split('__')[-1])
 
-        # all_useful_tickers = list(set(all_useful_tickers))
-        # print(all_useful_tickers)
-
-        return all_useful_dates, top_n_tickers
+        all_useful_tickers = list(set(all_useful_tickers))
+        print(all_useful_tickers)
+        return all_useful_dates, all_useful_tickers
 
     def generate_feature(self, if_date_list, selected_tickers_fname, begin_date, end_date,
                          return_days=1, pad_begin=29):
@@ -180,7 +137,7 @@ class EOD_Preprocessor:
                 ignoring suspension days (market open, only suspend this stock)
                 Normalize features by (feature - min) / (max - min)
         '''        
-        self._get_market_dirs(os.path.join(self.data_path))
+        self._get_market_dir(os.path.join(self.data_path))
 
         if if_date_list:            
             # load from a list of dates to exclude holidays
@@ -272,8 +229,9 @@ class EOD_Preprocessor:
                     end_date_row = date_index
                     break
 
+            # print(begin_date_row)
             selected_EOD_str = single_EOD[begin_date_row:end_date_row]
-
+            print(selected_EOD_str)
             # transfer the indices of date string into indices of numbers
             selected_EOD = self._transfer_EOD_str(selected_EOD_str,
                                                   tra_dates_index)
@@ -344,14 +302,8 @@ class EOD_Preprocessor:
                     mov_aver_features[row][5] = -1234
                 else:
                     mov_aver_features[row][5] = statistics.stdev(std_10)
-                if len(std_20) <= 1:
-                    mov_aver_features[row][6] = -1234
-                else:
-                    mov_aver_features[row][6] = statistics.stdev(std_20)
-                if len(std_30) <= 1:
-                    mov_aver_features[row][7] = -1234
-                else:
-                    mov_aver_features[row][7] = statistics.stdev(std_30)
+                mov_aver_features[row][6] = statistics.stdev(std_20)
+                mov_aver_features[row][7] = statistics.stdev(std_30)
 
             # print('industry_relation:', industry_relation)
 
@@ -359,10 +311,10 @@ class EOD_Preprocessor:
             pri_min = np.min(selected_EOD[begin_date_row:, 4])
             price_max = np.max(selected_EOD[begin_date_row:, 4])
 
-            # if pri_min < 5:
-            #     print('pri_min', pri_min)
-            #     print('this stock is skipped')
-            #     continue
+            if pri_min < 5:
+                print('pri_min', pri_min)
+                print('this stock is skipped')
+                continue
 
             print(self.tickers[index], 'minimum:', pri_min,
                   'maximum:', price_max, 'ratio:', price_max / pri_min)
@@ -398,14 +350,13 @@ class EOD_Preprocessor:
                         if selected_EOD[row][-2] == 0: # selected_EOD[row + return_days][-2] == 0 or comment off because unlike log return raw return can be 0
                             features[cur_index - pad_begin][-1] = -1234
                         else:
-                            if np.abs(price_diff/selected_EOD[row][-2]) > 2:
-                                print('Abnormal return detected! Calculated price diff: {} too high! Abnormal return {}'.format(price_diff, price_diff/selected_EOD[row][-2]))
-                                features[cur_index - pad_begin][-1] = -1234
-                            else:
-                                features[cur_index - pad_begin][-1] = price_diff / selected_EOD[row][-2]
+                            features[cur_index - pad_begin][-1] = price_diff / selected_EOD[row][-2]
                         
                         # check if there is any abnormal return
-                        # assert np.abs(price_diff/selected_EOD[row][-2]) <= 1, f'Abnormal return detected! Calculated price diff: {price_diff:.2f} too high! Abnormal return {price_diff/selected_EOD[row][-2]:.2f}'
+                        assert np.abs(price_diff/selected_EOD[row][-2]) <= 1, f'Abnormal return detected! Calculated price diff: {price_diff:.2f} too high!'
+
+            '''normalize the log of volume feature'''
+            features[:, -3][features[:, -3] > 0] = np.log(features[:, -3][features[:, -3] > 0])
 
             # for some stocks (e.g., the stock DWPP) whose 0 is missing values
             if (features[:, :-1] == 0).any():
@@ -493,8 +444,8 @@ def create_dataset(
          num_test_examples,
          seed)
 
-    # print('valid_data', valid_data.shape)
-    # print('num_valid_examples', num_valid_examples)
+    print('valid_data', valid_data.shape)
+    print('num_valid_examples', num_valid_examples)
 
     dataset = task_pb2.ScalarLabelDataset()
     for i in range(train_data.shape[0]):
@@ -613,7 +564,7 @@ def train_valid_test_split(
 
 
 flags.DEFINE_string(
-    'data_dir', 'data_for_EvoAlgo_all_US_stocks',
+    'data_dir', 'data_for_EvoAlgo_kdd2023',
     'Path of the folder to save the datasets.')
 
 flags.DEFINE_string(
@@ -621,7 +572,7 @@ flags.DEFINE_string(
     'Path of EOD data.')
 
 flags.DEFINE_string(
-    'market', 'ALL',
+    'market', 'NASDAQ',
     'Market name.')
 
 flags.DEFINE_integer('num_train_examples', 1000,
@@ -637,13 +588,13 @@ flags.DEFINE_integer('num_test_examples', 0,
 flags.DEFINE_integer('projected_dim', 13,
                      'The dimensionality to project the data into.')
 
-flags.DEFINE_string('dataset_name', 'ALL',
+flags.DEFINE_string('dataset_name', 'NASDAQ',
                     'Name of the dataset.')
 
-flags.DEFINE_string('start_date', '2017-1-2',
+flags.DEFINE_string('start_date', '2018-1-2',
                     'start_date.')
 
-flags.DEFINE_string('end_date', '2021-12-31',
+flags.DEFINE_string('end_date', '2022-12-31',
                     'end_date.')
 
 flags.DEFINE_integer('min_data_seed', 0,
@@ -708,7 +659,7 @@ def main(argv):
 
     # stock_tasks = sorted([int(x) for x in FLAGS.stock_tasks])
     for stock_tasks in FLAGS.stock_tasks:
-        # print('Generating stock_task {}'.format(stock_tasks))
+        print('Generating stock_task {}'.format(stock_tasks))
 
         random_seeds = range(FLAGS.min_data_seed, FLAGS.max_data_seed)
         for seed in random_seeds:

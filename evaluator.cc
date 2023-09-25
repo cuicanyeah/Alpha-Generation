@@ -333,10 +333,10 @@ std::pair<double, std::vector<double>> Evaluator::Evaluate(const Algorithm& algo
           result_vector[4] = strat_ret_vol;
           result_vector[5] = annual_mean_strat_ret;
           result_vector[6] = correlation_with_existing_alpha;
-          // std::cout << "valid sr" << sharpe_ratio << std::endl;
-          // std::cout << "valid ahd" << average_holding_days << std::endl; 
-          // std::cout << "valid vol" << strat_ret_vol << std::endl; 
-          // std::cout << "valid strat ret"<< annual_mean_strat_ret << std::endl;
+          std::cout << "valid sr" << sharpe_ratio << std::endl;
+          std::cout << "valid ahd" << average_holding_days << std::endl; 
+          std::cout << "valid vol" << strat_ret_vol << std::endl; 
+          std::cout << "valid strat ret"<< annual_mean_strat_ret << std::endl;
           combined_fitness = correlation;
 
           // test part
@@ -357,7 +357,7 @@ std::pair<double, std::vector<double>> Evaluator::Evaluate(const Algorithm& algo
             }
           } 
           correlation_with_existing_alpha = test_corr_sum / num_of_test_cutoffs;//  
-          // cout << "test sharpe_ratio: " << sharpe_ratio << "; test correlation: " << test_correlation << "; test max_dropdown: " << 1 - test_max_dropdown << " correlation_with_existing_alpha: " << correlation_with_existing_alpha << std::endl;
+          cout << "test sharpe_ratio: " << sharpe_ratio << "; test correlation: " << test_correlation << "; test max_dropdown: " << 1 - test_max_dropdown << " correlation_with_existing_alpha: " << correlation_with_existing_alpha << std::endl;
           result_vector[7] = test_correlation;
           result_vector[8] = sharpe_ratio;
           result_vector[9] = average_holding_days;
@@ -365,7 +365,7 @@ std::pair<double, std::vector<double>> Evaluator::Evaluate(const Algorithm& algo
           result_vector[11] = strat_ret_vol;
           result_vector[12] = annual_mean_strat_ret;
           result_vector[13] = correlation_with_existing_alpha;
-          
+          exit(0);
           // check whether we use AlphaEvolve code to generate alpha's preds data (i.e., the predictions of formulaic alphas as features for later training purpose). If yes, save those preds as files
           if (!generate_preds_data_.empty()) {
             std::string filename_returns = generate_preds_data_ + "preds.txt";  
@@ -1297,10 +1297,10 @@ double Evaluator::ComputeAllMeasure(const std::vector<std::vector<double>> all_t
     // std::cout << "Average Pearson Correlation (Bottom 50): " << avg_bottom_50_corr << std::endl;
     // std::cout << "Average Pearson Correlation (Rest): " << avg_rest_corr << std::endl;
 
-    // for (const auto &val : *strategy_ret) {
-    //     std::cout << val << " ";
-    // }
-    // std::cout << std::endl;
+    for (const auto &val : *strategy_ret) {
+        std::cout << val << " ";
+    }
+    std::cout << std::endl;
 
     double mean_return = std::accumulate(strategy_ret->begin(), strategy_ret->end(), 0.0) / strategy_ret->size();
 
@@ -1310,12 +1310,12 @@ double Evaluator::ComputeAllMeasure(const std::vector<std::vector<double>> all_t
     *average_holding_days = (double)holding_days / total_holding_periods;
     
     // Printing the metrics
-    // std::cout << "Sharpe Ratio: " << *sharpe_ratio << std::endl;
-    // std::cout << "Strategy Return Volatility: " << *strat_ret_vol << std::endl;
-    // std::cout << "Annual Mean Strategy Return: " << *annual_mean_strat_ret << std::endl;
-    // std::cout << "Average Holding Days: " << *average_holding_days << std::endl;
-    // std::cout << "Total Portfolio Return: " << total_return - 1 << std::endl;
-    // std::cout << "Maximum Drawdown: " << max_drawdown * 100 << "%" << std::endl; // Convert to percentage
+    std::cout << "Sharpe Ratio: " << *sharpe_ratio << std::endl;
+    std::cout << "Strategy Return Volatility: " << *strat_ret_vol << std::endl;
+    std::cout << "Annual Mean Strategy Return: " << *annual_mean_strat_ret << std::endl;
+    std::cout << "Average Holding Days: " << *average_holding_days << std::endl;
+    std::cout << "Total Portfolio Return: " << total_return - 1 << std::endl;
+    std::cout << "Maximum Drawdown: " << max_drawdown * 100 << "%" << std::endl; // Convert to percentage
     // exit(0);
     return max_drawdown;
 }
