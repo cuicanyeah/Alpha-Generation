@@ -1,0 +1,21 @@
+import eikon as ek
+ek.set_app_key('9644d932ef5e4874983d5f68a600f6687ccdce51')
+import pandas as pd
+NASDAQ_allstocks = ek.get_data('SCREEN(U(IN(Equity(active,public,' +
+            'countryprimaryquote))),' +
+            'IN(TR.ExchangeMarketIdCode,"XNCM", "XNGS", "XNMS"))',
+            ['TR.CommonName'])
+
+failed_list = []
+for instrument in NASDAQ_allstocks[0]['Instrument']:
+    stock_name = instrument.split('.')[0]
+    try:
+	    df = ek.get_timeseries([instrument], start_date="2013-01-01", end_date="2023-01-10")
+            df.to_csv('nasdaq_iv_call/'+stock_name+'.csv')
+    except:
+            print('this stock failed: ', stock_name)
+            failed_list.append(stock_name)
+
+with open(r'James_data/price_data/missing_stocks.txt', 'w') as f:
+    for stock in failed_list:
+        f.write("%s\n" % stock)
