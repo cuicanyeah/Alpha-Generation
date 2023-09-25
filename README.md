@@ -9,9 +9,9 @@ Download the data (up to 2017) from the `data` folder in the below GitHub reposi
 U.S. stocks up to 2022 are downloaded from Eikon and are to be uploaded.
 
 
-Sample command to generate input dataset for AlphaEvolve using raw datasets.
+Sample command to generate a dataset for AlphaEvolve as inputs using raw data (i.e., open/high/low/close/volume).
 ```
-python preprocess/generate_datasets_for_newly_created_kdd_datasets.py -data_dir OUTPUT_PATH_FOR_ALPHAEVOLVE_DATA -path RAW_DATA -market ALL -num_train_examples 1 -num_valid_examples 471 -start_date 2017-1-2 -end_date 2019-1-2
+python preprocess/generate_datasets_for_newly_created_kdd_datasets.py -data_dir OUTPUT_PATH_FOR_ALPHAEVOLVE_DATA -path raw_data/eikon_data -market ALL -num_train_examples 1 -num_valid_examples 471 -start_date 2017-1-2 -end_date 2019-1-2
 ```
 
 Run an alpha evaluation for 5 minutes using your own designed alpha for the NYSE dataset with 1402 stocks:
