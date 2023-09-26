@@ -25,7 +25,7 @@ python preprocess/generate_datasets_for_newly_created_datasets.py -data_dir proc
 
 Run an alpha evaluation for 5 minutes using your own designed alpha for the NYSE dataset with 1402 stocks:
 ```
-timeout 5m bash ./run.sh -a MY_ALPHA -p OUTPUT_PATH  -m $(pwd)/initial_alphas/my_alpha_101.txt -s 100000000000 -b NYSE -f 1402
+timeout 5m bash ./run.sh -a MY_ALPHA -p OUTPUT_PATH  -m initial_alphas/my_alpha_101.txt -s 100000000000 -b NYSE -f 1402
 ```
 
 ## Alpha search commands:
