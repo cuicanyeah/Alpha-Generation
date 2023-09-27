@@ -1,5 +1,4 @@
 *bazel*/
 *.npy
 static/
-raw_data/
 save_preds_2/
