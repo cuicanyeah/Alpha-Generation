@@ -314,6 +314,8 @@ std::pair<double, std::vector<double>> Evaluator::Evaluate(const Algorithm& algo
 
           vector<double> existing_alpha_ret_4 = {0.0040756, 0.0031563, 0.000129051, 0.00373519, -0.000202312, 0.00158072, 0.00538197, 0.00100945, 0.00332539, 0.0024705, 0.00210515, 0.00295206, 0.002621, -0.000790793, -0.00168755, 0.00751675, 0.00288368, 0.00311604, 0.000808149, 0.00377772, -0.00352965, -0.00163943, -0.00455195, 0.00208286, -0.0034128, 0.00221667, 0.00245747, 0.00551712, 0.00368253, 0.00104424, 0.00118564, 0.00359743, -0.00273357, 0.00226265, 0.00603837, 0.00218229, 0.00289919, -0.00300532, 0.0029417, 0.00119422, 0.00062219, 0.000247094, 0.00411388, -0.000347996, 0.000822655, 0.000743444, -0.000333629, 0.00672859, 0.000540362, 0.0024341, 5.27486e-05, 0.00262916, 0.00499986, 0.000204389, -0.0027676, -0.000453751, -9.19366e-05, 0.00223643, 0.000648946, 0.00183285, -0.0010633, 0.00027096, 0.000891729, -0.000132679, 0.00329658, 0.00219543, -0.000815209, 0.00031807, -0.00380936, -0.000548591, -0.000909178, -0.00219513, 0.00101414, 0.00100196, 0.00239809, 0.00233066, 0.0011846, -0.000552008, 0.00217169, -0.00205833, 0.0025243, 0.00350743, 0.00151811, 5.77816e-05, 0.00293952, 0.000792696, 0.000330212, 0.00399359, 0.00134878, -0.00127587, 0.00186386, 0.00345011, 0.00215696, 0.00216855, -0.000666104, -0.000620272, 0.00248596, 0.00236709, 0.00056133, 0.0025395, 0.000756568, 0.00383931, -0.00126461, 0.00139459, -0.00127253, 0.00107539, 0.00159618, -0.00149992, 0.00010252, 0.0010096, 0.000521808, 0.00230177, 0.000694147, -0.000348349, -0.0022005, -0.000207427};
           vector<double> existing_alpha_ret_4_test = {0.00119999, 0.000301742, 0.00302722, 0.00173234, 0.00111756, -0.00218288, -0.00101641, -0.000318455, 0.0024683, 0.00661973, 0.000850705, 0.0010818, -0.00235552, 0.0027329, -0.0021186, 0.00014327, 0.00468092, 0.000622064, 0.00183986, 0.0011201, 0.000779347, 0.00179028, 0.0065174, 0.00107612, 0.000783914, -0.00430983, 0.00182168, 0.000998737, 0.00162662, 0.000603166, -0.000575616, 0.00130931, -0.000291927, -0.00044126, 0.00335834, -0.00236152, -3.48376e-05, 0.00165223, -0.00050383, -0.00120481, 0.00346838, 0.00151728, 0.00228353, 0.000352406, 0.00211582, -0.000921195, -0.0010169, -0.000187047, 0.00548542, 0.00108787, 0.0124939, 0.00214241, -0.000187598, -2.5773e-05, 0.00510192, 0.003419, 0.000525343, 0.00141914, -0.000610481, -0.00058619, -0.00244232, -0.000129933, 0.00309982, 0.000550199, -0.00137139, -0.000291977, -0.00234732, -0.000692767, 0.00292385, 0.0027203, 0.000373473, -0.000782622, -0.000250607, 0.000295233, 0.000224251, 0.000489861, -0.00317021, -0.00164023, 0.000833466, 0.00236122, -8.35385e-05, 0.00208497, 3.83559e-05, 0.000550012, -0.00454016, 0.000271052, -0.00170992, 0.00303823, -0.0024213, 0.00168468, 0.00100232, 0.00384892, 0.00326069, -0.00235716, 0.000161643, 0.00911055, 0.000332738, -0.000423506, -0.00178251, -0.000635346, -0.00215373, 0.00562947, 0.00171501, -0.00949365, 0.00268461, -0.00253421, 0.00199781, 0.00129538, 0.00290936, 0.00239678, 0.0015036, 0.00709739, -0.00208643, -0.000887032, 0.000533674, 0.00168763};
+          
+          // calculation the average correlations with existing alphas' returns on validation period
           double corr_sum = 0;
           int num_of_cutoffs = 0;
           for (int x = 0; x < all_cutoff_valid_returns.size(); ++x) {
@@ -329,24 +331,23 @@ std::pair<double, std::vector<double>> Evaluator::Evaluate(const Algorithm& algo
           result_vector[0] = correlation;
           result_vector[1] = sharpe_ratio;
           result_vector[2] = average_holding_days;
-          result_vector[3] = 1 - max_dropdown;
+          result_vector[3] = max_dropdown;
           result_vector[4] = strat_ret_vol;
           result_vector[5] = annual_mean_strat_ret;
           result_vector[6] = correlation_with_existing_alpha;
-          std::cout << "valid sr" << sharpe_ratio << std::endl;
-          std::cout << "valid ahd" << average_holding_days << std::endl; 
-          std::cout << "valid vol" << strat_ret_vol << std::endl; 
-          std::cout << "valid strat ret"<< annual_mean_strat_ret << std::endl;
-          combined_fitness = correlation;
+
+          // if evaluation mode we print the trading metrics
+          if (!generate_preds_data_.empty()) cout << "valid sharpe ratio: " << sharpe_ratio << "; valid correlation: " << correlation << "; valid max dropdown: " << max_dropdown << "valid correlation with existing alpha: " << correlation_with_existing_alpha << std::endl;
+          
+          // we select the sharpe ratio in the valid period as the fitness score
+          combined_fitness = sharpe_ratio;
 
           // test part
           double test_correlation = Correlation(test_period_preds, test_period_diff);
           double test_max_dropdown = ComputeAllMeasure(test_period_preds, test_period_diff, &sharpe_ratio, &average_holding_days, &strat_ret_vol, &annual_mean_strat_ret, strategy_ret, false);
           if (predict_index_ == 1) test_max_dropdown = ComputeIndexTradingMeasures(test_period_preds, test_period_diff, &sharpe_ratio, &average_holding_days, &strat_ret_vol, &annual_mean_strat_ret, strategy_ret, false);
-          // std::cout << sharpe_ratio << std::endl;
-          // std::cout << average_holding_days << std::endl; 
-          // std::cout << strat_ret_vol << std::endl; 
-          // std::cout << annual_mean_strat_ret << std::endl;
+
+          // calculation the average correlations with existing alphas' returns on test period
           double test_corr_sum = 0;
           int num_of_test_cutoffs = 0;
           for (int x = 0; x < all_cutoff_test_returns.size(); ++x) {
@@ -356,18 +357,19 @@ std::pair<double, std::vector<double>> Evaluator::Evaluate(const Algorithm& algo
             num_of_test_cutoffs++;
             }
           } 
-          correlation_with_existing_alpha = test_corr_sum / num_of_test_cutoffs;//  
-          cout << "test sharpe_ratio: " << sharpe_ratio << "; test correlation: " << test_correlation << "; test max_dropdown: " << 1 - test_max_dropdown << " correlation_with_existing_alpha: " << correlation_with_existing_alpha << std::endl;
+          correlation_with_existing_alpha = test_corr_sum / num_of_test_cutoffs;
+
           result_vector[7] = test_correlation;
           result_vector[8] = sharpe_ratio;
           result_vector[9] = average_holding_days;
-          result_vector[10] = 1 - test_max_dropdown;
+          result_vector[10] = test_max_dropdown;
           result_vector[11] = strat_ret_vol;
           result_vector[12] = annual_mean_strat_ret;
           result_vector[13] = correlation_with_existing_alpha;
-          exit(0);
-          // check whether we use AlphaEvolve code to generate alpha's preds data (i.e., the predictions of formulaic alphas as features for later training purpose). If yes, save those preds as files
+          
+          // check whether we want to generate alpha's preds data (i.e., the predictions of formulaic alphas as features for later training purpose). If yes, save those preds as files.
           if (!generate_preds_data_.empty()) {
+            cout << "test sharpe ratio: " << sharpe_ratio << "; test correlation: " << test_correlation << "; test max dropdown: " << 1 - test_max_dropdown << "test correlation with existing alpha: " << correlation_with_existing_alpha << std::endl;
             std::string filename_returns = generate_preds_data_ + "preds.txt";  
             std::ofstream outFilepreds(filename_returns);
             for (std::vector<double>::size_type i = 0; i < all_task_preds.size(); i++) 
@@ -388,7 +390,7 @@ std::pair<double, std::vector<double>> Evaluator::Evaluate(const Algorithm& algo
               }
             }    
             outFilelabels.close();
-            exit( 3 );            
+            exit(1);            
           }
 
         } else {
@@ -1047,6 +1049,7 @@ std::vector<IntegerT> Evaluator::TopkSmall(const std::vector<double> test, const
   return result;
 }
 
+/*The below function is to perform trading metrics calculation for stock index prediction.*/
 double Evaluator::ComputeIndexTradingMeasures(const std::vector<std::vector<double> > all_task_preds, const std::vector<std::vector<double> > price_diff, double* sharpe_ratio, double* average_holding_days, double* strat_ret_vol, double* annual_mean_strat_ret, std::vector<double>* strategy_ret, bool is_validate) {
     CHECK(all_task_preds.size() == price_diff.size());
     for (std::vector<double>::size_type j = 0; j < all_task_preds.size(); j++) {
@@ -1176,6 +1179,76 @@ double pearson_correlation(const std::vector<double>& x, const std::vector<doubl
     return num / (std::sqrt(den_x) * std::sqrt(den_y));
 }
 
+// Helper function to normalize a vector of predictions
+std::vector<double> NormalizePreds(const std::vector<double>& preds) {
+    double min_val = std::numeric_limits<double>::max();
+    double max_val = std::numeric_limits<double>::lowest();
+    
+    // Find the min and max, but exclude the invalid values
+    for (const double& val : preds) {
+        if (val != 1234 && val != -1234) {
+            min_val = std::min(min_val, val);
+            max_val = std::max(max_val, val);
+        }
+    }
+
+    std::vector<double> normalized_preds(preds.size());
+    for (size_t i = 0; i < preds.size(); i++) {
+        // Check for invalid values and skip normalization for them
+        if (preds[i] == 1234 || preds[i] == -1234) {
+            normalized_preds[i] = preds[i];
+            continue;
+        }
+        normalized_preds[i] = (preds[i] - min_val) / (max_val - min_val);
+    }
+
+    double mean_val = 0.0;
+    int valid_count = 0;
+    for (const double& val : normalized_preds) {
+        if (val != 1234 && val != -1234) {
+            mean_val += val;
+            valid_count++;
+        }
+    }
+    mean_val /= valid_count;
+
+    for (double& val : normalized_preds) {
+        if (val != 1234 && val != -1234) {
+            val -= mean_val;
+        }
+    }
+
+    double sum_abs_vals = 0.0;
+    for (const double& val : normalized_preds) {
+        if (val != 1234 && val != -1234) {
+            sum_abs_vals += std::abs(val);
+        }
+    }
+    for (double& val : normalized_preds) {
+        if (val != 1234 && val != -1234) {
+            val /= sum_abs_vals;
+        }
+    }
+  
+    double check_sum = 0.0;
+    for (const double& val : normalized_preds) {
+        if (val != 1234 && val != -1234) {
+            check_sum += std::abs(val);
+        }
+    }
+
+    return normalized_preds;
+}
+
+std::vector<double> GetColumn(const std::vector<std::vector<double>>& matrix, size_t colIndex) {
+    std::vector<double> column;
+    for (size_t i = 0; i < matrix.size(); ++i) {
+        column.push_back(matrix[i][colIndex]);
+    }
+    return column;
+}
+
+
 double Evaluator::ComputeAllMeasure(const std::vector<std::vector<double>> all_task_preds, 
                                     const std::vector<std::vector<double>> price_diff, 
                                     double* sharpe_ratio, 
@@ -1185,97 +1258,53 @@ double Evaluator::ComputeAllMeasure(const std::vector<std::vector<double>> all_t
                                     std::vector<double>* strategy_ret, 
                                     bool is_validate) {
 
-    std::vector<double> top_50_correlations;
-    std::vector<double> bottom_50_correlations;
-    std::vector<double> rest_correlations;
-
     double total_return = 1.0;
     int holding_days = 0;
+    int current_holding_days = 0;
     int total_holding_periods = 0;
     double trading_days = 252.0; // Approximate trading days in a year
-    int num_stocks = 50;
     double peak_value = 1.0; // Initialize peak value to the starting value of the portfolio
     double max_drawdown = 0.0; // Initialize max drawdown to zero    
     std::vector<int> prev_positions(all_task_preds.size(), 0); // 1 for long, -1 for short, 0 for no position
 
     for (size_t t = 0; t < all_task_preds[0].size(); ++t) {
-        // std::cout << "Day " << t+1 << std::endl;  // Added debug print for each day
-        double long_return = 0.0;
-        double short_return = 0.0;
-        int current_holding_days = 0;
-        double transaction_cost_rate = 0.001;
-        
-        // Pair each stock with its prediction and sort by prediction
-        std::vector<std::pair<double, int>> stock_preds;
+        std::vector<double> column = GetColumn(all_task_preds, t);
+        std::vector<double> normalized_preds = NormalizePreds(column);
+        double daily_return = 0.0;
+
         for (size_t n = 0; n < all_task_preds.size(); ++n) {
-            stock_preds.push_back({all_task_preds[n][t], n});
-        }
-        std::sort(stock_preds.begin(), stock_preds.end(), std::greater<std::pair<double, int>>());
+            if (price_diff[n][t] != -1234 && price_diff[n][t] != 1234 && 
+                normalized_preds[n] != 1234 && normalized_preds[n] != -1234) {
+                daily_return += normalized_preds[n] * price_diff[n][t];
 
-        // Buy top 50 stocks
-        for (size_t n = 0; n < num_stocks; ++n) {
-            int stock_index = stock_preds[n].second;
-            long_return += price_diff[stock_index][t];
-            // std::cout << "Bought stock " << stock_index << " with return: " << price_diff[stock_index][t] << std::endl;  // Debug print for stock bought
-            if (prev_positions[stock_index] == 1) {
-                current_holding_days++;
-            } else {
-                holding_days += current_holding_days;
-                current_holding_days = 0;
-                total_holding_periods++;
-                prev_positions[stock_index] = 1;
-                long_return -= transaction_cost_rate;
+                // Average holding days logic
+                if (normalized_preds[n] > 0) {  // Long position
+                    if (prev_positions[n] == 1) {
+                        current_holding_days++;
+                    } else {
+                        holding_days += current_holding_days;
+                        current_holding_days = 0;
+                        total_holding_periods++;
+                        prev_positions[n] = 1;
+                    }
+                } else if (normalized_preds[n] < 0) {  // Short position
+                    if (prev_positions[n] == -1) {
+                        current_holding_days++;
+                    } else {
+                        holding_days += current_holding_days;
+                        current_holding_days = 0;
+                        total_holding_periods++;
+                        prev_positions[n] = -1;
+                    }
+                }
             }
         }
 
-        // Sell bottom 50 stocks
-        for (size_t n = all_task_preds.size() - num_stocks; n < all_task_preds.size(); ++n) {
-            int stock_index = stock_preds[n].second;
-            short_return -= price_diff[stock_index][t];
-            // std::cout << "Sold stock " << stock_index << " with return: " << price_diff[stock_index][t] << std::endl;  // Debug print for stock sold
-            if (prev_positions[stock_index] == -1) {
-                current_holding_days++;
-            } else {
-                holding_days += current_holding_days;
-                current_holding_days = 0;
-                total_holding_periods++;
-                prev_positions[stock_index] = -1;
-                short_return -= transaction_cost_rate;
-            }
-        }
+        // Check abnormal return
+        if (abs(daily_return) > 1) {std::cout << "WARNING! Abnormal return: " << daily_return << std::endl;;}
 
-        // std::cout << "long_return " << long_return << std::endl;
-        // std::cout << "short_return " << short_return << std::endl;
-        double daily_return = (long_return + short_return) / (2 * num_stocks); 
-        if (abs(daily_return) > 1) {continue;}
         total_return *= (1 + daily_return);
         strategy_ret->push_back(daily_return);
-
-        // Collect predictions and true returns for top 50, bottom 50, and rest
-        std::vector<double> top_50_preds, top_50_truths;
-        std::vector<double> bottom_50_preds, bottom_50_truths;
-        std::vector<double> rest_preds, rest_truths;
-
-        for (size_t n = 0; n < num_stocks; ++n) {
-            int stock_index = stock_preds[n].second;
-            top_50_preds.push_back(all_task_preds[stock_index][t]);
-            top_50_truths.push_back(price_diff[stock_index][t]);
-        }
-        for (size_t n = all_task_preds.size() - num_stocks; n < all_task_preds.size(); ++n) {
-            int stock_index = stock_preds[n].second;
-            bottom_50_preds.push_back(all_task_preds[stock_index][t]);
-            bottom_50_truths.push_back(price_diff[stock_index][t]);
-        }
-        for (size_t n = num_stocks; n < all_task_preds.size() - num_stocks; ++n) {
-            int stock_index = stock_preds[n].second;
-            rest_preds.push_back(all_task_preds[stock_index][t]);
-            rest_truths.push_back(price_diff[stock_index][t]);
-        }
-
-        // Calculate daily correlations and store
-        top_50_correlations.push_back(CorrelationVec(top_50_preds, top_50_truths));
-        bottom_50_correlations.push_back(CorrelationVec(bottom_50_preds, bottom_50_truths));
-        rest_correlations.push_back(CorrelationVec(rest_preds, rest_truths));
 
         // Update peak value and calculate drawdown
         if (total_return > peak_value) {
@@ -1285,99 +1314,302 @@ double Evaluator::ComputeAllMeasure(const std::vector<std::vector<double>> all_t
             if (drawdown > max_drawdown) {
                 max_drawdown = drawdown;
             }
-        }        
+        }  
     }
 
-    // Calculate average correlations over time steps
-    double avg_top_50_corr = std::accumulate(top_50_correlations.begin(), top_50_correlations.end(), 0.0) / top_50_correlations.size();
-    double avg_bottom_50_corr = std::accumulate(bottom_50_correlations.begin(), bottom_50_correlations.end(), 0.0) / bottom_50_correlations.size();
-    double avg_rest_corr = std::accumulate(rest_correlations.begin(), rest_correlations.end(), 0.0) / rest_correlations.size();
-
-    // std::cout << "Average Pearson Correlation (Top 50): " << avg_top_50_corr << std::endl;
-    // std::cout << "Average Pearson Correlation (Bottom 50): " << avg_bottom_50_corr << std::endl;
-    // std::cout << "Average Pearson Correlation (Rest): " << avg_rest_corr << std::endl;
-
-    for (const auto &val : *strategy_ret) {
-        std::cout << val << " ";
+    // Calculate the average holding days
+    if (total_holding_periods != 0) {
+        *average_holding_days = static_cast<double>(holding_days) / total_holding_periods;
+    } else {
+        *average_holding_days = 0.0;
     }
-    std::cout << std::endl;
+
+    // for (const auto &val : *strategy_ret) {
+    //     std::cout << val << " ";
+    // }
+    // std::cout << std::endl;
 
     double mean_return = std::accumulate(strategy_ret->begin(), strategy_ret->end(), 0.0) / strategy_ret->size();
-
+    // std::cout << "Strategy mean_return: " << mean_return << std::endl;
     *strat_ret_vol = stdev(*strategy_ret);
     *annual_mean_strat_ret = mean_return * trading_days;
     *sharpe_ratio = (*annual_mean_strat_ret) / (*strat_ret_vol * std::sqrt(trading_days));
     *average_holding_days = (double)holding_days / total_holding_periods;
     
-    // Printing the metrics
-    std::cout << "Sharpe Ratio: " << *sharpe_ratio << std::endl;
-    std::cout << "Strategy Return Volatility: " << *strat_ret_vol << std::endl;
-    std::cout << "Annual Mean Strategy Return: " << *annual_mean_strat_ret << std::endl;
-    std::cout << "Average Holding Days: " << *average_holding_days << std::endl;
-    std::cout << "Total Portfolio Return: " << total_return - 1 << std::endl;
-    std::cout << "Maximum Drawdown: " << max_drawdown * 100 << "%" << std::endl; // Convert to percentage
-    // exit(0);
+    // std::cout << "Sharpe Ratio: " << *sharpe_ratio << std::endl;
+    // std::cout << "Strategy Return Volatility: " << *strat_ret_vol << std::endl;
+    // std::cout << "Annual Mean Strategy Return: " << *annual_mean_strat_ret << std::endl;
+    // std::cout << "Average Holding Days: " << *average_holding_days << std::endl;
+    // std::cout << "Total Portfolio Return: " << total_return - 1 << std::endl;
+    // std::cout << "Maximum Drawdown: " << max_drawdown * 100 << "%" << std::endl; // Convert to percentage
     return max_drawdown;
 }
 
+/*The below function doesn't use worldquant style neutralization and uses top/bottom 50 stocks. Just keep it here for comparison.*/
+// double ComputeAllMeasure2(const std::vector<std::vector<double>> all_task_preds, 
+//                                     const std::vector<std::vector<double>> price_diff, 
+//                                     double* sharpe_ratio, 
+//                                     double* average_holding_days, 
+//                                     double* strat_ret_vol, 
+//                                     double* annual_mean_strat_ret, 
+//                                     std::vector<double>* strategy_ret, 
+//                                     bool is_validate) {
+
+//     std::vector<double> top_50_correlations;
+//     std::vector<double> bottom_50_correlations;
+//     std::vector<double> rest_correlations;
+
+//     double total_return = 1.0;
+//     int holding_days = 0;
+//     int total_holding_periods = 0;
+//     double trading_days = 252.0; // Approximate trading days in a year
+//     int num_stocks = 50;
+//     double peak_value = 1.0; // Initialize peak value to the starting value of the portfolio
+//     double max_drawdown = 0.0; // Initialize max drawdown to zero    
+//     std::vector<int> prev_positions(all_task_preds.size(), 0); // 1 for long, -1 for short, 0 for no position
+
+//     for (size_t t = 0; t < all_task_preds[0].size(); ++t) {
+//         double long_return = 0.0;
+//         double short_return = 0.0;
+//         int current_holding_days = 0;
+//         double transaction_cost_rate = 0.001;
+        
+//         // Pair each stock with its prediction and sort by prediction
+//         std::vector<std::pair<double, int>> stock_preds;
+//         for (size_t n = 0; n < all_task_preds.size(); ++n) {
+//             stock_preds.push_back({all_task_preds[n][t], n});
+//         }
+//         std::sort(stock_preds.begin(), stock_preds.end(), std::greater<std::pair<double, int>>());
+
+//         int boughtCount = 0;  // Counter for the number of stocks bought
+//         for (size_t n = 0; n < all_task_preds.size() && boughtCount < 50; ++n) {
+//             int stock_index = stock_preds[n].second;
+//             if (price_diff[stock_index][t] != -1234 && price_diff[stock_index][t] != 1234) {
+//                 long_return += price_diff[stock_index][t];
+//                 if (prev_positions[stock_index] == 1) {
+//                     current_holding_days++;
+//                 } else {
+//                     holding_days += current_holding_days;
+//                     current_holding_days = 0;
+//                     total_holding_periods++;
+//                     prev_positions[stock_index] = 1;
+//                     long_return -= transaction_cost_rate;
+//                 }
+//                 boughtCount++;  // Increment the bought stock count
+//             }
+//         }
+
+//         int soldCount = 0;  // Counter for the number of stocks sold
+//         for (size_t n = all_task_preds.size() - 1; n != static_cast<size_t>(-1) && soldCount < 50; --n) {
+//             int stock_index = stock_preds[n].second;
+//             if (price_diff[stock_index][t] != -1234 && price_diff[stock_index][t] != 1234) {
+//                 short_return -= price_diff[stock_index][t];
+//                 if (prev_positions[stock_index] == -1) {
+//                     current_holding_days++;
+//                 } else {
+//                     holding_days += current_holding_days;
+//                     current_holding_days = 0;
+//                     total_holding_periods++;
+//                     prev_positions[stock_index] = -1;
+//                     short_return -= transaction_cost_rate;
+//                 }
+//                 soldCount++;  // Increment the sold stock count
+//             }
+//         }
+
+//         std::cout << "long_return " << long_return << std::endl;
+//         std::cout << "short_return " << short_return << std::endl;
+//         double daily_return;
+//         if (boughtCount + soldCount != 0) {
+//             daily_return = (long_return + short_return) / (boughtCount + soldCount);
+//         } else {
+//             daily_return = 0;  // Handle the case where no stocks were longed or shorted
+//         }
+//         if (abs(daily_return) > 1) {continue;}
+//         total_return *= (1 + daily_return);
+//         strategy_ret->push_back(daily_return);
+//         std::cout << "daily_return " << daily_return << std::endl;
+
+//         // Collect predictions and true returns for top 50, bottom 50, and rest
+//         std::vector<double> top_50_preds, top_50_truths;
+//         std::vector<double> bottom_50_preds, bottom_50_truths;
+//         std::vector<double> rest_preds, rest_truths;
+
+//         for (size_t n = 0; n < num_stocks; ++n) {
+//             int stock_index = stock_preds[n].second;
+//             if (price_diff[stock_index][t] != -1234 && price_diff[stock_index][t] != 1234) {
+//               top_50_preds.push_back(all_task_preds[stock_index][t]);
+//               top_50_truths.push_back(price_diff[stock_index][t]);
+//             }
+//         }
+//         for (size_t n = all_task_preds.size() - num_stocks; n < all_task_preds.size(); ++n) {
+//             int stock_index = stock_preds[n].second;
+//             if (price_diff[stock_index][t] != -1234 && price_diff[stock_index][t] != 1234) {
+//               bottom_50_preds.push_back(all_task_preds[stock_index][t]);
+//               bottom_50_truths.push_back(price_diff[stock_index][t]);
+//             }
+//         }
+//         for (size_t n = num_stocks; n < all_task_preds.size() - num_stocks; ++n) {
+//             int stock_index = stock_preds[n].second;
+//             if (price_diff[stock_index][t] != -1234 && price_diff[stock_index][t] != 1234) {
+//               rest_preds.push_back(all_task_preds[stock_index][t]);
+//               rest_truths.push_back(price_diff[stock_index][t]);              
+//             }
+//         }
+
+//         // Calculate daily correlations and store
+//         top_50_correlations.push_back(CorrelationVec(top_50_preds, top_50_truths));
+//         bottom_50_correlations.push_back(CorrelationVec(bottom_50_preds, bottom_50_truths));
+//         rest_correlations.push_back(CorrelationVec(rest_preds, rest_truths));
+
+//         // Update peak value and calculate drawdown
+//         if (total_return > peak_value) {
+//             peak_value = total_return;
+//         } else {
+//             double drawdown = (peak_value - total_return) / peak_value;
+//             if (drawdown > max_drawdown) {
+//                 max_drawdown = drawdown;
+//             }
+//         }        
+//     }
+
+//     // Calculate average correlations over time steps
+//     double avg_top_50_corr = std::accumulate(top_50_correlations.begin(), top_50_correlations.end(), 0.0) / top_50_correlations.size();
+//     double avg_bottom_50_corr = std::accumulate(bottom_50_correlations.begin(), bottom_50_correlations.end(), 0.0) / bottom_50_correlations.size();
+//     double avg_rest_corr = std::accumulate(rest_correlations.begin(), rest_correlations.end(), 0.0) / rest_correlations.size();
+
+//     double mean_return = std::accumulate(strategy_ret->begin(), strategy_ret->end(), 0.0) / strategy_ret->size();
+//     std::cout << "Strategy mean_return: " << mean_return << std::endl;
+//     *strat_ret_vol = stdev(*strategy_ret);
+//     *annual_mean_strat_ret = mean_return * trading_days;
+//     *sharpe_ratio = (*annual_mean_strat_ret) / (*strat_ret_vol * std::sqrt(trading_days));
+//     *average_holding_days = (double)holding_days / total_holding_periods;
+    
+//     // Printing the metrics
+//     std::cout << "Sharpe Ratio: " << *sharpe_ratio << std::endl;
+//     std::cout << "Strategy Return Volatility: " << *strat_ret_vol << std::endl;
+//     std::cout << "Annual Mean Strategy Return: " << *annual_mean_strat_ret << std::endl;
+//     std::cout << "Average Holding Days: " << *average_holding_days << std::endl;
+//     std::cout << "Total Portfolio Return: " << total_return - 1 << std::endl;
+//     std::cout << "Maximum Drawdown: " << max_drawdown * 100 << "%" << std::endl; // Convert to percentage
+//     return max_drawdown;
+// }
+
 
 double Evaluator::CorrelationVec(const std::vector<double> all_task_preds, const std::vector<double> price_diff) {
+/*The function is to calculate the pearson correlation for two vectors. It handles the case where the two vectors are unequal in length.
+Note the function checks when the std of preds are almost 0. This happens because alphas are weak predictors and might generate same predictions.
+This is solved by a THRESHOLD of 1e-12.*/
 
+  // If the lengths are not equal, select the length that share in common.
   IntegerT length = all_task_preds.size();
   if (all_task_preds.size() != price_diff.size()) length = std::min(all_task_preds.size(), price_diff.size());
 
-  vector<double>::const_iterator first_all_task_preds = all_task_preds.begin() + (all_task_preds.size() - length);
-  vector<double>::const_iterator last_all_task_preds = all_task_preds.end();
-  vector<double> new_all_task_preds(first_all_task_preds, last_all_task_preds);
-
-  vector<double>::const_iterator first_price_diff = price_diff.begin() + (price_diff.size() - length);
-  vector<double>::const_iterator last_price_diff = price_diff.end();
-  vector<double> new_price_diff(first_price_diff, last_price_diff);
+  // Select the later part of both sequence. In other words, truncate the front part of the sequence if too long.
+  vector<double> new_all_task_preds(all_task_preds.end() - length, all_task_preds.end());
+  vector<double> new_price_diff(price_diff.end() - length, price_diff.end());
 
   double sum = 0;
   for (std::vector<double>::size_type j = 0; j < new_all_task_preds.size(); j++) {
     sum += ((new_all_task_preds[j] - mean(new_all_task_preds)) * (new_price_diff[j] - mean(new_price_diff)));
   }
 
-  sum = sum / (stdev(new_all_task_preds) * stdev(new_price_diff) * static_cast<double>(new_all_task_preds.size()));          
+  // Calculate standard deviations
+  double stdev_all_task_preds = stdev(new_all_task_preds);
+  double stdev_price_diff = stdev(new_price_diff);
 
+  // Define a small tolerance level
+  const double TOLERANCE = 1e-8;
+
+  // Check for near-zero standard deviation
+  if(stdev_all_task_preds < TOLERANCE || stdev_price_diff < TOLERANCE) {
+    return 0.0;  // Return 0 or any other predefined value to indicate undefined correlation
+  }
+
+  // Proceed with the calculation
+  sum = sum / (stdev_all_task_preds * stdev_price_diff * static_cast<double>(new_all_task_preds.size()));
+  
   return sum;
 }
 
 double Evaluator::Correlation(const std::vector<std::vector<double> > all_task_preds, const std::vector<std::vector<double> > price_diff) {
-
+/*The function is to calculate the pearson correlation for two matrices of preds and returns where the dim 1 is temporal and dim 0 is stocks.
+Note the function checks when the std of preds are almost 0. This happens because alphas are weak predictors and might generate same predictions.
+This is solved by a THRESHOLD of 1e-12.*/
     CHECK(all_task_preds.size() == price_diff.size());
     for (std::vector<double>::size_type j = 0; j < all_task_preds.size(); j++) {
       CHECK(all_task_preds[j].size() == price_diff[j].size());
     }
     std::vector<double> preds_column;
     std::vector<double> price_diff_column;
-    double result = 0;
-    for (std::vector<double>::size_type i = 0; i < all_task_preds[0].size(); i++) 
-      {      
+    double totalCorrelation = 0;
+    size_t validColumns = 0;
+
+    for (std::vector<double>::size_type i = 0; i < all_task_preds[0].size(); i++) {
         preds_column.clear();
         price_diff_column.clear();
-        CHECK(preds_column.size() == 0);
-        CHECK(price_diff_column.size() == 0);
-        for (std::vector<double>::size_type j = 0; j < all_task_preds.size(); j++) {
-          if (std::abs(all_task_preds[j][i]) != 1234 && std::abs(price_diff[j][i]) != 1234) {
-            preds_column.push_back(all_task_preds[j][i]);
-            price_diff_column.push_back(price_diff[j][i]);
-          } 
-        }
-        CHECK(preds_column.size() == price_diff_column.size());
-        double sum = 0;
-        for (std::vector<double>::size_type j = 0; j < preds_column.size(); j++) {
-          sum += ((preds_column[j] - mean(preds_column)) * (price_diff_column[j] - mean(price_diff_column)));
-        }
-        if (stdev(preds_column) == 0.0 || preds_column.size() == 0 || price_diff_column.size() == 0) { // after adding fec check, sometimes preds_column could have very few stocks' results even nothing. Adding this the latter two conditions check then can avoid preds_column equal to nothing. Add the first condition to check if any nonsense predictions.
-          return 0; // if at one time step all preds are the same then must be not learning anything useful then we should return nothing at all;
-        } else {
-          result += sum / (stdev(preds_column) * stdev(price_diff_column) * static_cast<double>(preds_column.size()));          
-        }
-      }
-      result = result/static_cast<double>(all_task_preds[0].size());
 
+        for (std::vector<double>::size_type j = 0; j < all_task_preds.size(); j++) {
+            if (std::abs(all_task_preds[j][i]) != 1234 && std::abs(price_diff[j][i]) != 1234) {
+                preds_column.push_back(all_task_preds[j][i]);
+                price_diff_column.push_back(price_diff[j][i]);
+            }
+        }
+
+        double predsMean = mean(preds_column);
+        double priceDiffMean = mean(price_diff_column);
+        double predsStdDev = stdev(preds_column);
+        double priceDiffStdDev = stdev(price_diff_column);
+
+        // Define a small tolerance level
+        const double TOLERANCE = 1e-8;
+
+        // Check for near-zero standard deviation
+        if(predsStdDev < TOLERANCE || preds_column.empty()) {
+            totalCorrelation += 0;
+            validColumns++; 
+            // std::cout << "predsStdDev" << predsStdDev << std::endl;
+        } else {
+            // Printing the vectors for inspection
+            // std::cout << "=== Time step " << i << " ===" << std::endl;
+            // std::cout << "Preds column values: ";
+            // for (const auto& val : preds_column) {
+            //     std::cout << val << " ";
+            // }
+            // std::cout << std::endl;
+
+            // std::cout << "Price diff column values: ";
+            // for (const auto& val : price_diff_column) {
+            //     std::cout << val << " ";
+            // }
+            // std::cout << std::endl;
+
+            double sum = 0;
+            for (std::vector<double>::size_type j = 0; j < preds_column.size(); j++) {
+                sum += (preds_column[j] - predsMean) * (price_diff_column[j] - priceDiffMean);
+                // if (abs((preds_column[j] - predsMean) * (price_diff_column[j] - priceDiffMean)) > 0.05)
+                // std::cout << "(preds_column[j] - predsMean) * (price_diff_column[j] - priceDiffMean)" << (preds_column[j] - predsMean) * (price_diff_column[j] - priceDiffMean) << std::endl;
+            }
+            // std::cout << "sum" << sum << std::endl;
+            double correlation = sum / (predsStdDev * priceDiffStdDev * preds_column.size());
+            totalCorrelation += correlation;
+            validColumns++;
+            // std::cout << "=== i: " << i << std::endl;
+            // std::cout << preds_column.size() << std::endl;
+            // std::cout << "predsMean" << predsMean << std::endl;
+            // std::cout << "priceDiffMean" << priceDiffMean << std::endl;
+            // std::cout << "predsStdDev" << predsStdDev << std::endl;
+            // std::cout << "priceDiffStdDev" << priceDiffStdDev << std::endl;
+            // std::cout << "correlation" << correlation << std::endl;
+            // std::cout << "validColumns" << validColumns << std::endl;          
+        }
+        // std::cout << "Correlation for column " << i << ": " << correlation << std::endl;
+    }
+
+    // Average correlation 
+    double result = totalCorrelation / validColumns;
+    // std::cout << "result" << result << std::endl;
+    // exit(0);
     return result;
 }
 
