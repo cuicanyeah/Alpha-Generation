@@ -1500,7 +1500,7 @@ inline bool Executor<F>::TrainNoOptImpl(const IntegerT max_steps,
       }
     }
 
-    ProbabilityConverter<F>::Convert(&memory_);
+    // ProbabilityConverter<F>::Convert(&memory_);
     
     // Check whether we should stop early.
     const Scalar& label = train_it->GetLabel();
@@ -1512,7 +1512,7 @@ inline bool Executor<F>::TrainNoOptImpl(const IntegerT max_steps,
       continue;
     }
     const double abs_error = ErrorComputer<F>::Compute(memory_, label);
-    if (isnan(abs_error) || abs_error > max_abs_error_) {
+    if (isnan(abs_error)) { // || abs_error > max_abs_error_
       return false;
     }
     if (errors != nullptr) {
@@ -1754,7 +1754,7 @@ bool Executor<F>::TrainOptImpl(const IntegerT max_steps,
     }
 
     // allow all to sigmod because predicting return
-    ProbabilityConverter<F>::Convert(&memory_);
+    // ProbabilityConverter<F>::Convert(&memory_);
     // Check whether we should stop early.
     const Scalar& label = train_it->GetLabel();
 
@@ -1766,7 +1766,7 @@ bool Executor<F>::TrainOptImpl(const IntegerT max_steps,
       continue;
     }
     const double abs_error = ErrorComputer<F>::Compute(memory_, label);
-    if (isnan(abs_error) || abs_error > max_abs_error_) {
+    if (isnan(abs_error)) { //  || abs_error > max_abs_error_
       return false;
     }
     if (errors != nullptr) {
@@ -1855,6 +1855,7 @@ double Executor<F>::Validate(const IntegerT max_steps, std::vector<double>* erro
   if (price_diff != nullptr) {
     price_diff->reserve(dataset_.ValidSteps());
   }
+
   vector<double> relatiion_start_list = {0,36,69,74,79,235,237,369,386,387,406,411,452,464,508,524,530,539,543,551,553,570,599,605,616,622,635,643,661,663,670,671,691,700,701,707,718,721,724,726,730,732,734,744,749,757,764,767,775,782,802,805,809,813,816,822,825,830,833,837,843,850,852,860,862,866,869,875,880,882,890,891,896,898,903,904,908,910,915,921,928,940,946,952,954,957,964,965,966,971,975,979,984,992,994,995,997,1000,1003,1004,1005,1007,1008,1009,1010,1012,1014,1018,1020,1021,1022,1024,1025};
 
   const IntegerT num_steps =
@@ -1866,8 +1867,13 @@ double Executor<F>::Validate(const IntegerT max_steps, std::vector<double>* erro
 
   TaskIterator<F> valid_it = dataset_.ValidIterator();
 
+  // std::string filename_2 = "/hdd8/james/stock_prediction_system/AlphaEvolve_HF/debug.txt";
+  // std::ofstream outFile(filename_2, std::ios::app);
+
+  // outFile << "task_index: " << task_index << "\n";
+
   for (IntegerT step = 0; step < num_steps; ++step) {
-    // std::cout << num_steps << std::endl;
+    // if (step > 440) outFile << "num_steps" << step << "\n";
     // Run predict component function for this example.
     const Matrix<F>& features = valid_it.GetFeatures();
     if (CheckFeature(features)) {
@@ -2025,17 +2031,47 @@ double Executor<F>::Validate(const IntegerT max_steps, std::vector<double>* erro
       ExecuteMyInstruction(*instruction, rand_gen_, &memory_, features);
       ++ins_count;            
      } else {
+     
+      // if (step > 440)outFile <<  "Memory before ExecuteMyInstruction:\n";
+      // for (const auto& val : memory_.matrix_) {
+      //     if (step > 440) outFile <<  val << " "<< "\n";
+      //     break;
+      // }
+      // if (step > 440) outFile <<  "scalars: ";
+      // for (const auto& val : memory_.scalar_) {
+      //     if (step > 440) outFile <<  val << " ";
+      // }      
+      // if (step > 440) outFile <<  "\n";
+      // if (step > 440)outFile <<  "instruction" << instruction<< "\n"; 
+      // if (step > 440)outFile <<  "instruction->op_ " << instruction->op_<< "\n";
+      // if (step > 440)outFile <<  "instruction->in1_ " << instruction->in1_<< " " << memory_.scalar_[instruction->in1_]<< "\n";
+      // if (step > 440)outFile <<  "instruction->in2_ " << instruction->in2_<< " " << memory_.scalar_[instruction->in2_]<< "\n";
+      // if (step > 440)outFile <<  "instruction->out_ " << instruction->out_<< " " << memory_.scalar_[instruction->out_]<< "\n";
       ExecuteMyInstruction(*instruction, rand_gen_, &memory_, features);
+      // if (step > 440)outFile <<  "instruction->op_ " << instruction->op_<< "\n";
+      // if (step > 440)outFile <<  "instruction->in1_ " << instruction->in1_<< " " << memory_.scalar_[instruction->in1_]<< "\n";
+      // if (step > 440)outFile <<  "instruction->in2_ " << instruction->in2_<< " " << memory_.scalar_[instruction->in2_]<< "\n";
+      // if (step > 440)outFile <<  "instruction->out_ " << instruction->out_<< " " << memory_.scalar_[instruction->out_]<< "\n";      
+      // if (step > 440)outFile <<  "Memory after ExecuteMyInstruction:\n";
+      // for (const auto& val : memory_.matrix_) {
+      //     std::cout << val << " ";
+      //     break;
+      // }         
+
       ++ins_count;
      }
     }
-
-    ProbabilityConverter<F>::Convert(&memory_);
+    // ProbabilityConverter<F>::Convert(&memory_);
+    // if (step > 440)outFile << "after scalars: "<< "\n";
+    // for (const auto& val : memory_.scalar_) {
+    //     if (step > 440)outFile << val << " ";
+    // }    
     // Accumulate the loss.
     double error = 0.0;
     double pred = 0.0;
     const Scalar& label = valid_it.GetLabel();
-    if (std::abs(label) == 1234) {
+    // if (step > 440)outFile <<  "label" << label<< "\n"; 
+    if (std::abs(label) == 1234 || std::abs(memory_.scalar_[kPredictionsScalarAddress]) < 1e-01) {
 
       if (preds != nullptr) {
         preds->push_back(-1234);
@@ -2046,7 +2082,7 @@ double Executor<F>::Validate(const IntegerT max_steps, std::vector<double>* erro
 
       ++skip_sample;
       valid_it.Next();
-
+      // if (step > 440)outFile <<  "invalid memory_.scalar_[kPredictionsScalarAddress]" << memory_.scalar_[kPredictionsScalarAddress] << "\n"; 
       continue;
     }
     switch (dataset_.eval_type_) {
@@ -2060,13 +2096,17 @@ double Executor<F>::Validate(const IntegerT max_steps, std::vector<double>* erro
                                                    &loss, &pred);
         break;
       }
+      case NO_CHANGE: {
+        pred = memory_.scalar_[kPredictionsScalarAddress];
+        break;
+      }
       case INVALID_EVAL_TYPE:
         LOG(FATAL) << "Invalid eval type." << std::endl;
       // Do not add default case here. All enum values should be supported.
     }
     const double abs_error = std::abs(error);
-
-    if (isnan(abs_error) || abs_error > max_abs_error_ || isnan(pred)) {
+     
+    if (isnan(abs_error) || isnan(pred)) { // || abs_error > max_abs_error_ 
 
       if (preds != nullptr && price_diff != nullptr) {
         preds->clear();
@@ -2086,10 +2126,13 @@ double Executor<F>::Validate(const IntegerT max_steps, std::vector<double>* erro
     if (price_diff != nullptr) {
       price_diff->push_back(valid_it.GetLabel());
     }
-
+    // if (step > 440)outFile <<  "max_abs_error_: " << max_abs_error_ << " " << "\n";
+    // if (step > 440)outFile <<  "pred into preds: " << pred << " " << "\n";
+    // if (step > 440)outFile <<  "into price_diff vec valid_it.GetLabel() " << valid_it.GetLabel() << " " << "\n";
     valid_it.Next();
   }
-
+    
+  // outFile.close(); 
   // Convert to fitness.
   double fitness;
   switch (dataset_.eval_type_) {
