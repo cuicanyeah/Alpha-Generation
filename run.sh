@@ -14,28 +14,32 @@
 
 # Modifications copyright (C) 2021 <NUS/Cui Can>
 
-while getopts a:p:m:s:v:t:e:i:c:n:d:g:l:b:f: flag
+while getopts a:p:m:s:v:t:e:i:c:n:d:g:l:b:f:h:j:o: flag
 do
     case "${flag}" in
         a) init=${OPTARG};;
-        p) the_output_path_for_evolved_alphas_and_performance=${OPTARG};;
-        m) my_alpha_file_path=${OPTARG};;
-        s) steps=${OPTARG};;
-        v) cutoff_valid=${OPTARG};;
-        t) cutoff_test=${OPTARG};;
+        p) the_output_path_for_evolved_alphas_and_performance=${OPTARG};; # a directory for outputing alpha performance results
+        m) my_alpha_file_path=${OPTARG};; # the directory for initial alpha being evolved
+        s) steps=${OPTARG};; # maximum number steps for the evolution
+        v) cutoff_valid=${OPTARG};; # a vector of returns on the validation period for weak correlation check
+        t) cutoff_test=${OPTARG};; # a vector of returns on the test period for test if there is still weak correlation on test period
         e) test_efficiency=${OPTARG};;
         i) predict_index=${OPTARG};;
         c) predict_index_confidence=${OPTARG};;
         n) num_top_stocks=${OPTARG};;
         d) try_random_seeds=${OPTARG};;
-        g) generate_preds_data=${OPTARG};;
+        g) generate_preds_data=${OPTARG};; # a directory for outputing alpha predictions, e.g., /hdd9/james/AlphaEvolve_HF
         l) all_timesteps=${OPTARG};;
         b) stock_market=${OPTARG};;
         f) num_stocks=${OPTARG};;
+        h) num_train_samples=${OPTARG};; # num_train_samples should follow the number determined by the generate_datasets.py (i.e., num_train_examples) and specified in DATA_DIR
+        j) num_valid_samples=${OPTARG};; # num_valid_samples should follow the number determined by the generate_datasets.py (i.e., num_valid_examples) and specified in DATA_DIR
+        o) input_data_folder=${OPTARG};; # the directory for the input data
+        # k) if_evaluate=${OPTARG};; # if it is evaluating the we set sample to the min of 13 and use valid samples for evaluation
     esac
 done
 
-DATA_DIR=$(pwd)/processed_data/data_for_${stock_market} # _preds
+DATA_DIR=${input_data_folder} # _preds
 
 bazel --output_user_root=/hdd9/james/folder_to_make_space_for_home/bazel/_bazel_james9/ee9fe0b5d3fd851ad0c81ee9b1bc55a5 run -c opt \
   --copt=-DMAX_SCALAR_ADDRESSES=30 \
@@ -61,11 +65,11 @@ bazel --output_user_root=/hdd9/james/folder_to_make_space_for_home/bazel/_bazel_
               max_supported_data_seed: 1 \
             } \
             features_size: 13 \
-            num_train_examples: 1000 \
-            num_valid_examples: 228 \
+            num_train_examples: ${num_train_samples:-1} \
+            num_valid_examples: ${num_valid_samples:-471} \
             num_train_epochs: 1 \
             num_tasks: ${num_stocks:-1402} \
-            eval_type: RMS_ERROR\
+            eval_type: NO_CHANGE\
           } \
         } \
         setup_ops: [SCALAR_CONST_SET_OP, VECTOR_CONST_SET_OP, MATRIX_CONST_SET_OP, SCALAR_UNIFORM_SET_OP, VECTOR_UNIFORM_SET_OP, MATRIX_UNIFORM_SET_OP, SCALAR_GAUSSIAN_SET_OP, VECTOR_GAUSSIAN_SET_OP, MATRIX_GAUSSIAN_SET_OP] \
