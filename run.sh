@@ -14,30 +14,31 @@
 
 # Modifications copyright (C) 2021 <NUS/Cui Can>
 
-while getopts a:p:m:s:v:t:e:i:c:n:d:g:l:b:f:h:j:o: flag
+while getopts a:p:m:s:v:t:e:i:c:n:d:g:b:f:h:j:o: flag
 do
     case "${flag}" in
-        a) init=${OPTARG};;
+        a) init=${OPTARG};; # select how we initialize our population, e.g., MY_ALPHA to build the initial population using a given alpha sepecified by -m
         p) the_output_path_for_evolved_alphas_and_performance=${OPTARG};; # a directory for outputing alpha performance results
         m) my_alpha_file_path=${OPTARG};; # the directory for initial alpha being evolved
         s) steps=${OPTARG};; # maximum number steps for the evolution
         v) cutoff_valid=${OPTARG};; # a vector of returns on the validation period for weak correlation check
         t) cutoff_test=${OPTARG};; # a vector of returns on the test period for test if there is still weak correlation on test period
-        e) test_efficiency=${OPTARG};;
-        i) predict_index=${OPTARG};;
-        c) predict_index_confidence=${OPTARG};;
-        n) num_top_stocks=${OPTARG};;
-        d) try_random_seeds=${OPTARG};;
-        g) generate_preds_data=${OPTARG};; # a directory for outputing alpha predictions, e.g., /hdd9/james/AlphaEvolve_HF
-        l) all_timesteps=${OPTARG};;
-        b) stock_market=${OPTARG};;
-        f) num_stocks=${OPTARG};;
+        e) test_efficiency=${OPTARG};; # if we are testing efficiency
+        i) predict_index=${OPTARG};; # if we are predicting stock index
+        c) predict_index_confidence=${OPTARG};; # if we are predicting stock index, then set a confidence interval
+        n) num_top_stocks=${OPTARG};; # number of top/bottom stocks in the long short trading strategy
+        d) try_random_seeds=${OPTARG};; # random seed used in the evolutionary process
+        g) generate_preds_data=${OPTARG};; # a directory for outputing alpha predictions. When we provide a path, we are in evaluation mode and terminate early after evaluation.
+        b) stock_market=${OPTARG};; # the stock market we used as dataset [NASDAQ, NYSE, ALL]
+        f) num_stocks=${OPTARG};; # the total number of stocks we considered in our stock universe
         h) num_train_samples=${OPTARG};; # num_train_samples should follow the number determined by the generate_datasets.py (i.e., num_train_examples) and specified in DATA_DIR
         j) num_valid_samples=${OPTARG};; # num_valid_samples should follow the number determined by the generate_datasets.py (i.e., num_valid_examples) and specified in DATA_DIR
         o) input_data_folder=${OPTARG};; # the directory for the input data
         # k) if_evaluate=${OPTARG};; # if it is evaluating the we set sample to the min of 13 and use valid samples for evaluation
     esac
 done
+
+all_timesteps=$(( num_train_samples + num_valid_samples ))
 
 DATA_DIR=${input_data_folder} # _preds
 
