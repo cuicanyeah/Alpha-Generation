@@ -230,20 +230,31 @@ std::pair<double, std::vector<double>> Evaluator::Evaluate(const Algorithm& algo
 
   vector<double> result_vector;
   result_vector.resize(14);
-  const IntegerT num_of_stocks_to_approximate_rank = tasks_.size(); 
-  const IntegerT all_rounds = num_stock_rank_count + 1; // if we found rank ops for stocks, we need to loop over stocks by one more round. The previous rounds are used to stored alpha values, and the last round to calculate the rank op for stocks.
+  const IntegerT num_of_stocks = tasks_.size(); 
 
-  // check whether we use AlphaEvolve code to generate alpha's preds data. If yes, we add past year's data to generate predictions. e.g., normally 2013-2017, now for preds on 2016, we use 2012-2016
-  if (!generate_preds_data_.empty()) all_timesteps_ = 2244-12; // don't know why 2244 here. Maybe just make it larger so no bug happens in executor.h when calculate rank??
+  /* if we found rank ops for stocks, we need to loop over stocks by one more round. 
+  The previous rounds are used to stored alpha values, and the last round to calculate the rank op for stocks.
+  +1 means the original loop to calculate the final results and we have previous num_stock_rank_count rounds because
+  we need this rounds' number of intermediate results */
+  const IntegerT all_rounds = num_stock_rank_count + 1; 
+
+  // check whether we want to generate alpha's preds data. If yes, we add past years' data to generate predictions. e.g., for predictions on 2013-2017, we use 2012-2016 for preds on year 2016 and 2009-2013 for year 2013
+  if (!generate_preds_data_.empty()) all_timesteps_ = 2244-12; 
   
-  // if we detect rank ops in an alpha, we prepare a tasks_rank 3d tensor to hold related values for rank calculation
-  vector<vector<vector<double>>> tasks_rank;
-  vector<vector<double>> vec_for_push(num_of_stocks_to_approximate_rank, vector<double>(all_timesteps_-12-12)); ///all_timesteps_-12-12 e.g., 1000 + 244 - 12 (train iterator minus 12) - 12 (valid/test iterator minus 12)
-  for (IntegerT i = 0; i < (num_stock_rank_count + num_TS_rank_count); ++i) tasks_rank.push_back(vec_for_push);
+  /* The current logic to implement rank_op and ts_rank_op is to build a large 3d tensor, i.e., vector<vector<vector<double>>> tensor_for_intermediate_results to hold intermediate results. 
+  Once we detect there is a rank op in the algorithm we repeat the task loop again because the first loop is to store all the intermediate results.
+  Then the next loop is to calculate the result of the rank op. */
+  vector<vector<vector<double>>> tensor_for_intermediate_results;
+  /* all_timesteps_-12-12 e.g., 1000 (train sample size) + 244 (valid/test sample size) - 12 (minus 12 to build input matrix's time window, see more at task_util.h) 
+  - 12 (minus 12 to build input matrix's time window, see more at task_util.h)
+  [Question] Did we minus 12 because in the first 12 samples there is not enough to calculate ts_rank because you have too few samples to rank? Or just leave it */
+  vector<vector<double>> vec_for_intermediate_results(num_of_stocks, vector<double>(all_timesteps_-12-12)); 
+  for (IntegerT i = 0; i < (num_stock_rank_count + num_TS_rank_count); ++i) tensor_for_intermediate_results.push_back(vec_for_intermediate_results);
   for (IntegerT i = 0; i < (num_stock_rank_count + 1) * tasks_.size(); ++i) {
     task_indexes.push_back(i);
   }
 
+  // the following if and else conditions check if the fingerprint of the alpha is hashed in the cache. If yes, we retrieve its results; If not, we continue to evaluate the alpha.
   if (functional_cache_ != nullptr) {
 
     functional_cache_bit_gen_owned_->seed(kFunctionalCacheRandomSeed);
@@ -268,7 +279,7 @@ std::pair<double, std::vector<double>> Evaluator::Evaluate(const Algorithm& algo
             task->MaxTrainExamples() :
             train_budget_->TrainExamples(algorithm, task->MaxTrainExamples());
         double curr_fitness = -1.0;
-        curr_fitness = Execute(*task, num_train_examples, algorithm, &all_task_preds, &all_price_diff, &tasks_rank, this_round, task_index, &num_stock_rank, &num_TS_rank, num_of_stocks_to_approximate_rank, all_rounds, useful_list); 
+        curr_fitness = Execute(*task, num_train_examples, algorithm, &all_task_preds, &all_price_diff, &tensor_for_intermediate_results, this_round, task_index, &num_stock_rank, &num_TS_rank, num_of_stocks, all_rounds, useful_list); 
       }  
       // delete the previous timesteps missed for ranking because for TSranking the samples for the first few samples are not enough for the time window size
       for (auto i = all_task_preds.begin(); i != all_task_preds.end(); ++i) {
@@ -337,7 +348,7 @@ std::pair<double, std::vector<double>> Evaluator::Evaluate(const Algorithm& algo
           result_vector[6] = correlation_with_existing_alpha;
 
           // if evaluation mode we print the trading metrics
-          if (!generate_preds_data_.empty()) cout << "valid sharpe ratio: " << sharpe_ratio << "; valid correlation: " << correlation << "; valid max dropdown: " << max_dropdown << "valid correlation with existing alpha: " << correlation_with_existing_alpha << std::endl;
+          if (!generate_preds_data_.empty()) cout << "valid sharpe ratio: " << sharpe_ratio << "; valid correlation: " << correlation << "; valid max dropdown: " << max_dropdown << "; valid correlation with existing alpha: " << correlation_with_existing_alpha << std::endl;
           
           // we select the sharpe ratio in the valid period as the fitness score
           combined_fitness = sharpe_ratio;
@@ -369,7 +380,7 @@ std::pair<double, std::vector<double>> Evaluator::Evaluate(const Algorithm& algo
           
           // check whether we want to generate alpha's preds data (i.e., the predictions of formulaic alphas as features for later training purpose). If yes, save those preds as files.
           if (!generate_preds_data_.empty()) {
-            cout << "test sharpe ratio: " << sharpe_ratio << "; test correlation: " << test_correlation << "; test max dropdown: " << 1 - test_max_dropdown << "test correlation with existing alpha: " << correlation_with_existing_alpha << std::endl;
+            cout << "test sharpe ratio: " << sharpe_ratio << "; test correlation: " << test_correlation << "; test max dropdown: " << test_max_dropdown << "; test correlation with existing alpha: " << correlation_with_existing_alpha << std::endl;
             std::string filename_returns = generate_preds_data_ + "preds.txt";  
             std::ofstream outFilepreds(filename_returns);
             for (std::vector<double>::size_type i = 0; i < all_task_preds.size(); i++) 
@@ -1534,7 +1545,7 @@ This is solved by a THRESHOLD of 1e-12.*/
 
 double Evaluator::Correlation(const std::vector<std::vector<double> > all_task_preds, const std::vector<std::vector<double> > price_diff) {
 /*The function is to calculate the pearson correlation for two matrices of preds and returns where the dim 1 is temporal and dim 0 is stocks.
-Note the function checks when the std of preds are almost 0. This happens because alphas are weak predictors and might generate same predictions.
+Note the function checks if the std of preds are almost 0. This happens because alphas are weak predictors and might generate same predictions.
 This is solved by a THRESHOLD of 1e-12.*/
     CHECK(all_task_preds.size() == price_diff.size());
     for (std::vector<double>::size_type j = 0; j < all_task_preds.size(); j++) {
@@ -1543,6 +1554,7 @@ This is solved by a THRESHOLD of 1e-12.*/
     std::vector<double> preds_column;
     std::vector<double> price_diff_column;
     double totalCorrelation = 0;
+    double totalabsCorrelation = 0;
     size_t validColumns = 0;
 
     for (std::vector<double>::size_type i = 0; i < all_task_preds[0].size(); i++) {
@@ -1567,8 +1579,7 @@ This is solved by a THRESHOLD of 1e-12.*/
         // Check for near-zero standard deviation
         if(predsStdDev < TOLERANCE || preds_column.empty()) {
             totalCorrelation += 0;
-            validColumns++; 
-            // std::cout << "predsStdDev" << predsStdDev << std::endl;
+            // std::cout << "predsStdDev below threshold" << predsStdDev << std::endl;
         } else {
             // Printing the vectors for inspection
             // std::cout << "=== Time step " << i << " ===" << std::endl;
@@ -1593,6 +1604,7 @@ This is solved by a THRESHOLD of 1e-12.*/
             // std::cout << "sum" << sum << std::endl;
             double correlation = sum / (predsStdDev * priceDiffStdDev * preds_column.size());
             totalCorrelation += correlation;
+            totalabsCorrelation += std::abs(correlation);
             validColumns++;
             // std::cout << "=== i: " << i << std::endl;
             // std::cout << preds_column.size() << std::endl;
@@ -1601,15 +1613,19 @@ This is solved by a THRESHOLD of 1e-12.*/
             // std::cout << "predsStdDev" << predsStdDev << std::endl;
             // std::cout << "priceDiffStdDev" << priceDiffStdDev << std::endl;
             // std::cout << "correlation" << correlation << std::endl;
-            // std::cout << "validColumns" << validColumns << std::endl;          
+            // std::cout << "totalabsCorrelation" << totalabsCorrelation << std::endl;
         }
         // std::cout << "Correlation for column " << i << ": " << correlation << std::endl;
     }
 
     // Average correlation 
     double result = totalCorrelation / validColumns;
-    // std::cout << "result" << result << std::endl;
-    // exit(0);
+    double result1 = totalabsCorrelation / validColumns;
+    std::cout << "totalCorrelation" << totalCorrelation << std::endl;
+    std::cout << "validColumns" << validColumns << std::endl;  
+    std::cout << "totalabsCorrelation" << totalabsCorrelation << std::endl;
+    std::cout << "result" << result << std::endl;
+    std::cout << "result1" << result1 << std::endl;
     return result;
 }
 
@@ -1635,38 +1651,38 @@ double Evaluator::Execute(const TaskInterface& task,
                           const Algorithm& algorithm,
                           std::vector<std::vector<double>> *all_task_preds,
                           std::vector<std::vector<double>> *all_price_diff,
-                          std::vector<std::vector<std::vector<double>>>* tasks_rank,
+                          std::vector<std::vector<std::vector<double>>>* tensor_for_intermediate_results,
                           IntegerT this_round,
                           IntegerT task_index,
-                          IntegerT* num_stock_rank, IntegerT* num_TS_rank, const IntegerT num_of_stocks_to_approximate_rank, const IntegerT all_rounds, std::vector<IntegerT> *useful_list) {
+                          IntegerT* num_stock_rank, IntegerT* num_TS_rank, const IntegerT num_of_stocks, const IntegerT all_rounds, std::vector<IntegerT> *useful_list) {
   switch (task.FeaturesSize()) {
     case 2: {
       const Task<2>& downcasted_task = *SafeDowncast<2>(&task); // downcast is to change the task/dataset and then in execute task<F> is treated as dataset
-      return ExecuteImpl<2>(downcasted_task, num_train_examples, algorithm, all_task_preds, all_price_diff, tasks_rank, this_round, task_index, num_stock_rank, num_TS_rank, num_of_stocks_to_approximate_rank, all_rounds, useful_list);
+      return ExecuteImpl<2>(downcasted_task, num_train_examples, algorithm, all_task_preds, all_price_diff, tensor_for_intermediate_results, this_round, task_index, num_stock_rank, num_TS_rank, num_of_stocks, all_rounds, useful_list);
     }
     case 4: {
       const Task<4>& downcasted_task = *SafeDowncast<4>(&task);
-      return ExecuteImpl<4>(downcasted_task, num_train_examples, algorithm, all_task_preds, all_price_diff, tasks_rank, this_round, task_index, num_stock_rank, num_TS_rank, num_of_stocks_to_approximate_rank, all_rounds, useful_list);
+      return ExecuteImpl<4>(downcasted_task, num_train_examples, algorithm, all_task_preds, all_price_diff, tensor_for_intermediate_results, this_round, task_index, num_stock_rank, num_TS_rank, num_of_stocks, all_rounds, useful_list);
     }
     case 8: {
       const Task<8>& downcasted_task = *SafeDowncast<8>(&task);
-      return ExecuteImpl<8>(downcasted_task, num_train_examples, algorithm, all_task_preds, all_price_diff, tasks_rank, this_round, task_index, num_stock_rank, num_TS_rank, num_of_stocks_to_approximate_rank, all_rounds, useful_list);
+      return ExecuteImpl<8>(downcasted_task, num_train_examples, algorithm, all_task_preds, all_price_diff, tensor_for_intermediate_results, this_round, task_index, num_stock_rank, num_TS_rank, num_of_stocks, all_rounds, useful_list);
     }
     case 10: {
       const Task<10>& downcasted_task = *SafeDowncast<10>(&task);
-      return ExecuteImpl<10>(downcasted_task, num_train_examples, algorithm, all_task_preds, all_price_diff, tasks_rank, this_round, task_index, num_stock_rank, num_TS_rank, num_of_stocks_to_approximate_rank, all_rounds, useful_list);
+      return ExecuteImpl<10>(downcasted_task, num_train_examples, algorithm, all_task_preds, all_price_diff, tensor_for_intermediate_results, this_round, task_index, num_stock_rank, num_TS_rank, num_of_stocks, all_rounds, useful_list);
     }
     case 13: {
       const Task<13>& downcasted_task = *SafeDowncast<13>(&task);
-      return ExecuteImpl<13>(downcasted_task, num_train_examples, algorithm, all_task_preds, all_price_diff, tasks_rank, this_round, task_index, num_stock_rank, num_TS_rank, num_of_stocks_to_approximate_rank, all_rounds, useful_list);
+      return ExecuteImpl<13>(downcasted_task, num_train_examples, algorithm, all_task_preds, all_price_diff, tensor_for_intermediate_results, this_round, task_index, num_stock_rank, num_TS_rank, num_of_stocks, all_rounds, useful_list);
     }
     case 16: {
       const Task<16>& downcasted_task = *SafeDowncast<16>(&task);
-      return ExecuteImpl<16>(downcasted_task, num_train_examples, algorithm, all_task_preds, all_price_diff, tasks_rank, this_round, task_index, num_stock_rank, num_TS_rank, num_of_stocks_to_approximate_rank, all_rounds, useful_list);
+      return ExecuteImpl<16>(downcasted_task, num_train_examples, algorithm, all_task_preds, all_price_diff, tensor_for_intermediate_results, this_round, task_index, num_stock_rank, num_TS_rank, num_of_stocks, all_rounds, useful_list);
     }
     case 32: {
       const Task<32>& downcasted_task = *SafeDowncast<32>(&task);
-      return ExecuteImpl<32>(downcasted_task, num_train_examples, algorithm,  all_task_preds, all_price_diff, tasks_rank, this_round, task_index, num_stock_rank, num_TS_rank, num_of_stocks_to_approximate_rank, all_rounds, useful_list);
+      return ExecuteImpl<32>(downcasted_task, num_train_examples, algorithm,  all_task_preds, all_price_diff, tensor_for_intermediate_results, this_round, task_index, num_stock_rank, num_TS_rank, num_of_stocks, all_rounds, useful_list);
     }
     default:
       LOG(FATAL) << "Unsupported features size." << endl;
@@ -1683,17 +1699,17 @@ double Evaluator::ExecuteImpl(const Task<F>& task,
                               const Algorithm& algorithm,
                               std::vector<std::vector<double>>* all_task_preds,
                               std::vector<std::vector<double>>* all_price_diff,
-                              std::vector<std::vector<std::vector<double>>>* tasks_rank,
+                              std::vector<std::vector<std::vector<double>>>* tensor_for_intermediate_results,
                               IntegerT this_round,
                               IntegerT task_index,
-                              IntegerT* num_stock_rank, IntegerT* num_TS_rank, const IntegerT num_of_stocks_to_approximate_rank, const IntegerT all_rounds, std::vector<IntegerT> *useful_list) {
+                              IntegerT* num_stock_rank, IntegerT* num_TS_rank, const IntegerT num_of_stocks, const IntegerT all_rounds, std::vector<IntegerT> *useful_list) {
 
   Executor<F> executor(
       algorithm, task, num_train_examples, task.ValidSteps(),
       rand_gen_, max_abs_error_);
   vector<double> valid_preds;
   vector<double> price_diff;
-  const double fitness = executor.Execute(&valid_preds, &price_diff, tasks_rank, this_round, task_index, num_stock_rank, num_TS_rank, num_of_stocks_to_approximate_rank, nullptr, nullptr, useful_list);
+  const double fitness = executor.Execute(&valid_preds, &price_diff, tensor_for_intermediate_results, this_round, task_index, num_stock_rank, num_TS_rank, num_of_stocks, nullptr, nullptr, useful_list);
   if (this_round == all_rounds - 1) {
     all_task_preds->push_back(valid_preds);
     all_price_diff->push_back(price_diff);
