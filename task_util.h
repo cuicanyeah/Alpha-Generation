@@ -34,7 +34,7 @@ namespace alphaevolve {
 
 using ::std::shuffle;  // NOLINT
 using ::std::vector;  // NOLINT
-using ::std::cout;  // NOLINT
+// using ::std::cout;  // NOLINT
 
 const RandomSeedT kFirstParamSeedForTest = 9000;
 const RandomSeedT kFirstDataSeedForTest = 19000;
@@ -111,6 +111,7 @@ struct ClearAndResizeImpl {
     buffer->train_features_.resize(num_train_examples-(F-1));
     buffer->train_labels_.resize(num_train_examples-(F-1));
     if (false) {
+      // James: in generating preds, valid and train both lose 12 examples. But this should be improved
       buffer->valid_features_.resize(num_valid_examples-(F-1)+num_train_examples-(F-1));
       buffer->valid_labels_.resize(num_valid_examples-(F-1)+num_train_examples-(F-1));      
     }
@@ -191,10 +192,8 @@ struct StockTaskCreator {
             << full_path << std::endl;
         is.close();
       }
-
       /// pass the fourteenth feature to industry relation iterator
       buffer->industry_relation_ = saved_dataset.train_features(0).features(F);
-
       // /// random check the fourteenth feature ind relation is correct
       // if (saved_dataset.train_features(0).features(F) != saved_dataset.train_features(100).features(F)) {
       //   for (IntegerT i_dim = 0; i_dim < F + 1; ++i_dim) {
@@ -208,7 +207,6 @@ struct StockTaskCreator {
 
       // Check there is enough data saved in the sstable.
       // std::cout << "saved_dataset.valid_features_size()" << saved_dataset.valid_features_size() << std::endl;
-
       CHECK_GE(saved_dataset.train_features_size(),
                buffer->train_features_.size())
           << "Not enough training examples in " << full_path << std::endl;
@@ -229,27 +227,30 @@ struct StockTaskCreator {
         buffer->train_labels_[k-(F-1)] = saved_dataset.train_labels(k);
       }
 
-      // james: add flag here to decide whether make valid buffer large to output alpha data as feature
+      // add flag here to decide whether make valid buffer large to include the train sample size (i.e., saved_dataset.train_features_size()) as well as
+      // the valid sample size. This is to make alpha evaluation on both period.
       if (false) {
         CHECK_GE(saved_dataset.valid_features_size()+2*saved_dataset.train_features_size(),
                  buffer->valid_features_.size());
         CHECK_GE(saved_dataset.valid_labels_size()+2*saved_dataset.train_features_size(),
                  buffer->valid_labels_.size());
         CHECK_EQ(F, 13);
-
         for (IntegerT k = F-1; k < buffer->train_features_.size()+(F-1); ++k)  {
           for (IntegerT j_dim = 0; j_dim < F; ++j_dim) {
             for (IntegerT i_dim = 0; i_dim < F; ++i_dim) {
                buffer->valid_features_[k-(F-1)](i_dim, j_dim) =
-                   saved_dataset.train_features(k-(F-1-j_dim)).features(i_dim);
+                   saved_dataset.train_features(k-(F-1-j_dim)).features(i_dim);                
              }
           }
           if (saved_dataset.train_labels(k-(F-1)) > 1) cout << "saved_dataset.train_labels(k) > 1!!!!!!!!!" << saved_dataset.train_labels(k) << endl;
 
           buffer->valid_labels_[k-(F-1)] = saved_dataset.train_labels(k);
         }
-        // std::cout << "buffer->valid_features_.size()" << buffer->valid_features_.size() << std::endl;
-        for (IntegerT k = F-1+buffer->train_features_.size(); k < buffer->valid_features_.size()+(F-1); ++k) {
+
+        // [need optimize the code] here we have severe loss of data. Given timesteps of 1228, we should have 1216 samples by right
+        // but here we use 13 steps from train to get one sample, 1215 steps in valid to get 1203 samples. 1204 in total
+        // the following loop add the 1203 samples after the previous loop add the first sample from train.
+        for (IntegerT k = F-1+buffer->train_features_.size(); k < buffer->valid_features_.size()+(F-1)-1; ++k) { // -1 ??? 
           for (IntegerT j_dim = 0; j_dim < F; ++j_dim) {
             for (IntegerT i_dim = 0; i_dim < F; ++i_dim) {
                buffer->valid_features_[k-(F-1)](i_dim, j_dim) =
@@ -258,7 +259,7 @@ struct StockTaskCreator {
           }
 
           buffer->valid_labels_[k-(F-1)] = saved_dataset.valid_labels(k-buffer->train_features_.size());
-        } 
+        }
       }
       else {
         CHECK_GE(saved_dataset.valid_features_size(),
@@ -266,7 +267,13 @@ struct StockTaskCreator {
         CHECK_GE(saved_dataset.valid_labels_size(),
                  buffer->valid_labels_.size());
         CHECK_EQ(F, 13);
+        
         // std::cout << "buffer->valid_features_.size()" << buffer->valid_features_.size() << std::endl;
+        // std::cout << "saved_dataset.valid_features_size()" << saved_dataset.valid_features_size() << std::endl;
+        
+        /* This loop put temporal dimension into dimension 1 (i.e., j_dim) of the buffer->valid_features_ 
+        and feature dimension into dimension 0 (i.e., 0_dim). Note buffer->valid_features_.size() is 12 
+        less than saved_dataset.valid_features_size() because of the moving average window. */
         for (IntegerT k = F-1; k < buffer->valid_features_.size()+(F-1); ++k)  {
           for (IntegerT j_dim = 0; j_dim < F; ++j_dim) {
             for (IntegerT i_dim = 0; i_dim < F; ++i_dim) {
@@ -278,12 +285,13 @@ struct StockTaskCreator {
           buffer->valid_labels_[k-(F-1)] = saved_dataset.valid_labels(k);
         }        
       }
-      std::string filename_price_diff = "/hdd7/james/HSI_AlphaEvolve/debug_can_delete_why_dont_match/long_data/" +std::to_string(ith_task)+ "_labelstrue.txt";  
-      std::ofstream outFilelabelst(filename_price_diff);
-      for (IntegerT k = 0; k < buffer->valid_features_.size(); ++k) {
-        outFilelabelst << buffer->valid_labels_[k] << " ";
-      }      
-      outFilelabelst.close();  
+      //// for debug purpose, save the returns into a file
+      // std::string filename_price_diff = "/hdd7/james/HSI_AlphaEvolve/debug_can_delete_why_dont_match/long_data/" +std::to_string(ith_task)+ "_labelsfalse.txt";  
+      // std::ofstream outFilelabelst(filename_price_diff);
+      // for (IntegerT k = 0; k < buffer->valid_features_.size(); ++k) {
+      //   outFilelabelst << buffer->valid_labels_[k] << " ";
+      // }      
+      // outFilelabelst.close();  
     } else {
       LOG(FATAL) << ("You should either provide both or none of the positive"
                      " and negative classes.") << std::endl;
