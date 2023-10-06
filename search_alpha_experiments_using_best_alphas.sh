@@ -1,27 +1,37 @@
-# for market NYSE num_stocks is 1402; for NASDAQ num_stocks is 1076
-while getopts r:o:b:t:m:n: flag
+# This file search alphas in five rounds where each round using previous rounds' generated alphas' returns on the validation dataset
+# as cutoff threshold to reduce correlation. This file uses parallel processes to perform alpha generation.
+
+while getopts r:o:b:t:m:n:i:a:c: flag
 do
     case "${flag}" in
-        r) rounds=${OPTARG};;
-        o) output_dir=${OPTARG};;
-	b) the_round_use_previous_best_alphas=${OPTARG};;
-        t) time=${OPTARG};;
-        m) market=${OPTARG};;
-		n) num_stocks=${OPTARG};;
+        r) rounds=${OPTARG};; # an integer representing the number of rounds we want to run our alpha search. 
+        o) output_dir=${OPTARG};; # output directory for alpha results
+		b) the_round_use_previous_best_alphas=${OPTARG};; # this is the round where we use previously generated alpha (in previous rounds) as initial alphas
+        t) time=${OPTARG};; # our time budget
+        m) market=${OPTARG};; # the stock market
+		n) num_stocks=${OPTARG};; # number of stocks in the stock universe: for market NYSE num_stocks is 1402; for NASDAQ num_stocks is 1076; for ALL stocks selected based liquidity is 3000
+		i) input_data_folder=${OPTARG};; # the input data path
+		a) num_train_samples=${OPTARG};; # number of training samples
+		c) num_valid_samples=${OPTARG};; # number of valid samples
     esac
 done
 
 home=$(pwd)
+echo "Home directory: $home"
+echo "Output directory: $output_dir"
 
-if [ -z "$output_dir" ]
+if [ -z "${home}/${output_dir}" ]
 then
-	echo "No output_dir argument supplied"
+    echo "No output_dir argument supplied"
+elif [ -d "${home}/${output_dir}" ]; then
+    echo "delete repeated experiment results"
+    rm -r "${home}/${output_dir}"
 else
-	echo "delete repeated experiment results"
-	rm -rf ${home}/${output_dir}
+    echo "Directory ${home}/${output_dir} does not exist"
 fi
 
 mkdir -p ${home}/${output_dir}
+echo "Created output dir!"
 
 mkdir -p ${home}/${output_dir}/best_in_each_round
 
@@ -65,7 +75,7 @@ do
         	                                best_test_returns+="${ith_best_test_returns};"
                 	                done
 					sed "s/^[ \t]*//" -i $file
-					timeout ${time}m bash ./run.sh -a MY_ALPHA -p $(pwd)/${output_dir}/candidate_best/best_alpha_${round_p}_${round}/  -m $file -s 100000000000 -v "${best_valid_returns}" -t "${best_test_returns}" -b ${market} -f ${num_stocks} &
+					timeout ${time}m bash ./run.sh -a MY_ALPHA -p $(pwd)/${output_dir}/candidate_best/best_alpha_${round_p}_${round}/  -m $file -s 100000000000 -v "${best_valid_returns}" -t "${best_test_returns}" -b ${market} -f ${num_stocks} -h ${num_train_samples} -j ${num_valid_samples} -o ${input_data_folder} &
 				done
 			done
 		done
@@ -125,8 +135,8 @@ do
                         fi
                         cd $home
                 done				
-	else
-		for init in 1000011 1000020 1000030 1000040 1000050 1000060 1000070 1000080 1000090 1000100
+	else # this else condition is the other cases where we are not in round -b as specified in the argument
+		for init in 1000011 1000020 1000030 1000040 1000050 1000060 1000070 1000080 1000090 1000100 # we are executing this amount of processes and each has its own folder to keep results
 	        do  
                         if test -d "$(pwd)/${output_dir}/evolution_process/${init}_${round}"; then
 				rm -r $(pwd)/${output_dir}/evolution_process/${init}_${round}
@@ -135,7 +145,7 @@ do
         		alpha_num="$((round-1))"
                		if [ $round -eq 1 ]
 			then
-				timeout ${time}m bash ./run.sh -a MY_ALPHA -p $(pwd)/${output_dir}/evolution_process/${init}_${round}/  -m $(pwd)/generated_alphas/best_alphas_${market}/alpha${alpha_num}.txt -s 100000000000 -v "" -t "" -d $init -b ${market} -f ${num_stocks} & # | xargs --max-procs=2
+				timeout ${time}m bash ./run.sh -a MY_ALPHA -p $(pwd)/${output_dir}/evolution_process/${init}_${round}/  -m $(pwd)/generated_alphas/best_alphas_${market}/alpha${alpha_num}.txt -s 100000000000 -v "" -t "" -d $init -b ${market} -f ${num_stocks} -h ${num_train_samples} -j ${num_valid_samples} -o ${input_data_folder} & # | xargs --max-procs=2
                 	else
 				best_valid_returns=""
                         	best_test_returns=""
@@ -146,7 +156,7 @@ do
                                 	ith_best_test_returns=${best_test_returns_[${i}]}
                                 	best_test_returns+="${ith_best_test_returns};"
                         	done
-                         		timeout ${time}m bash ./run.sh -a MY_ALPHA -p $(pwd)/${output_dir}/evolution_process/${init}_${round}/  -m $(pwd)/generated_alphas/best_alphas_${market}/alpha${alpha_num}.txt -s 100000000000 -v "${best_valid_returns}" -t "${best_test_returns}" -b ${market} -f ${num_stocks} &
+                         		timeout ${time}m bash ./run.sh -a MY_ALPHA -p $(pwd)/${output_dir}/evolution_process/${init}_${round}/  -m $(pwd)/generated_alphas/best_alphas_${market}/alpha${alpha_num}.txt -s 100000000000 -v "${best_valid_returns}" -t "${best_test_returns}" -b ${market} -f ${num_stocks} -h ${num_train_samples} -j ${num_valid_samples} -o ${input_data_folder} &
                 	fi
         	done
 		wait
