@@ -199,7 +199,6 @@ void run() {
       &bit_gen, &rand_gen);
   auto select_tasks =
       ParseTextFormat<TaskCollection>(GetFlag(FLAGS_select_tasks));
-  
   // Run search experiments and select best algorithm.
   IntegerT num_experiments = 0;
   double best_select_fitness = numeric_limits<double>::lowest();
@@ -210,13 +209,12 @@ void run() {
       RandomizeTaskSeeds(experiment_spec.mutable_search_tasks(),
                             rand_gen.UniformRandomSeed());
     }
-
     // Build non-reusable search structures.
     unique_ptr<FECCache> functional_cache =
         experiment_spec.has_fec() ?
             make_unique<FECCache>(experiment_spec.fec()) :
             nullptr;
-   
+
     Evaluator evaluator(
         experiment_spec.fitness_combination_mode(),
         experiment_spec.search_tasks(),
@@ -225,7 +223,6 @@ void run() {
         GetFlag(FLAGS_cutoff_valid), GetFlag(FLAGS_cutoff_test), GetFlag(FLAGS_test_efficiency),
         GetFlag(FLAGS_predict_index), GetFlag(FLAGS_predict_index_confidence), GetFlag(FLAGS_num_top_stocks),
         GetFlag(FLAGS_generate_preds_data), GetFlag(FLAGS_all_timesteps));
-    
     RegularizedEvolution regularized_evolution(
         &rand_gen, experiment_spec.population_size(),
         experiment_spec.tournament_size(),
