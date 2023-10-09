@@ -1,6 +1,6 @@
-# Stock-Prediction-System
+# AlphaEvolve
 
-The repository is the official implementation of the stock prediction system.
+The repository is the official implementation of AlphaEvolve.
 
 ## Environment:
 
