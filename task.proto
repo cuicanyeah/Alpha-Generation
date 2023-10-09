@@ -28,6 +28,7 @@ enum EvalType {
   INVALID_EVAL_TYPE = 0;
   RMS_ERROR = 1;
   ACCURACY = 4;
+  NO_CHANGE = 5;
 }
 
 // Encodes information about a task of a given kind.
