@@ -1618,15 +1618,19 @@ This is solved by a THRESHOLD of 1e-12.*/
         // std::cout << "Correlation for column " << i << ": " << correlation << std::endl;
     }
 
-    // Average correlation 
-    double result = totalCorrelation / validColumns;
-    double result1 = totalabsCorrelation / validColumns;
-    // std::cout << "totalCorrelation" << totalCorrelation << std::endl;
-    // std::cout << "validColumns" << validColumns << std::endl;  
-    // std::cout << "totalabsCorrelation" << totalabsCorrelation << std::endl;
-    // std::cout << "result" << result << std::endl;
-    // std::cout << "result1" << result1 << std::endl;
-    return result;
+    if (validColumns > 0) {
+      // Average correlation 
+      double result = totalCorrelation / validColumns;
+      double result1 = totalabsCorrelation / validColumns;
+      // std::cout << "totalCorrelation" << totalCorrelation << std::endl;
+      // std::cout << "validColumns" << validColumns << std::endl;  
+      // std::cout << "totalabsCorrelation" << totalabsCorrelation << std::endl;
+      // std::cout << "result" << result << std::endl;
+      // std::cout << "result1" << result1 << std::endl;
+      return result;      
+    } else {
+      return 0;
+    }
 }
 
 double Evaluator::mean(const std::vector<double> v) {
