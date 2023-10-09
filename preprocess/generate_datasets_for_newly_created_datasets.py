@@ -172,8 +172,38 @@ class EOD_Preprocessor:
                 print(self.tickers[index])
                 sys.exit()
 
+    def load_industry_relation_data(self, relation_data_path):
+        industry_ticker_file = os.path.join(relation_data_path,
+                                            self.market_name + '_industry_ticker.json')
+        ticker_index = {}
+        for index, ticker in enumerate(self.tickers):
+            ticker_index[ticker] = index
+        with open(industry_ticker_file, 'r') as fin:
+            industry_tickers = json.load(fin)
+        print('#industries: ', len(industry_tickers))
 
-    def generate_feature(self, if_date_list, selected_tickers_fname, begin_date, end_date,
+        # concatenate lists of all tickers of all industry
+        all_tickers_from_industry = sum(industry_tickers.values(), [])
+        assert (set(self.tickers) == set(sum(industry_tickers.values(), [])))
+
+        # create indices for the industries
+        valid_industry_count = 0
+        valid_industry_index = {}
+        for industry in industry_tickers.keys():
+            valid_industry_index[industry] = valid_industry_count
+            valid_industry_count += 1
+
+        # assign the industry index to corresponding stocks of each industry
+        industry_all_tickers = {}
+        for industry in valid_industry_index.keys():
+            cur_ind_tickers = industry_tickers[industry]
+            ind_ind = valid_industry_index[industry]
+            for i in range(len(cur_ind_tickers)):
+                industry_all_tickers[cur_ind_tickers[i]] = ind_ind
+        assert (set(self.tickers) == set(list(industry_all_tickers.keys())))        
+        return industry_all_tickers
+
+    def generate_feature(self, relation_data_path, if_date_list, selected_tickers_fname, begin_date, end_date,
                          return_days=1, pad_begin=29):
         '''
             Transform the original EOD data collected from Google Finance to a
@@ -199,11 +229,9 @@ class EOD_Preprocessor:
         print('begin date:', begin_date)
 
         # make a dictionary to translate dates into index and vice versa
-        index_tra_dates = {}
         tra_dates_index = {}
         for index, date in enumerate(trading_dates):
             tra_dates_index[date] = index
-            index_tra_dates[index] = date
 
         if selected_tickers_fname:
             self.tickers = np.genfromtxt(
@@ -216,35 +244,8 @@ class EOD_Preprocessor:
         stocks_features = []
         labels = []
 
-        # load stock industry relation data
-        # industry_ticker_file = os.path.join('data/relation/sector_industry/',
-        #                                     self.market_name + '_industry_ticker.json')
-        # ticker_index = {}
-        # for index, ticker in enumerate(self.tickers):
-        #     ticker_index[ticker] = index
-        # with open(industry_ticker_file, 'r') as fin:
-        #     industry_tickers = json.load(fin)
-        # print('#industries: ', len(industry_tickers))
-
-        # # concatenate lists of all tickers of all industry
-        # all_tickers_from_industry = sum(industry_tickers.values(), [])
-        # assert (set(self.tickers) == set(sum(industry_tickers.values(), [])))
-
-        # # create indices for the industries
-        # valid_industry_count = 0
-        # valid_industry_index = {}
-        # for industry in industry_tickers.keys():
-        #     valid_industry_index[industry] = valid_industry_count
-        #     valid_industry_count += 1
-
-        # # assign the industry index to corresponding stocks of each industry
-        # industry_all_tickers = {}
-        # for industry in valid_industry_index.keys():
-        #     cur_ind_tickers = industry_tickers[industry]
-        #     ind_ind = valid_industry_index[industry]
-        #     for i in range(len(cur_ind_tickers)):
-        #         industry_all_tickers[cur_ind_tickers[i]] = ind_ind
-        # assert (set(self.tickers) == set(list(industry_all_tickers.keys())))
+        ## load stock industry relation data (TO DO)
+        # industry_all_tickers = self.load_industry_relation_data(relation_data_path)
 
         for index, ticker in enumerate(self.tickers):
             print('ticker: ', ticker)
@@ -584,6 +585,10 @@ flags.DEFINE_string(
     'Path of the folder to save the datasets.')
 
 flags.DEFINE_string(
+    'relation_data_path', 'data/relation/sector_industry',
+    'Path of EOD data.')
+
+flags.DEFINE_string(
     'market', 'ALL',
     'Market name.')
 
@@ -646,6 +651,7 @@ def main(argv):
         len_tickers = len(stock_features)     
     else:
         stock_features, stock_labels = processor.generate_feature(
+            FLAGS.relation_data_path,
             FLAGS.if_date_list,
             ticker_list,
             datetime.strptime(FLAGS.start_date, processor.date_format),
