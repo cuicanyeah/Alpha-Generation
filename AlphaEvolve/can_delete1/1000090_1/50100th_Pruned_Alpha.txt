@@ -1,6 +1,0 @@
-  s29 = maximum(s15, s24)
-
-  s13 = arccos(s1)
-
-  s6 = arcsin(s14)
-

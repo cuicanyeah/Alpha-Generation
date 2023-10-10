@@ -1,4 +1,0 @@
-  v13 = uniform(0.937448, 0.445821, n_features)
-
-  m12 = transpose(m3)
-

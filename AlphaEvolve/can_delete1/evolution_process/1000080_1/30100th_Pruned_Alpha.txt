@@ -1,4 +1,0 @@
-  v27 = get_column(0.166179)
-
-  s28 = covariance(v28, v10, 0.00882229)
-
