@@ -1,0 +1,88 @@
+def Setup():
+  v29[0.979655] = 0.573689
+  m23 = uniform(0.249754, 0.813009, (n_features, n_features))
+  m24 = gaussian(-0.457996, 0.888966, (n_features, n_features))
+  s3 = uniform(-0.705021, 0.512355)
+  s14 = -0.191662
+  m19[0.970346, 0.945268] = 0.277394
+  s2 = gaussian(0.272423, 0.435555)
+  s10 = 0.659362
+  s18 = gaussian(0.595736, 0.633665)
+  s27 = -0.890222
+  s22 = uniform(-0.141691, -0.645589)
+  m11[0.702147, 0.637495] = -0.96087
+  m5 = uniform(-0.28594, 0.324821, (n_features, n_features))
+  v24 = gaussian(-0.290641, 0.698831, n_features)
+  s23 = gaussian(-0.678861, 0.878955)
+  s24 = uniform(0.918376, -0.204205)
+  m2 = uniform(0.276644, 0.0688686, (n_features, n_features))
+def Predict():
+  v27 = v20 * v19
+  v18 = v2 / v6
+  m13 = maximum(m24, m7)
+  s28 = dot(v27, v22)
+  v28 = v20 + v24
+  s16 = get_scalar(0.625506, 0.683677)
+  m15 = minimum(m2, m6)
+  m3 = m2 / m11
+  s22 = mean(v25)
+  v4 = v3 - v16
+  s18 = s18 + s2
+  v22 = maximum(v1, v23)
+  v2 = norm(m14, axis=0)
+  s4 = std(v18)
+  m11 = outer(v6, v20)
+  s5 = heaviside(s24, 1.0)
+  m8 = 1 / m18
+  NoOp()
+  m1 = maximum(m5, m4)
+  v17 = bcast(s15)
+  m17 = 1 / m20
+  v11 = v24 * v19
+  m2 = outer(v7, v5)
+  m2 = maximum(m8, m12)
+  s28 = mean(m2)
+  s9 = exp(s3)
+  v10 = get_column(0.797378)
+  v10 = get_row(0.653003)
+  v26 = std(m4, axis=1)
+  v12 = get_row(0.656209)
+  m23 = heaviside(m2, 1.0)
+  v18 = bcast(s26)
+  m14 = minimum(m5, m4)
+  m19 = abs(m5)
+  v17 = abs(v29)
+  s22 = s19 - s20
+  v4 = heaviside(v19, 1.0)
+  s11 = norm(m0)
+  s8 = std(v27)
+  s24 = log(s9)
+  s11 = get_scalar(0.521938, 0.0278941)
+  s16 = s21 / s15
+  m8 = bcast(v10, axis=0)
+  s28 = arcsin(s28)
+  v21 = get_column(0.841397)
+  s12 = s12 / s4
+  m17 = s25 * m12
+def Learn():
+  s10 = arccos(s2)
+  s25 = s4 / s2
+  s9 = cos(s23)
+  s8 = std(v4)
+  s14 = exp(s0)
+  m5 = 1 / m8
+  m7 = bcast(v26, axis=1)
+  m13 = matmul(m5, m13)
+  v9 = 1 / v21
+  s3 = norm(m14)
+  v19 = v13 / v4
+  s16 = dot(v11, v22)
+  v13 = maximum(v16, v20)
+  v25 = v8 - v13
+  v24 = mean(m3, axis=1)
+  s1 = norm(m3)
+  m24 = m24 / m13
+  m19 = m4 / m15
+  m20 = bcast(v26, axis=1)
+  NoOp()
+ 

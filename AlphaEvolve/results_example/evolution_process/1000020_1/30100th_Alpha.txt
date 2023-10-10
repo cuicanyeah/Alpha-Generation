@@ -1,0 +1,97 @@
+def Setup():
+  m2 = gaussian(-0.622395, 0.761959, (n_features, n_features))
+  m4 = uniform(0.161649, -0.647856, (n_features, n_features))
+  v15 = uniform(-0.340917, -0.945143, n_features)
+  v25 = gaussian(-0.278092, 0.54795, n_features)
+  v11 = gaussian(-0.686721, 0.555525, n_features)
+  v9 = uniform(0.623151, 0.902482, n_features)
+  s5 = uniform(-0.146474, 0.68991)
+  v16 = uniform(-0.932204, 0.834427, n_features)
+  s3 = gaussian(0.291262, 0.270577)
+  s21 = 0.675109
+  s26 = gaussian(0.316534, 0.243868)
+  s3 = uniform(0.893904, -0.824791)
+def Predict():
+  m13 = abs(m24)
+  s9 = maximum(s17, s7)
+  v3 = get_column(0.325787)
+  v23 = 1 / v11
+  v5 = get_row(0.770645)
+  s17 = dot(v7, v25)
+  s2 = correlation(v16, v29, 0.0940457)
+  s12 = minimum(s6, s0)
+  s3 = abs(s2)
+  v17 = v7 / v12
+  m14 = heaviside(m7, 1.0)
+  s25 = sin(s14)
+  v27 = 1 / v18
+  s11 = log(s27)
+  s16 = std(v11)
+  m5 = 1 / m13
+  m9 = m11 - m7
+  m5 = m10 + m5
+  v5 = maximum(v18, v22)
+  s16 = norm(v9)
+  s25 = exp(s13)
+  s20 = sin(s19)
+  s25 = s2 + s13
+  s6 = tan(s15)
+  s15 = 1 / s22
+  s14 = 1 / s14
+  m6 = matmul(m5, m14)
+  s18 = arcsin(s9)
+  s21 = s19 / s3
+  s15 = abs(s25)
+  s16 = get_scalar(0.825501, 0.530458)
+  m23 = 1 / m15
+  v24 = v21 + v20
+  m23 = bcast(v24, axis=1)
+  m5 = m19 + m19
+  s11 = std(v21)
+  s28 = mean(v24)
+  s1 = sin(s9)
+  s7 = arccos(s26)
+  m21 = m1 + m8
+  s12 = norm(m7)
+  m10 = outer(v2, v24)
+  v12 = maximum(v18, v12)
+  s19 = s9 / s18
+  s11 = sin(s17)
+  v21 = v29 - v27
+  NoOp()
+  v20 = get_column(0.49022)
+  s5 = maximum(s16, s1)
+  s13 = exp(s16)
+  s4 = dot(v25, v2)
+  s11 = log(s18)
+  m10 = bcast(v3, axis=1)
+  m17 = bcast(v3, axis=0)
+  s12 = mean(v6)
+  m20 = uniform(0.948718, 0.26602, (n_features, n_features))
+  v28 = minimum(v14, v26)
+  s25 = sin(s15)
+  s17 = get_scalar(0.167937, 0.414991)
+def Learn():
+  m7 = heaviside(m15, 1.0)
+  m22 = transpose(m12)
+  s22 = arctan(s7)
+  m2 = matmul(m10, m13)
+  v26 = get_column(0.0718768)
+  v21 = bcast(s6)
+  m14 = heaviside(m7, 1.0)
+  v1 = v19 * v25
+  m17 = m17 + m21
+  m5 = matmul(m20, m18)
+  v15 = norm(m0, axis=0)
+  m7 = outer(v23, v5)
+  v4 = maximum(v19, v1)
+  m12 = maximum(m21, m14)
+  v9 = dot(m3, v19)
+  s8 = arctan(s16)
+  s9 = cos(s0)
+  s26 = norm(m2)
+  s15 = covariance(v2, v23, 0.505758)
+  v6 = v28 / v0
+  NoOp()
+  v12 = norm(m18, axis=0)
+ 

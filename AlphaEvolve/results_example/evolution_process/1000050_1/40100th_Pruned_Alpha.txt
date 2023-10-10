@@ -1,0 +1,22 @@
+  s13 = mean(v26)
+
+  m3 = m7 / m9
+
+  m13 = outer(v26, v5)
+
+  v4 = v6 * v12
+
+  v27 = v9 * v29
+
+  s8 = s23 + s15
+
+  s19 = abs(s28)
+
+  s15 = heaviside(s19, 1.0)
+
+  s27 = mean(m0)
+
+  s22 = maximum(s16, s8)
+
+  s4 = std(v4)
+

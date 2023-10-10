@@ -1,0 +1,20 @@
+  s1 = std(m5)
+
+  m11 = s12 * m0
+
+  m5 = s8 * m24
+
+  s9 = norm(v23)
+
+  m6 = bcast(v10, axis=0)
+
+  s2 = s6 / s24
+
+  m24 = m12 / m0
+
+  s8 = cos(s2)
+
+  v22 = get_row(0.792776)
+
+  s6 = s28 * s1
+

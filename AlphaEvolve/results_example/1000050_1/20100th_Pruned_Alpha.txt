@@ -1,0 +1,6 @@
+  s25 = exp(s22)
+
+  s3 = covariance(v5, v16, 0.0486173)
+
+  v6 = abs(v24)
+
