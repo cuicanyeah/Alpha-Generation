@@ -1,10 +1,14 @@
 # AlphaEvolve
 
-The repository is the official implementation of AlphaEvolve.
+The repository is the official implementation of [AlphaEvolve: A Learning Framework to Discover Novel Alphas in Quantitative Investment](https://arxiv.org/abs/2103.16196).
+
+Alphas are mathematical expressions that are predictive for next day's returns. The key idea of AlphaEvolve is to automate the alpha generation process motivated by human experts: ![arch](./figures/uncorrelated_alpha_expert.png)
+
+AlphaEvolve is an evolutionary framework based on AutoML. The framework guides the evolutionary process from generating a machine learning algorithm to a predictive alpha, which helps evolving an initial alpha to a better alpha with high dimentional features:![arch](./figures/framework.png)
 
 ## Environment:
 
-We run our experiments on Intel(R) Xeon(R) W-2133 CPU @ 3.60GHz. Mutiple CPUs are recommended for running alpha initializations in parallel. GPU is not necessary but useful in running deep learning models to be implemented later. 
+We run our experiments on Intel(R) Xeon(R) W-2133 CPU @ 3.60GHz. Mutiple CPUs are recommended for running alpha initializations in parallel. 
 
 ## Requirements:
 

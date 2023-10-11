@@ -2,3 +2,4 @@
 *.npy
 static/
 save_preds_2/
+workspace-code.code-workspace
