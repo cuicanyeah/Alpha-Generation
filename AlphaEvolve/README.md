@@ -4,7 +4,9 @@ The repository is the official implementation of [AlphaEvolve: A Learning Framew
 
 Alphas are mathematical expressions that are predictive for next day's returns. The key idea of AlphaEvolve is to automate the alpha generation process motivated by human experts: ![arch](./figures/uncorrelated_alpha_expert.png)
 
-AlphaEvolve is an evolutionary framework based on AutoML. The framework guides the evolutionary process from generating a machine learning algorithm to a predictive alpha, which helps evolving an initial alpha to a better alpha with high dimentional features:![arch](./figures/framework.png)
+AlphaEvolve is an evolutionary framework based on AutoML. The framework guides the evolutionary process from generating a machine learning algorithm to a predictive alpha, which helps evolving an initial alpha to a better alpha with high dimentional features:
+
+![arch](./figures/framework.png)
 
 ## Environment:
 
@@ -24,7 +26,7 @@ The data folder contains ten years of U.S. stocks from 2013 to 2022 downloaded f
 
 Generate a dataset for AlphaEvolve as inputs using raw data (i.e., open/high/low/close/volume) for five years from 2017-1-2 to 2022-1-2.
 ```
-python preprocess/generate_datasets.py -input_path $(pwd)/data/eikon_data -output_path $(pwd)/processed_data/data_for_ALL_search -market ALL -num_train_examples 750 -num_valid_examples 459 -start_date 2017-1-2 -end_date 2022-1-2
+python preprocess/generate_datasets.py -input_path $(pwd)/raw_data/eikon_data -output_path $(pwd)/processed_data/data_for_ALL_search -market ALL -num_train_examples 750 -num_valid_examples 459 -start_date 2017-1-2 -end_date 2022-1-2
 ```
 
 Run an automatic alpha search using previous rounds' searched alphas' outputs on validation dataset as cutoff and using good alphas as initial alphas:
