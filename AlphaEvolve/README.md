@@ -45,7 +45,7 @@ Run an alpha evaluation for 5 minutes using your own designed alpha for the NYSE
 timeout 5m bash ./run.sh -a MY_ALPHA -p YOUR_OUTPUT_PATH_FOR_ALPHA_PERFORMANCE_RESULTS  -m $(pwd)/initial_alphas/my_alpha_101.txt -s 100000000000 -v "" -t "" -g YOUR_OUTPUT_PATH_FOR_PREDICTION_VALUES -b ALL -f 3000 -h 13 -j 459 -o $(pwd)/processed_data/data_for_ALL_evaluate
 ```
 
-## Results
+## Results:
 
 After executing the alpha search command, the results will be generated in your output folder similar to the `results_example`. In this folder, the parallel-executed evolutionary processes are named with different random seeds. Each of the folders contains detailed results for the evolutionary processes. The best results in each round among all processes are included in the folder named `best_in_each_round`. `results_example` shows the results of the alpha search command executed within 60 minutes `-t 60`.
 
