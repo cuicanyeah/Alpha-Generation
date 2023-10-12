@@ -37,7 +37,7 @@ Run an automatic alpha search using previous rounds' searched alphas' outputs on
 
 Generate a dataset for AlphaEvolve as inputs using raw data (i.e., open/high/low/close/volume) for two years from 2017-1-2 to 2019-1-2.
 ```
-python preprocess/generate_datasets.py -input_path $(pwd)/data/eikon_data -output_path $(pwd)/processed_data/data_for_ALL_evaluate -market ALL -num_train_examples 13 -num_valid_examples 459 -start_date 2017-1-2 -end_date 2019-1-2
+python preprocess/generate_datasets.py -input_path $(pwd)/raw_data/eikon_data -output_path $(pwd)/processed_data/data_for_ALL_evaluate -market ALL -num_train_examples 13 -num_valid_examples 459 -start_date 2017-1-2 -end_date 2019-1-2
 ```
 
 Run an alpha evaluation for 5 minutes using your own designed alpha for the NYSE and NASDAQ datasets with 3000 stocks (5 minutes is just an arbitrary time limit probably enough to initialize and evaluate the alpha). The given alpha is a simple momentum alpha, i.e., the 101st alpha in "formulaic alpha 101". paper
