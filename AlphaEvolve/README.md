@@ -31,7 +31,7 @@ python preprocess/generate_datasets.py -input_path $(pwd)/raw_data/eikon_data -o
 
 Run an automatic alpha search using previous rounds' searched alphas' outputs on validation dataset as cutoff and using good alphas as initial alphas:
 ```
-./search_alpha_experiments_using_best_alphas.sh -r 1 -o YOUR_OUTPUT_FOLDER_NAME -b 5 -t 5 -m ALL -n 3000 -i $(pwd)/processed_data/data_for_ALL_search -a 750 -c 459
+./search_alpha_experiments_using_best_alphas.sh -r 1 -o YOUR_OUTPUT_FOLDER_NAME -b 5 -t 5 -m ALL -n 3000 -i $(pwd)/processed_data/data_for_ALL_search -a 750 -c 459 -p YOUR_PATH_FOR_CACHE
 ```
 ## Alpha evaluation commands to evaluate a given alpha:
 
@@ -42,7 +42,7 @@ python preprocess/generate_datasets.py -input_path $(pwd)/raw_data/eikon_data -o
 
 Run an alpha evaluation for 5 minutes using your own designed alpha for the NYSE and NASDAQ datasets with 3000 stocks (5 minutes is just an arbitrary time limit probably enough to initialize and evaluate the alpha). The given alpha is a simple momentum alpha, i.e., the 101st alpha in "formulaic alpha 101". paper
 ```
-timeout 5m bash ./run.sh -a MY_ALPHA -p YOUR_OUTPUT_PATH_FOR_ALPHA_PERFORMANCE_RESULTS  -m $(pwd)/initial_alphas/my_alpha_101.txt -s 100000000000 -v "" -t "" -g YOUR_OUTPUT_PATH_FOR_PREDICTION_VALUES -b ALL -f 3000 -h 13 -j 459 -o $(pwd)/processed_data/data_for_ALL_evaluate
+timeout 5m bash ./run.sh -a MY_ALPHA -p YOUR_OUTPUT_PATH_FOR_ALPHA_PERFORMANCE_RESULTS  -m $(pwd)/initial_alphas/my_alpha_101.txt -s 100000000000 -v "" -t "" -g YOUR_OUTPUT_PATH_FOR_PREDICTION_VALUES -b ALL -f 3000 -h 13 -j 459 -o $(pwd)/processed_data/data_for_ALL_evaluate -l YOUR_PATH_FOR_CACHE
 ```
 
 ## Results:
