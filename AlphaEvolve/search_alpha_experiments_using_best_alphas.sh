@@ -1,7 +1,7 @@
-# This file search alphas in five rounds where each round using previous rounds' generated alphas' returns on the validation dataset
+# This file search alphas in given rounds where each round using previous rounds' generated alphas' returns on the validation dataset
 # as cutoff threshold to reduce correlation. This file uses parallel processes to perform alpha generation.
 
-while getopts r:o:b:t:m:n:i:a:c: flag
+while getopts r:o:b:t:m:n:i:a:c:p: flag
 do
     case "${flag}" in
         r) rounds=${OPTARG};; # an integer representing the number of rounds we want to run our alpha search. 
@@ -13,6 +13,7 @@ do
 		i) input_data_folder=${OPTARG};; # the input data path
 		a) num_train_samples=${OPTARG};; # number of training samples
 		c) num_valid_samples=${OPTARG};; # number of valid samples
+		p) cache_dir=${OPTARG};; # cache directory for bazel. Should be large enough.
     esac
 done
 
@@ -75,7 +76,7 @@ do
         	                                best_test_returns+="${ith_best_test_returns};"
                 	                done
 					sed "s/^[ \t]*//" -i $file
-					timeout ${time}m bash ./run.sh -a MY_ALPHA -p $(pwd)/${output_dir}/candidate_best/best_alpha_${round_p}_${round}/  -m $file -s 100000000000 -v "${best_valid_returns}" -t "${best_test_returns}" -b ${market} -f ${num_stocks} -h ${num_train_samples} -j ${num_valid_samples} -o ${input_data_folder} &
+					timeout ${time}m bash ./run.sh -a MY_ALPHA -p $(pwd)/${output_dir}/candidate_best/best_alpha_${round_p}_${round}/  -m $file -s 100000000000 -v "${best_valid_returns}" -t "${best_test_returns}" -b ${market} -f ${num_stocks} -h ${num_train_samples} -j ${num_valid_samples} -o ${input_data_folder} -l ${cache_dir} &
 				done
 			done
 		done
@@ -145,7 +146,7 @@ do
         		alpha_num="$((round-1))"
                		if [ $round -eq 1 ]
 			then
-				timeout ${time}m bash ./run.sh -a MY_ALPHA -p $(pwd)/${output_dir}/evolution_process/${init}_${round}/  -m $(pwd)/generated_alphas/best_alphas_${market}/alpha${alpha_num}.txt -s 100000000000 -v "" -t "" -d $init -b ${market} -f ${num_stocks} -h ${num_train_samples} -j ${num_valid_samples} -o ${input_data_folder} & # | xargs --max-procs=2
+				timeout ${time}m bash ./run.sh -a MY_ALPHA -p $(pwd)/${output_dir}/evolution_process/${init}_${round}/  -m $(pwd)/generated_alphas/best_alphas_${market}/alpha${alpha_num}.txt -s 100000000000 -v "" -t "" -d $init -b ${market} -f ${num_stocks} -h ${num_train_samples} -j ${num_valid_samples} -o ${input_data_folder} -l ${cache_dir} & # | xargs --max-procs=2
                 	else
 				best_valid_returns=""
                         	best_test_returns=""
@@ -156,7 +157,7 @@ do
                                 	ith_best_test_returns=${best_test_returns_[${i}]}
                                 	best_test_returns+="${ith_best_test_returns};"
                         	done
-                         		timeout ${time}m bash ./run.sh -a MY_ALPHA -p $(pwd)/${output_dir}/evolution_process/${init}_${round}/  -m $(pwd)/generated_alphas/best_alphas_${market}/alpha${alpha_num}.txt -s 100000000000 -v "${best_valid_returns}" -t "${best_test_returns}" -b ${market} -f ${num_stocks} -h ${num_train_samples} -j ${num_valid_samples} -o ${input_data_folder} &
+                         		timeout ${time}m bash ./run.sh -a MY_ALPHA -p $(pwd)/${output_dir}/evolution_process/${init}_${round}/  -m $(pwd)/generated_alphas/best_alphas_${market}/alpha${alpha_num}.txt -s 100000000000 -v "${best_valid_returns}" -t "${best_test_returns}" -b ${market} -f ${num_stocks} -h ${num_train_samples} -j ${num_valid_samples} -o ${input_data_folder} -l ${cache_dir} &
                 	fi
         	done
 		wait

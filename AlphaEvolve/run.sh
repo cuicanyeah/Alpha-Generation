@@ -14,7 +14,7 @@
 
 # Modifications copyright (C) 2021 <NUS/Cui Can>
 
-while getopts a:p:m:s:v:t:e:i:c:n:d:g:b:f:h:j:o: flag
+while getopts a:p:m:s:v:t:e:i:c:n:d:g:b:f:h:j:o:l: flag
 do
     case "${flag}" in
         a) init=${OPTARG};; # select how we initialize our population, e.g., MY_ALPHA to build the initial population using a given alpha sepecified by -m
@@ -34,6 +34,7 @@ do
         h) num_train_samples=${OPTARG};; # num_train_samples should follow the number determined by the generate_datasets.py (i.e., num_train_examples) and specified in DATA_DIR
         j) num_valid_samples=${OPTARG};; # num_valid_samples should follow the number determined by the generate_datasets.py (i.e., num_valid_examples) and specified in DATA_DIR
         o) input_data_folder=${OPTARG};; # the directory for the input data
+        l) cache_dir=${OPTARG};; # the directory to hold cache. Should have sufficient space.
         # k) if_evaluate=${OPTARG};; # if it is evaluating the we set sample to the min of 13 and use valid samples for evaluation
     esac
 done
@@ -42,7 +43,7 @@ all_timesteps=$(( num_train_samples + num_valid_samples ))
 
 DATA_DIR=${input_data_folder} # _preds
 
-bazel --output_user_root=/hdd9/james/folder_to_make_space_for_home/bazel/_bazel_james9/ee9fe0b5d3fd851ad0c81ee9b1bc55a5 run -c opt \
+bazel --output_user_root=${cache_dir} run -c opt \
   --copt=-DMAX_SCALAR_ADDRESSES=30 \
   --copt=-DMAX_VECTOR_ADDRESSES=30 \
   --copt=-DMAX_MATRIX_ADDRESSES=25 \
